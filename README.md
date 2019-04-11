@@ -1,6 +1,6 @@
 # Project 3 - Team 1
 
-Members:  Carlar Blackman, Kendall Davis, Jeff Levine, Lesley Pond, Jamil Weeks.
+Contributors:  Carlar Blackman, Kendall Davis, Jeff Levine, Lesley Pond, Jamil Weeks.
 
 Project Name: Didirri
 
@@ -8,4 +8,4 @@ Topic/Idea: Didirri is a full-stack application utilizing all the skills we have
 
 New Technologies: New CSS framework. Graphing capabilities. Component based JS frameworks.
 
-Mission: Didirri by definition is an Aboriginal term meaning, “A state of stillness, inner reflection, and deep listening,” and we aim to help our users by providing them a platform in which to do so.
+Mission: Didirri, by definition, is an Aboriginal term meaning, “A state of stillness, inner reflection, and deep listening,” and we aim to help our users by providing them a platform in which to do so.
