@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
 import Footer from './components/Footer/Footer'
 import Dashboard from './components/Dashboard/Dashboard'
+import Landing from './components/Landing/Landing'
 
 
 class App extends Component {
@@ -67,24 +68,30 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
+				<Switch>
+					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
+					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
+				</Switch>
+				
 				{/* User is logged in */}
-        { this.state.loggedIn && (
+        {/* { this.state.loggedIn && (
           <div>
-            <div className="main-view">
+            <div className="">
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
             </div>
           </div>
-				)}
+				)} */}
 				{/* User is not logged in */}
-        { !this.state.loggedIn && (
+        {/* { !this.state.loggedIn && (
+
           <div className="auth-wrapper" style={{paddingTop:40}}>
             <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
             <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
             <Route exact path="/signup" component={SignupForm} />
           </div>
-				)}
+				)} */}
 				<Footer/>
 			</div>
 		)

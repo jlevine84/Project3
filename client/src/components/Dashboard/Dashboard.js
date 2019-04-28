@@ -5,7 +5,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="Jumbotron">
-        <h1>Welcome stuff</h1>
+        <h1>Dadirri Dashboard Component</h1>
         Dashboard Main Component
       </div>
     )

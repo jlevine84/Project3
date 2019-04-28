@@ -24,6 +24,8 @@ const Nav = (props) => {
   return (
     <nav>
       Update Navigation Component
+      <Link to="/">To Landing Page Render</Link>
+      <Link to="/dashboard"> To Dashboard Render</Link>
       {/* <Col size="md-2">
         <Link to="/" className="navbar-brand">Dadirri</Link>
       </Col>
