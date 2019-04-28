@@ -5,8 +5,9 @@ import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
 import Footer from './components/Footer/Footer'
-import Dashboard from './components/Dashboard/Dashboard'
-import Landing from './components/Landing/Landing'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Landing from './pages/Landing/Landing'
+import About from './pages/About/About'
 
 
 class App extends Component {
@@ -70,6 +71,7 @@ class App extends Component {
 				<Nav user={this.state.user} logout={this.logout}/>
 				<Switch>
 					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
+					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
 				</Switch>
 				
