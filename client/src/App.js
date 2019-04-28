@@ -3,10 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
-import Books from './pages/Books';
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import Footer from './components/Footer/Footer'
+import Dashboard from './components/Dashboard/Dashboard'
+
 
 class App extends Component {
   
@@ -66,26 +66,26 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<Nav user={this.state.user} logout={this.logout}/>
+				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
-            <Nav user={this.state.user} logout={this.logout}/>
             <div className="main-view">
               <Switch>
-                <Route exact path="/" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books/:id" component={Detail} />
-                <Route component={NoMatch} />
+                <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
             </div>
           </div>
-        )}
+				)}
+				{/* User is not logged in */}
         { !this.state.loggedIn && (
           <div className="auth-wrapper" style={{paddingTop:40}}>
             <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
             <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
             <Route exact path="/signup" component={SignupForm} />
           </div>
-        )}
+				)}
+				<Footer/>
 			</div>
 		)
 	}
