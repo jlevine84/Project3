@@ -3,8 +3,8 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
-    console.log('===== user!!======');
-    console.log(req.user);
+    // console.log('===== user!!======');
+    // console.log(req.user);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
@@ -42,16 +42,16 @@ module.exports = {
     }
   },
   auth: function(req, res, next) {
-		console.log(req.body);
-		console.log('================');
+		// console.log(req.body);
+		// console.log('================');
 		next();
   },
   authenticate: (req, res) => {
-		console.log('POST to /login');
+		// console.log('POST to /login');
 		const user = JSON.parse(JSON.stringify(req.user)); // hack
 		const cleanUser = Object.assign({}, user);
 		if (cleanUser) {
-			console.log(`Deleting ${cleanUser.password}`);
+			// console.log(`Deleting ${cleanUser.password}`);
 			delete cleanUser.password;
 		}
 		res.json({ user: cleanUser });
