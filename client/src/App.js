@@ -7,6 +7,9 @@ import Books from './pages/Books';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import LandingPage from './pages/Auth/LandingPage'
+import Modal from 'react-responsive-modal';
+import { throws } from 'assert';
 
 class App extends Component {
   
@@ -15,9 +18,18 @@ class App extends Component {
     
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			showLogin:false,
+			showSignUp: false
     };
-  }
+	}
+	
+	toggleModal1 = () => this.setState({
+		showLogin: !this.state.showLogin
+	})
+	toggleModal2 = () => this.setState({
+		showSignUp: !this.state.showSignUp
+	})
   
 	componentDidMount() {
 		AUTH.getUser().then(response => {
@@ -63,7 +75,9 @@ class App extends Component {
     });
 	}
 
+	
 	render() {
+	
 		return (
 			<div className="App">
         { this.state.loggedIn && (
@@ -80,10 +94,13 @@ class App extends Component {
           </div>
         )}
         { !this.state.loggedIn && (
-          <div className="auth-wrapper" style={{paddingTop:40}}>
-            <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
-            <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
-            <Route exact path="/signup" component={SignupForm} />
+				 
+				 <div>
+					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+					showSignInModal={this.state.showLogin} handlesubmit={this.handleSubmit}
+					showSignUpModal={this.state.showSignUp} 
+					/>
+
           </div>
         )}
 			</div>

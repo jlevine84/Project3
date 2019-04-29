@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 
 class LoginForm extends Component {
   
-  constructor() {
-    super();
     
-		this.state = {
+		state = {
 			username: '',
 			password: '',
 			redirectTo: null
 		};
-	}
+	
 
 	handleChange = (event) => {
 		this.setState({
@@ -38,9 +35,9 @@ class LoginForm extends Component {
 			return (
 				<Container>
           <Row>
-            <Col size="md-3"></Col>
-            <Col size="md-6">
-              <Card title="Login to React Reading List">
+            
+            <Col size="md-12">
+             
                 <form style={{marginTop: 10}}>
                   <label htmlFor="username">Username: </label>
                   <Input
@@ -56,12 +53,12 @@ class LoginForm extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                   />
-                  <Link to="/signup">Register</Link>
-                  <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
+                  <button type="button" onClick={(event) => { this.props.toggle1(); this.props.toggle2();}}>Register</button>
+                  <FormBtn onClick={this.props.handleSubmit}>Login</FormBtn>
                 </form>
-              </Card>
+              
             </Col>
-            <Col size="md-3"></Col>
+            
           </Row>
 				</Container>
 			)

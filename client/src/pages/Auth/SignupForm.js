@@ -55,9 +55,9 @@ class SignupForm extends Component {
 		return (
       <Container>
         <Row>
-          <Col size="md-3"></Col>
-          <Col size="md-6">
-            <Card title="Register for React Reading List">
+          
+          <Col size="md-12">
+            
               <form style={{marginTop: 10}}>
                 <label htmlFor="username">First name: </label>
                 <Input
@@ -94,12 +94,12 @@ class SignupForm extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
                 />
-                <Link to="/">Login</Link>
+                <button type="button"onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Login</button>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
               </form>
-            </Card>
+            
           </Col>
-          <Col size="md-3"></Col>
+          
         </Row>
       </Container>
 		)
