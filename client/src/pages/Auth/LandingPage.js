@@ -47,7 +47,7 @@ class LandingPage extends React.Component{
           </div>                             
         </div>
         <div className="modal-body">
-          <LoginForm handleSumbit={this.props.handleSubmit} toggle1={this.props.toggle1} toggle2={this.props.toggle2}/>
+          <LoginForm handleSubmit={this.props.login} toggle1={this.props.toggle1} toggle2={this.props.toggle2} login={this.props.login}/>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@ class LandingPage extends React.Component{
         <div className="modal-header">
           <div className="camera-box">
           <button onClick={this.dismissSignUpModal} className="xbutton">x</button>
-            <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5>
+            <h5 className="modal-title" id="exampleModalLabel">Sign Up For Dadirri</h5>
            
           </div>                             
         </div>

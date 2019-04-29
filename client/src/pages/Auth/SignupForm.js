@@ -12,7 +12,7 @@ class SignupForm extends Component {
 		this.state = {
       firstName: '',
       lastName: '',
-			username: '',
+			email: '',
 			password: '',
 			confirmPassword: '',
 			redirectTo: null
@@ -31,14 +31,14 @@ class SignupForm extends Component {
 		AUTH.signup({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     }).then(response => {
       console.log(response);
       if (!response.data.errmsg) {
         console.log('youre good');
         this.setState({
-          redirectTo: '/'
+          redirectTo: '/dashboard'
         });
       } else {
         console.log('duplicate');
@@ -73,11 +73,11 @@ class SignupForm extends Component {
                   value={this.state.lastName}
                   onChange={this.handleChange}
                 />
-                <label htmlFor="username">Username: </label>
+                <label htmlFor="email">Email Address: </label>
                 <Input
                   type="text"
-                  name="username"
-                  value={this.state.username}
+                  name="email"
+                  value={this.state.email}
                   onChange={this.handleChange}
                 />
                 <label htmlFor="password">Password: </label>

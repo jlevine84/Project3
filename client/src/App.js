@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LoginForm from './pages/Auth/LoginForm';
-import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
-import LandingPage from './pages/Auth/LandingPage'
-import Modal from 'react-responsive-modal';
+import LandingPage from './pages/Auth/LandingPage';
 import { throws } from 'assert';
-
-
+import Dashboard from './pages/Dashboard/Dashboard';
+import About from './pages/About/About';
 
 class App extends Component {
   
@@ -69,9 +66,16 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           user: response.data.user
-        });
-      }
-    });
+				});
+				console.log("logged in")
+			}
+			else{
+				console.log("login failed")
+			}
+			
+    }).catch(error=>{
+			console.log(error)
+		})
 	}
 
 	
@@ -80,20 +84,17 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
-				{/* <Switch>
-					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
+				<Switch>
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
-				</Switch> */}
+				</Switch>
 				
 				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
-            {/* <div className="">
               <Switch>
-                <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
+                <Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
-            </div> */}
           </div>
 
         )}
@@ -101,7 +102,7 @@ class App extends Component {
 				 
 				 <div>
 					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
-					showSignInModal={this.state.showLogin} handlesubmit={this.handleSubmit}
+					showSignInModal={this.state.showLogin} login={this.login}
 					showSignUpModal={this.state.showSignUp} 
 					/>
 
