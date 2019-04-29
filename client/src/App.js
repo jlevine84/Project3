@@ -80,20 +80,20 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
-				<Switch>
+				{/* <Switch>
 					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
-				</Switch>
+				</Switch> */}
 				
 				{/* User is logged in */}
-        {/* { this.state.loggedIn && (
+        { this.state.loggedIn && (
           <div>
-            <div className="">
+            {/* <div className="">
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
-            </div>
+            </div> */}
           </div>
 
         )}
@@ -107,8 +107,8 @@ class App extends Component {
 
 
           </div>
-				)} */}
-				<Footer/>
+				)} 
+			
 			</div>
 		)
 	}
