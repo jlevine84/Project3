@@ -1,0 +1,15 @@
+.about-title {
+  height: 30vh;
+  width: 100vw;
+  border: 1px solid red;
+  background-color: aqua;
+  text-align: center;
+  padding-top: 75px;
+}
+
+.about-info {
+  height: 62vh;
+  border: 1px solid blue;
+  background-color: yellowgreen;
+  text-align: center;
+}
