@@ -5,7 +5,7 @@ function About() {
   return (
     <div>
       <h1>About Dadirri</h1>
-      About page.
+      Derp About page.
     </div>
   )
 }
