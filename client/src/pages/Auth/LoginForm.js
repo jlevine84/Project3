@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Input, FormBtn } from '../../components/Form';
 
+
 class LoginForm extends Component {
   
     
@@ -33,6 +34,7 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
+
 				<Container>
           <Row>
             
@@ -61,6 +63,7 @@ class LoginForm extends Component {
             
           </Row>
 				</Container>
+
 			)
 		}
 	}

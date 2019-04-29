@@ -3,13 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
-import Books from './pages/Books';
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import LandingPage from './pages/Auth/LandingPage'
 import Modal from 'react-responsive-modal';
 import { throws } from 'assert';
+
+
 
 class App extends Component {
   
@@ -80,18 +79,23 @@ class App extends Component {
 	
 		return (
 			<div className="App">
-        { this.state.loggedIn && (
+				<Nav user={this.state.user} logout={this.logout}/>
+				<Switch>
+					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
+					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
+				</Switch>
+				
+				{/* User is logged in */}
+        {/* { this.state.loggedIn && (
           <div>
-            <Nav user={this.state.user} logout={this.logout}/>
-            <div className="main-view">
+            <div className="">
               <Switch>
-                <Route exact path="/" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books/:id" component={Detail} />
-                <Route component={NoMatch} />
+                <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
             </div>
           </div>
+
         )}
         { !this.state.loggedIn && (
 				 
@@ -101,8 +105,10 @@ class App extends Component {
 					showSignUpModal={this.state.showSignUp} 
 					/>
 
+
           </div>
-        )}
+				)} */}
+				<Footer/>
 			</div>
 		)
 	}

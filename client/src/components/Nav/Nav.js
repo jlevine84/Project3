@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import { Col } from '../Grid';
 import './Nav.css';
 
 const Nav = (props) => {
@@ -23,16 +22,20 @@ const Nav = (props) => {
   }
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <Col size="md-2">
-        <Link to="/" className="navbar-brand">React Reading List</Link>
+    <nav>
+      Update Navigation Component
+      <Link to="/">To Landing Page Render</Link>
+      <Link to="/about">To About Page Render</Link>
+      <Link to="/dashboard"> To Dashboard Render</Link>
+      {/* <Col size="md-2">
+        <Link to="/" className="navbar-brand">Dadirri</Link>
       </Col>
       <Col size="md-7"></Col>
       <Col size="md-3">
         <div className="float-right">
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
-      </Col>
+      </Col> */}
     </nav>
   )
 };
