@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { Container, Row, Col } from '../../components/Grid';
+import { Input, FormBtn } from '../../components/Form';
+
 
 class LoginForm extends Component {
   
-  constructor() {
-    super();
     
-		this.state = {
+		state = {
 			username: '',
 			password: '',
 			redirectTo: null
 		};
-	}
+	
 
 	handleChange = (event) => {
 		this.setState({
@@ -33,37 +34,36 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div>
-					Update Login Junk Here.
-				</div>
-				// <Container>
-        //   <Row>
-        //     <Col size="md-3"></Col>
-        //     <Col size="md-6">
-        //       <Card title="Login to React Reading List">
-        //         <form style={{marginTop: 10}}>
-        //           <label htmlFor="username">Username: </label>
-        //           <Input
-        //             type="text"
-        //             name="username"
-        //             value={this.state.username}
-        //             onChange={this.handleChange}
-        //           />
-        //           <label htmlFor="password">Password: </label>
-        //           <Input
-        //             type="password"
-        //             name="password"
-        //             value={this.state.password}
-        //             onChange={this.handleChange}
-        //           />
-        //           <Link to="/signup">Register</Link>
-        //           <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
-        //         </form>
-        //       </Card>
-        //     </Col>
-        //     <Col size="md-3"></Col>
-        //   </Row>
-				// </Container>
+
+				<Container>
+          <Row>
+            
+            <Col size="md-12">
+             
+                <form style={{marginTop: 10}}>
+                  <label htmlFor="username">Username: </label>
+                  <Input
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+                  <label htmlFor="password">Password: </label>
+                  <Input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                  <button type="button" onClick={(event) => { this.props.toggle1(); this.props.toggle2();}}>Register</button>
+                  <FormBtn onClick={this.props.handleSubmit}>Login</FormBtn>
+                </form>
+              
+            </Col>
+            
+          </Row>
+				</Container>
+
 			)
 		}
 	}

@@ -4,10 +4,10 @@ import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
-import Footer from './components/Footer/Footer'
-import Dashboard from './pages/Dashboard/Dashboard'
-import Landing from './pages/Landing/Landing'
-import About from './pages/About/About'
+import LandingPage from './pages/Auth/LandingPage'
+import Modal from 'react-responsive-modal';
+import { throws } from 'assert';
+
 
 
 class App extends Component {
@@ -17,9 +17,18 @@ class App extends Component {
     
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			showLogin:false,
+			showSignUp: false
     };
-  }
+	}
+	
+	toggleModal1 = () => this.setState({
+		showLogin: !this.state.showLogin
+	})
+	toggleModal2 = () => this.setState({
+		showSignUp: !this.state.showSignUp
+	})
   
 	componentDidMount() {
 		AUTH.getUser().then(response => {
@@ -65,7 +74,9 @@ class App extends Component {
     });
 	}
 
+	
 	render() {
+	
 		return (
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
@@ -84,14 +95,17 @@ class App extends Component {
               </Switch>
             </div>
           </div>
-				)} */}
-				{/* User is not logged in */}
-        {/* { !this.state.loggedIn && (
 
-          <div className="auth-wrapper" style={{paddingTop:40}}>
-            <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
-            <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
-            <Route exact path="/signup" component={SignupForm} />
+        )}
+        { !this.state.loggedIn && (
+				 
+				 <div>
+					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+					showSignInModal={this.state.showLogin} handlesubmit={this.handleSubmit}
+					showSignUpModal={this.state.showSignUp} 
+					/>
+
+
           </div>
 				)} */}
 				<Footer/>

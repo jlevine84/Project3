@@ -50,58 +50,57 @@ class SignupForm extends Component {
     }
     
 		return (
-      <div>
-        Update Register Component Here.
-      </div>
-      // <Container>
-      //   <Row>
-      //     <Col size="md-3"></Col>
-      //     <Col size="md-6">
-      //       <Card title="Register for React Reading List">
-      //         <form style={{marginTop: 10}}>
-      //           <label htmlFor="username">First name: </label>
-      //           <Input
-      //             type="text"
-      //             name="firstName"
-      //             value={this.state.firstName}
-      //             onChange={this.handleChange}
-      //           />
-      //           <label htmlFor="username">Last name: </label>
-      //           <Input
-      //             type="text"
-      //             name="lastName"
-      //             value={this.state.lastName}
-      //             onChange={this.handleChange}
-      //           />
-      //           <label htmlFor="username">Username: </label>
-      //           <Input
-      //             type="text"
-      //             name="username"
-      //             value={this.state.username}
-      //             onChange={this.handleChange}
-      //           />
-      //           <label htmlFor="password">Password: </label>
-      //           <Input
-      //             type="password"
-      //             name="password"
-      //             value={this.state.password}
-      //             onChange={this.handleChange}
-      //           />
-      //           <label htmlFor="confirmPassword">Confirm Password: </label>
-      //           <Input
-      //             type="password"
-      //             name="confirmPassword"
-      //             value={this.state.confirmPassword}
-      //             onChange={this.handleChange}
-      //           />
-      //           <Link to="/">Login</Link>
-      //           <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
-      //         </form>
-      //       </Card>
-      //     </Col>
-      //     <Col size="md-3"></Col>
-      //   </Row>
-      // </Container>
+
+      <Container>
+        <Row>
+          
+          <Col size="md-12">
+            
+              <form style={{marginTop: 10}}>
+                <label htmlFor="username">First name: </label>
+                <Input
+                  type="text"
+                  name="firstName"
+                  value={this.state.firstName}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="username">Last name: </label>
+                <Input
+                  type="text"
+                  name="lastName"
+                  value={this.state.lastName}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="username">Username: </label>
+                <Input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="password">Password: </label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="confirmPassword">Confirm Password: </label>
+                <Input
+                  type="password"
+                  name="confirmPassword"
+                  value={this.state.confirmPassword}
+                  onChange={this.handleChange}
+                />
+                <button type="button"onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Login</button>
+                <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
+              </form>
+            
+          </Col>
+          
+        </Row>
+      </Container>
+
 		)
 	}
 }
