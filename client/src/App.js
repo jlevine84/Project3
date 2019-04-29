@@ -4,7 +4,9 @@ import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
-import LandingPage from './pages/Auth/LandingPage'
+import LandingPage from './pages/Landing/LandingPage'
+import About from './pages/About/About'
+import Dashboard from './pages/Dashboard/Dashboard'
 import Modal from 'react-responsive-modal';
 import { throws } from 'assert';
 
@@ -80,11 +82,11 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
-				{/* <Switch>
-					<Route exact path="/" component={() => <Landing user={this.state.user}/>} />
+				<Switch>
+					<Route exact path="/" component={() => <LandingPage user={this.state.user}/>} />
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
-				</Switch> */}
+				</Switch>
 				
 				{/* User is logged in */}
         { this.state.loggedIn && (
@@ -96,8 +98,9 @@ class App extends Component {
             </div> */}
           </div>
 
-        )}
-        { !this.state.loggedIn && (
+				)}
+				
+        {/* { !this.state.loggedIn && (
 				 
 				 <div>
 					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
@@ -107,7 +110,7 @@ class App extends Component {
 
 
           </div>
-				)} 
+				)}  */}
 			
 			</div>
 		)
