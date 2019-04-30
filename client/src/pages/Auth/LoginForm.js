@@ -25,7 +25,7 @@ class LoginForm extends Component {
 		console.log('handleSubmit');
 		this.props.login(this.state.username, this.state.password);
 		this.setState({
-			redirectTo: '/'
+			redirectTo: '/dashboard'
 		});
 	}
 
@@ -56,7 +56,7 @@ class LoginForm extends Component {
                     onChange={this.handleChange}
                   />
                   <button type="button" onClick={(event) => { this.props.toggle1(); this.props.toggle2();}}>Register</button>
-                  <FormBtn onClick={this.props.handleSubmit}>Login</FormBtn>
+                  <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
                 </form>
               
             </Col>
