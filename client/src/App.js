@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Nav from "./components/Nav";
 import AUTH from './utils/AUTH';
-import LandingPage from './pages/Auth/LandingPage';
+import LandingPage from './pages/Landing/LandingPage';
 import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
@@ -85,6 +85,9 @@ class App extends Component {
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
 				<Switch>
+					<Route exact path="/" component={() => <LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+					showSignInModal={this.state.showLogin} login={this.login}
+					showSignUpModal={this.state.showSignUp}/>} />
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
 				</Switch>
@@ -97,8 +100,9 @@ class App extends Component {
               </Switch>
           </div>
 
-        )}
-        { !this.state.loggedIn && (
+				)}
+				
+        {/* { !this.state.loggedIn && (
 				 
 				 <div>
 					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
@@ -108,7 +112,7 @@ class App extends Component {
 
 
           </div>
-				)} 
+				)}  */}
 			
 			</div>
 		)
