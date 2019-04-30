@@ -6,6 +6,14 @@ import LandingPage from './pages/Landing/LandingPage';
 import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
+import "./App.css";
+import Calendar from "./components/Calendar/";
+
+// Styling for map
+const style = {
+	position: "relative",
+	margin: "50px auto"
+}
 
 class App extends Component {
   
@@ -113,9 +121,16 @@ class App extends Component {
 
           </div>
 				)}  */}
-			
 			</div>
 		)
+	}
+// Map rendering 
+	render()  {
+		return  (
+			<div className="App">
+				<Calendar style={style} width="302px" />
+			</div>
+		);
 	}
 }
 
