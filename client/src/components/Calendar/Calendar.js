@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import "./Calendar.css"
+import "./calendar.css"
 
 export default class Calendar extends React.Component {
   state = {
@@ -15,7 +15,7 @@ export default class Calendar extends React.Component {
     super(props);
     this.width = props.width || "350px";
     this.style = props.style || {};
-    this.style.width = this.width;
+    // this.style.width = this.width;
   }
   
   weekdays = moment.weekdays(); // ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
