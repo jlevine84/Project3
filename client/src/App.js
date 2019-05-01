@@ -7,12 +7,6 @@ import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
 
-// Styling for map
-const style = {
-	position: "relative",
-	margin: "50px auto"
-}
-
 class App extends Component {
   
   constructor() {
@@ -123,8 +117,6 @@ class App extends Component {
 			</div>
 		)
 	}
-// Map rendering 
-
 }
 
 export default App;
