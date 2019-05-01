@@ -6,7 +6,6 @@ import LandingPage from './pages/Landing/LandingPage';
 import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
-import "./App.css";
 
 class App extends Component {
   
@@ -86,7 +85,8 @@ class App extends Component {
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
 				<Switch>
-					<Route exact path="/" component={() => <LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+					<Route exact path="/" component={() => 
+					<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
 					showSignInModal={this.state.showLogin} login={this.login}
 					showSignUpModal={this.state.showSignUp}/>} />
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
