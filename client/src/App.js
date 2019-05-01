@@ -91,7 +91,8 @@ class App extends Component {
 			<div className="App">
 				<Nav user={this.state.user} logout={this.logout}/>
 				<Switch>
-					<Route exact path="/" component={() => <LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+					<Route exact path="/" component={() => 
+					<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
 					showSignInModal={this.state.showLogin} login={this.login}
 					showSignUpModal={this.state.showSignUp}/>} />
 					<Route exact path="/about" component={() => <About user={this.state.user}/>} />

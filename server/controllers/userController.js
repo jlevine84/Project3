@@ -17,7 +17,7 @@ module.exports = {
     db.User.findOne({ 'email': email }, (err, userMatch) => {
       if (userMatch) {
         return res.json({
-          error: `Sorry, already a user with the username: ${username}`
+          error: `Sorry, already a user with the username: `
         });
       }
       const newUser = new db.User({
