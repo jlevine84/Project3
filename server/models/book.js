@@ -15,18 +15,3 @@ const Book = mongoose.model("Book", bookSchema);
 
 module.exports = Book;
 
-// -----------New Dadirri Schema---------------------------------
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-
-// const entrySchema = new Schema({
-//   date: { type: Date, required: true},
-//   user: {type: String, required: true},
-//   mood: {type: numeric, required: true},
-//   energy: {type: numeric, required: true},
-//   anxiety: {type: numeric, required: true},
-// })
-
-// const Entry = mongoose.model("Entry", entrySChema);
-
-// module.exports = Entry;
