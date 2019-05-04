@@ -10,8 +10,6 @@ class SignupForm extends Component {
     super();
     
 		this.state = {
-      firstName: '',
-      lastName: '',
 			email: '',
 			password: '',
 			confirmPassword: '',
@@ -29,8 +27,6 @@ class SignupForm extends Component {
 		event.preventDefault();
 		// TODO - validate!
 		AUTH.signup({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
       email: this.state.email,
       password: this.state.password
     }).then(response => {
@@ -59,20 +55,7 @@ class SignupForm extends Component {
           <Col size="md-12">
             
               <form style={{marginTop: 10}}>
-                <label htmlFor="username">First name: </label>
-                <Input
-                  type="text"
-                  name="firstName"
-                  value={this.state.firstName}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="username">Last name: </label>
-                <Input
-                  type="text"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleChange}
-                />
+               
                 <label htmlFor="email">Email Address: </label>
                 <Input
                   type="text"

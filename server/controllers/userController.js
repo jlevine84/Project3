@@ -42,12 +42,12 @@ module.exports = {
     }
   },
   auth: function(req, res, next) {
-		// console.log(req.body);
-		// console.log('================');
+		console.log(req.body);
+		console.log('================');
 		next();
   },
   authenticate: (req, res) => {
-		// console.log('POST to /login');
+		console.log(req)
 		const user = JSON.parse(JSON.stringify(req.user)); // hack
 		const cleanUser = Object.assign({}, user);
 		if (cleanUser) {
