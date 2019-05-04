@@ -5,18 +5,10 @@ mongoose.promise = Promise;
 
 // Define userSchema
 const userSchema = new Schema({
-	firstName: { type: String, unique: false },
-	lastName: { type: String, unique: false },
+
   email: { type: String, unique: true, required: true },
-  password: { type: String, unique: true, required: true },
-  books: [
-    {
-      // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Book model
-      ref: "Book"
-    }
-  ]
+  password: { type: String, required: true },
+ 
 });
 
 // Define schema methods

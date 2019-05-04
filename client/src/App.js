@@ -35,7 +35,9 @@ class App extends Component {
 					loggedIn: true,
 					user: response.data.user
 				});
+				console.log(this.state.user)
 			} else {
+				console.log("no user")
 				this.setState({
 					loggedIn: false,
 					user: null
@@ -59,6 +61,7 @@ class App extends Component {
 	}
 
 	login = (username, password) => {
+		console.log('app username:' + username)
 		AUTH.login(username, password).then(response => {
       console.log(response);
       if (response.status === 200) {
@@ -68,6 +71,7 @@ class App extends Component {
           user: response.data.user
 				});
 				console.log("logged in")
+				console.log(this.state.user)
 			}
 			else{
 				console.log("login failed")
