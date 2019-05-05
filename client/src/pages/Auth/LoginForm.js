@@ -10,7 +10,6 @@ class LoginForm extends Component {
 		state = {
 			username: '',
 			password: '',
-			redirectTo: null
 		};
 	
 
@@ -24,13 +23,12 @@ class LoginForm extends Component {
 		event.preventDefault();
 		console.log('handleSubmit');
 		this.props.login(this.state.username, this.state.password);
-		this.setState({
-			redirectTo: '/dashboard'
-		});
+		// this.setState({
+		// 	redirectTo: '/dashboard'
+		// });
 	}
 
 	render() {
-		console.log(`login form props: `,this.props)
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {

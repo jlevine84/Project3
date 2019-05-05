@@ -6,6 +6,7 @@ import LandingPage from './pages/Landing/LandingPage';
 import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
+import { Redirect, Link } from 'react-router-dom';
 
 class App extends Component {
   
@@ -16,7 +17,8 @@ class App extends Component {
 			loggedIn: false,
 			user: null,
 			showLogin:false,
-			showSignUp: false
+			showSignUp: false,
+			redirectTo: null
     };
 	}
 	
@@ -33,8 +35,10 @@ class App extends Component {
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
-					user: response.data.user
+					user: response.data.user,
+					redirectTo: "/dashboard"
 				});
+				console.log("logged in from previous login")
 				console.log(this.state.user)
 			} else {
 				console.log("no user")
@@ -54,8 +58,10 @@ class App extends Component {
 			if (response.status === 200) {
 				this.setState({
 					loggedIn: false,
-					user: null
+					user: null,
+					redirectTo: "/"
 				});
+				"logged out from button click"
 			}
 		});
 	}
@@ -68,7 +74,8 @@ class App extends Component {
         // update the state
         this.setState({
           loggedIn: true,
-          user: response.data.user
+					user: response.data.user,
+					redirectTo: "/dashboard"
 				});
 				console.log("logged in")
 				console.log(this.state.user)
@@ -84,42 +91,39 @@ class App extends Component {
 
 	
 	render() {
-	
+		
 		return (
 			<div className="App">
-				<Nav user={this.state.user} logout={this.logout}/>
-				<Switch>
-					<Route exact path="/" component={() => 
-					<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
-					showSignInModal={this.state.showLogin} login={this.login}
-					showSignUpModal={this.state.showSignUp}/>} />
-					<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-					<Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
-				</Switch>
-				
+
 				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
+						<Nav user={this.state.user} logout={this.logout}/>
               <Switch>
-                <Route exact path="/dashboard" component={() => <Dashboard user={this.state.user}/>} />
+                <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
           </div>
 
 				)}
 				
-        {/* { !this.state.loggedIn && (
-				 
-				 <div>
-					 <LandingPage toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
-					showSignInModal={this.state.showLogin} login={this.login}
-					showSignUpModal={this.state.showSignUp} 
-					/>
+        { !this.state.loggedIn && (
+					<div>
+							<Nav user={this.state.user} logout={this.logout}/>
+				<Switch>
+				<Route exact path="/" component={() => 
+				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+				showSignInModal={this.state.showLogin} login={this.login}
+				showSignUpModal={this.state.showSignUp}/>} />
+				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+			</Switch>
+			</div>
 
 
-          </div>
-				)}  */}
+        
+				)} 
 			</div>
 		)
+	
 	}
 }
 

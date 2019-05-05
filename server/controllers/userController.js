@@ -3,8 +3,8 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
-    // console.log('===== user!!======');
-    // console.log(req.user);
+    console.log('===== user!!======');
+    console.log(req);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   register: (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { email, password } = req.body;
     // ADD VALIDATION
     db.User.findOne({ 'email': email }, (err, userMatch) => {
       if (userMatch) {
@@ -21,8 +21,6 @@ module.exports = {
         });
       }
       const newUser = new db.User({
-        'firstName': firstName,
-        'lastName': lastName,
         'email': email,
         'password': password
       });

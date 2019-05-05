@@ -2,31 +2,32 @@ import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
-const Nav = (props) => {
-  let greeting;
+class Nav extends React.Component {
+  // let greeting;
 
-  if (props.user === null) {
-		greeting = <p>Hello guest</p>
-	} else if (props.user.firstName) {
-		greeting = (
-			<Fragment>
-				Welcome back, <strong>{props.user.firstName}</strong>
-			</Fragment>
-		)
-	} else if (props.user.username) {
-		greeting = (
-			<Fragment>
-				Welcome back, <strong>{props.user.username} </strong>
-			</Fragment>
-		)
-  }
-  
+  // if (props.user === null) {
+	// 	greeting = <p>Hello guest</p>
+	// } else if (props.user.firstName) {
+	// 	greeting = (
+	// 		<Fragment>
+	// 			Welcome back, <strong>{props.user.firstName}</strong>
+	// 		</Fragment>
+	// 	)
+	// } else if (props.user.username) {
+	// 	greeting = (
+	// 		<Fragment>
+	// 			Welcome back, <strong>{props.user.username} </strong>
+	// 		</Fragment>
+	// 	)
+  // }
+  render () {
   return (
     <nav>
       Update Navigation Component
       <Link to="/">To Landing Page Render</Link>
       <Link to="/about">To About Page Render</Link>
       <Link to="/dashboard"> To Dashboard Render</Link>
+      <button type="button" className="btn-btn primary" onClick = {this.props.logout}>Logout</button>
       {/* <Col size="md-2">
         <Link to="/" className="navbar-brand">Dadirri</Link>
       </Col>
@@ -38,6 +39,7 @@ const Nav = (props) => {
       </Col> */}
     </nav>
   )
+    }
 };
 
 export default Nav;
