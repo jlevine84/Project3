@@ -90,11 +90,9 @@ class App extends Component {
 	}
 
 	
-	render() {
-		
+	render() {	
 		return (
 			<div className="App">
-
 				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
@@ -103,27 +101,22 @@ class App extends Component {
                 <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
               </Switch>
           </div>
-
 				)}
 				
-        { !this.state.loggedIn && (
+        {!this.state.loggedIn && (
 					<div>
-							<Nav user={this.state.user} logout={this.logout}/>
-				<Switch>
-				<Route exact path="/" component={() => 
-				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
-				showSignInModal={this.state.showLogin} login={this.login}
-				showSignUpModal={this.state.showSignUp}/>} />
-				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-			</Switch>
-			</div>
-
-
-        
+						<Nav user={this.state.user} logout={this.logout}/>
+							<Switch>
+							<Route exact path="/" component={() => 
+							<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+								showSignInModal={this.state.showLogin} login={this.login}
+								showSignUpModal={this.state.showSignUp}/>} />
+							<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+						</Switch>
+					</div>
 				)} 
 			</div>
 		)
-	
 	}
 }
 
