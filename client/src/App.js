@@ -14,7 +14,7 @@ class App extends Component {
     super();
     
 		this.state = {
-			username: null,
+			userEmail: null,
 			loggedIn: false,
 			user: null,
 			showLogin:false,
@@ -76,10 +76,11 @@ class App extends Component {
         this.setState({
           loggedIn: true,
 					user: response.data,
-					redirectTo: "/dashboard"
+					redirectTo: "/dashboard",
+					userEmail: username
 				});
 				console.log("logged in")
-				console.log(this.state.user.user.email)
+				console.log(this.state.userEmail)
 			}
 			else{
 				console.log("login failed")
@@ -95,14 +96,16 @@ class App extends Component {
       email: email,
       password: password
     }).then(response => {
-      console.log(response);
-      if (!response.data.errmsg) {
+      if (!response.data.error) {
         console.log(response.data);
         this.setState({
           loggedIn: true,
 					user: response.data,
-					redirectTo: "/dashboard"
-        });
+					redirectTo: "/dashboard",
+					userEmail: email
+				});
+				console.log("signed up")
+				console.log(this.state.userEmail)
       } else {
         console.log('duplicate');
       }
