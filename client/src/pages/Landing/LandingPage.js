@@ -76,7 +76,7 @@ class LandingPage extends React.Component{
                   </div>                             
                 </div>
                 <div className="modal-body">
-                  <SignupForm handleSumbit={this.props.handleSubmit} toggle1={this.props.toggle1} toggle2={this.props.toggle2} showSignInModal={this.props.showSignInModal}/>
+                  <SignupForm SignUp = {this.props.SignUp} toggle1={this.props.toggle1} toggle2={this.props.toggle2} showSignInModal={this.props.showSignInModal}/>
                 </div>
               </div>
             </div>

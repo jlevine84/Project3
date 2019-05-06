@@ -119,7 +119,7 @@ class App extends Component {
           <div>
 						<Nav user={this.state.user} logout={this.logout}/>
               <Switch>
-                <Route exact path="/" component={() => <Dashboard username={this.state.user.user.email}/>} />
+                <Route exact path="/" component={() => <Dashboard username={this.state.user}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
               </Switch>
@@ -134,7 +134,7 @@ class App extends Component {
 				<Route exact path="/" component={() => 
 				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
 				showSignInModal={this.state.showLogin} login={this.login}
-				showSignUpModal={this.state.showSignUp}/>} SignUp={this.SignUp} />
+				showSignUpModal={this.state.showSignUp} SignUp={this.SignUp}/>}  />
 				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 			</Switch>
 			</div>
