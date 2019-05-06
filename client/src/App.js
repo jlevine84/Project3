@@ -14,7 +14,7 @@ class App extends Component {
     super();
     
 		this.state = {
-			username: null,
+			userEmail: null,
 			loggedIn: false,
 			user: null,
 			showLogin:false,
@@ -76,10 +76,11 @@ class App extends Component {
         this.setState({
           loggedIn: true,
 					user: response.data,
-					redirectTo: "/dashboard"
+					redirectTo: "/dashboard",
+					userEmail: username
 				});
 				console.log("logged in")
-				console.log(this.state.user.user.email)
+				console.log(this.state.userEmail)
 			}
 			else{
 				console.log("login failed")
@@ -95,14 +96,16 @@ class App extends Component {
       email: email,
       password: password
     }).then(response => {
-      console.log(response);
-      if (!response.data.errmsg) {
+      if (!response.data.error) {
         console.log(response.data);
         this.setState({
           loggedIn: true,
 					user: response.data,
-					redirectTo: "/dashboard"
-        });
+					redirectTo: "/dashboard",
+					userEmail: email
+				});
+				console.log("signed up")
+				console.log(this.state.userEmail)
       } else {
         console.log('duplicate');
       }
@@ -119,7 +122,7 @@ class App extends Component {
           <div>
 						<Nav user={this.state.user} logout={this.logout}/>
               <Switch>
-                <Route exact path="/" component={() => <Dashboard username={this.state.user.user.email}/>} />
+                <Route exact path="/" component={() => <Dashboard username={this.state.user}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
               </Switch>
@@ -134,7 +137,7 @@ class App extends Component {
 				<Route exact path="/" component={() => 
 				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
 				showSignInModal={this.state.showLogin} login={this.login}
-				showSignUpModal={this.state.showSignUp}/>} SignUp={this.SignUp} />
+				showSignUpModal={this.state.showSignUp} SignUp={this.SignUp}/>}  />
 				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 			</Switch>
 			</div>

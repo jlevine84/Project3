@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <h1>Welcome, {this.props.username}</h1>
+            <h1>Welcome,</h1>
             Dashboard Main Component
           </div>
           <div className="col-6">
