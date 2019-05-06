@@ -22,11 +22,10 @@ class Nav extends React.Component {
   // }
   render () {
   return (
-    <nav>
-      Update Navigation Component
-      <Link to="/">To Landing Page Render</Link>
-      <Link to="/about">To About Page Render</Link>
-      <Link to="/dashboard"> To Dashboard Render</Link>
+    <nav class="navbar">
+      <img src='././images/icon.png' className="littleicon"></img>
+      <Link to="/about" className = "navbarlink">About Dadirri</Link>
+      <Link to="/dashboard" className="navbarlink">Dashboard</Link>
       <button type="button" className="btn-btn primary" onClick = {this.props.logout}>Logout</button>
       {/* <Col size="md-2">
         <Link to="/" className="navbar-brand">Dadirri</Link>

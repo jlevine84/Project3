@@ -23,9 +23,6 @@ class LoginForm extends Component {
 		event.preventDefault();
 		console.log('handleSubmit');
 		this.props.login(this.state.username, this.state.password);
-		// this.setState({
-		// 	redirectTo: '/dashboard'
-		// });
 	}
 
 	render() {

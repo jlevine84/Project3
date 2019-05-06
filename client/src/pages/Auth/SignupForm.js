@@ -25,21 +25,7 @@ class SignupForm extends Component {
   
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// TODO - validate!
-		AUTH.signup({
-      email: this.state.email,
-      password: this.state.password
-    }).then(response => {
-      console.log(response);
-      if (!response.data.errmsg) {
-        console.log(response.data);
-        this.setState({
-          redirectTo: '/dashboard'
-        });
-      } else {
-        console.log('duplicate');
-      }
-    });
+	  this.props.SignUp(this.state.email, this.state.password)
   }
   
 	render() {

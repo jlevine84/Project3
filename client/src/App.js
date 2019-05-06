@@ -14,6 +14,7 @@ class App extends Component {
     super();
     
 		this.state = {
+			username: null,
 			loggedIn: false,
 			user: null,
 			showLogin:false,
@@ -35,7 +36,7 @@ class App extends Component {
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
-					user: response.data.user,
+					user: response.data,
 					redirectTo: "/dashboard"
 				});
 				console.log("logged in from previous login")
@@ -67,18 +68,18 @@ class App extends Component {
 	}
 
 	login = (username, password) => {
-		console.log('app username:' + username)
+		
 		AUTH.login(username, password).then(response => {
       console.log(response);
       if (response.status === 200) {
         // update the state
         this.setState({
           loggedIn: true,
-					user: response.data.user,
+					user: response.data,
 					redirectTo: "/dashboard"
 				});
 				console.log("logged in")
-				console.log(this.state.user)
+				console.log(this.state.user.user.email)
 			}
 			else{
 				console.log("login failed")
@@ -87,6 +88,26 @@ class App extends Component {
     }).catch(error=>{
 			console.log(error)
 		})
+	}
+
+	SignUp = (email, password)=>{
+		AUTH.signup({
+      email: email,
+      password: password
+    }).then(response => {
+      console.log(response);
+      if (!response.data.errmsg) {
+        console.log(response.data);
+        this.setState({
+          loggedIn: true,
+					user: response.data,
+					redirectTo: "/dashboard"
+        });
+      } else {
+        console.log('duplicate');
+      }
+    });
+
 	}
 
 	
@@ -98,22 +119,27 @@ class App extends Component {
           <div>
 						<Nav user={this.state.user} logout={this.logout}/>
               <Switch>
-                <Route exact path="/" component={() => <Dashboard user={this.state.user}/>} />
+                <Route exact path="/" component={() => <Dashboard username={this.state.user.user.email}/>} />
+								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
               </Switch>
           </div>
 				)}
-				
-        {!this.state.loggedIn && (
+				{/*No User logged in*/}
+        { !this.state.loggedIn && (
 					<div>
-						<Nav user={this.state.user} logout={this.logout}/>
-							<Switch>
-							<Route exact path="/" component={() => 
-							<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
-								showSignInModal={this.state.showLogin} login={this.login}
-								showSignUpModal={this.state.showSignUp}/>} />
-							<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-						</Switch>
-					</div>
+						
+				<Switch>
+
+				<Route exact path="/" component={() => 
+				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+				showSignInModal={this.state.showLogin} login={this.login}
+				showSignUpModal={this.state.showSignUp}/>} SignUp={this.SignUp} />
+				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+			</Switch>
+			</div>
+
+
 				)} 
 			</div>
 		)
