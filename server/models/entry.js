@@ -8,6 +8,7 @@ const entrySchema = new Schema({
   anxiety: { type: Number, required: true },
   medicationTaken: { type: Boolean, required: true },
   dailyLog: String,
+  sleepHours: Number,
   exercise: { type: Boolean, required: true },
   exerciseAmount: String,
   date: { type: Date, required: true, default: Date.now }
