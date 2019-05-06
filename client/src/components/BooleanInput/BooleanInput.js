@@ -3,27 +3,25 @@ import './booleaninput.css'
 
 function BooleanInput(props) {
   return (
-    <div className="medicines-Taken form-check">
-      <p><strong>Medicine Taken</strong></p>
+    <div className="medicines-Taken form-check float">
+      <p><strong>{props.title}</strong></p>
       <input 
         className="form-check-input" 
         type="radio" 
         name={props.name}
         value="true"
-        onClick={props.update} 
-        
+        onClick={props.update}  
       />
-      <br/>
-      <p><strong>True</strong></p>
+      
+      <p>True</p>
       <input 
         className="form-check-input" 
         type="radio" 
-        name="exampleRadios" 
+        name={props.name}
         value="false"
         onClick={props.update} 
       />
-      <br/>
-      <p><strong>False</strong></p>
+      <p>False</p>
     </div>
   )
 }
