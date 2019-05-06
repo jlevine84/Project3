@@ -111,11 +111,9 @@ class App extends Component {
 	}
 
 	
-	render() {
-		
+	render() {	
 		return (
 			<div className="App">
-
 				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
@@ -126,7 +124,6 @@ class App extends Component {
 								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
               </Switch>
           </div>
-
 				)}
 				{/*No User logged in*/}
         { !this.state.loggedIn && (
@@ -143,11 +140,9 @@ class App extends Component {
 			</div>
 
 
-        
 				)} 
 			</div>
 		)
-	
 	}
 }
 
