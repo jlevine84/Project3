@@ -40,7 +40,7 @@ class App extends Component {
 					redirectTo: "/dashboard"
 				});
 				console.log("logged in from previous login")
-				console.log(this.state.user)
+				console.log(this.state.userEmail)
 			} else {
 				console.log("no user")
 				this.setState({

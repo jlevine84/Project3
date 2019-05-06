@@ -2,35 +2,37 @@ import React from 'react';
 import Slider from '../Slider/Slider'
 import Input from '../Input/Input'
 import BooleanInput from '../BooleanInput/BooleanInput'
-
+import DropDownInput from './../dropdownInput/DropDownInput';
 class LogUserData extends React.Component{
     state = {
-        mood: 3,
-        anxiety: 3,
-        energy: 3,
-        medicineTaken: true,
-        exercise: true,
-        sleepHours: 0,
-        dailyLog: "",
-        exerciseAmount: ""
+        Mood: "5",
+        Anxiety: "5",
+        Energy: "5",
+        MedicineTaken: "",
+        Exercise: "",
+        SleepHours: "0",
+        DailyLog: "",
+        ExerciseAmount: ""
     }
     
     updateValue = event => {
     let name = event.target.name
     let value = event.target.value
     this.setState({[name]: value})
+    console.log(this.state)
     }
+    
     
     submitNewEntry = () => {
     let newEntry = {
-        mood: this.state.mood,
-        anxiety: this.state.anxiety,
-        energy: this.state.energy,
-        medicineTaken: this.state.medicineTaken,
-        exercise: this.state.exercise,
-        sleepHours: this.state.sleepHours,
-        dailyLog: this.state.dailyLog,
-        exerciseAmount: this.state.exerciseAmount
+        Mood: this.state.Mood,
+        Anxiety: this.state.Anxiety,
+        Energy: this.state.Energy,
+        MedicineTaken: this.state.MedicineTaken,
+        Exercise: this.state.Exercise,
+        SleepHours: this.state.SleepHours,
+        DailyLog: this.state.DailyLog,
+        ExerciseAmount: this.state.ExerciseAmount
     }
     console.log(newEntry)
     }
@@ -40,40 +42,49 @@ class LogUserData extends React.Component{
         <div>
             <div className="jumbotron">
                 <Slider 
-                name={"mood"}
-                display={this.state.mood}
+                name={"Mood"}
+                display={this.state.Mood}
                 update={this.updateValue}
                 />
                 <Slider 
-                name={"anxiety"}
-                display={this.state.anxiety}
+                name={"Anxiety"}
+                display={this.state.Anxiety}
                 update={this.updateValue}
                 />
                 <Slider 
-                name={"energy"}
-                display={this.state.energy}
+                name={"Energy"}
+                display={this.state.Energy}
                 update={this.updateValue}
                 />
                 <BooleanInput
-                name={"medicineTaken"}
+                name={"MedicineTaken"}
+                title={"Medicine Taken"}
                 update={this.updateValue}
                 />
                 <BooleanInput
-                name={"exercise"}
+                name={"Exercise"}
+                title={"Exercise"}
                 update={this.updateValue}
                 />
                 <Input
-                name={"exerciseAmount"}
+                name={"ExerciseAmount"}
+                title={"Exercise Amount"}
                 update={this.updateValue}
                 />
-                Insert a drop down list for number of hours slept.
+                <DropDownInput
+                title={"Hours Slept: "}
+                name="SleepHours"
+                update={this.updateValue}
+                />
                 <Input
-                name="dailyLog"
+                name="DailyLog"
+                title={"Daily Log"}
                 update={this.updateValue}
                 />
 
-            </div>
+            
             <button onClick={this.submitNewEntry} className="btn btn-primary">Submit</button>
+            </div>
         </div>
         );
     }
