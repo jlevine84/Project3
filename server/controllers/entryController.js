@@ -12,7 +12,7 @@ module.exports = {
         if (req.entry) {
           db.Entry
             .find({ _id: req.entry._id })
-            .populate("???")
+            .populate("entries")
             .then(users => {
               const book = users[0].books.filter(b => b._id.toString() === req.params.id);
               res.json({ book: book[0] });
@@ -25,10 +25,14 @@ module.exports = {
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
+    console.log("hitting entry Controller")
+    console.log(req.body)
+    console.log(req.user)
       db.Entry
         .create(req.body)
         .then(dbEntry => {
-          return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { entry: dbEntry._id } }, { new: true });
+          console.log(dbEntry)
+          return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { entries: dbEntry._id } }, { new: true });
         })
         .then((dbUser) => {
           // If the User was updated successfully, send it back to the client
