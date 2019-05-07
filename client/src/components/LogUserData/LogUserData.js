@@ -3,6 +3,8 @@ import Slider from '../Slider/Slider'
 import Input from '../Input/Input'
 import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
+import Axios from 'axios';
+import API from './../../utils/API';
 class LogUserData extends React.Component{
     state = {
         Mood: "5",
@@ -24,6 +26,7 @@ class LogUserData extends React.Component{
     
     
     submitNewEntry = () => {
+        console.log("submitting")
     let newEntry = {
         Mood: this.state.Mood,
         Anxiety: this.state.Anxiety,
@@ -34,7 +37,10 @@ class LogUserData extends React.Component{
         DailyLog: this.state.DailyLog,
         ExerciseAmount: this.state.ExerciseAmount
     }
-    console.log(newEntry)
+    API.createEntry(newEntry)
+    .then(response=>{
+        console.log(response)
+    })
     }
     
     render() {

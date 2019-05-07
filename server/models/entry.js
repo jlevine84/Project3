@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const entrySchema = new Schema({
-  mood: { type: Number, required: true },
-  energy: { type: Number, required: true },
-  anxiety: { type: Number, required: true },
-  medicationTaken: { type: Boolean, required: true },
-  dailyLog: String,
-  sleepHours: Number,
-  exercise: { type: Boolean, required: true },
-  exerciseAmount: String,
-  date: { type: Date, required: true, default: Date.now }
+  Mood: { type: Number, required: true },
+  Energy: { type: Number, required: true },
+  Anxiety: { type: Number, required: true },
+  MedicineTaken: { type: Boolean, required: true },
+  DailyLog: String,
+  SleepHours: Number,
+  Exercise: { type: Boolean, required: true },
+  ExerciseAmount: String,
+  Date: { type: Date, default: Date.now }
 })
 
 const Entry = mongoose.model("Entry", entrySchema);
