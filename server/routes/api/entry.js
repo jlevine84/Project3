@@ -10,10 +10,14 @@ router.route("/create")
   .post(entryController.createEntry);
 
 // Matches with "/api/entry/:id"
+// router
+//   .route("/:id")
+//   .get(entryController.findById)
+//   .put(entryController.update)
+//   .delete(entryController.remove);
+
 router
-  .route("/:id")
-  .get(entryController.findById)
-  .put(entryController.update)
-  .delete(entryController.remove);
+.route("/view")
+.get(entryController.findAll)
 
 module.exports = router;

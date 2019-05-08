@@ -5,23 +5,37 @@ const ObjectId = require("mongoose").Types.ObjectId
 const db = require("../models")
 
 module.exports = {
-
+  findAll: function(req, res) {
+    if (req.user) {
+      console.log(req.user)
+      db.User
+        .findOne({ _id: req.user._id})
+        .populate('entries')
+        .then(logs => {
+          
+          res.json({logs});
+        })
+        .catch(err => res.status(422).json(err));
+    } else {
+      return res.json({nothing});
+    }
+  },
   // To find a specific mood entry by ID
   // no idea what's going on with the "then" statement
-  findById: function(req, res) {
-        if (req.entry) {
-          db.Entry
-            .find({ _id: req.entry._id })
-            .populate("entries")
-            .then(users => {
-              const book = users[0].books.filter(b => b._id.toString() === req.params.id);
-              res.json({ book: book[0] });
-            })
-            .catch(err => res.status(422).json(err));
-        } else {
-          return res.json({ book: null });
-        }
-      },
+  // findById: function(req, res) {
+  //       if (req.entry) {
+  //         db.Entry
+  //           .find({ _id: req.entry._id })
+  //           .populate("entries")
+  //           .then(users => {
+  //             const book = users[0].books.filter(b => b._id.toString() === req.params.id);
+  //             res.json({ book: book[0] });
+  //           })
+  //           .catch(err => res.status(422).json(err));
+  //       } else {
+  //         return res.json({ book: null });
+  //       }
+  //     },
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
