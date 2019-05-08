@@ -17,5 +17,9 @@ export default {
   createEntry: function(Entry) {
     console.log("hitting API")
     return axios.post("api/entry/create", Entry);
+  },
+  getByDate: function(date){
+    console.log("hitting API")
+    return axios.get("api/entry/" + date)
   }
 };

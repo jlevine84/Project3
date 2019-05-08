@@ -6,6 +6,8 @@ const router = require("express").Router();
 const entryController = require('./../../controllers/entryController');
 // Matches with "/api/entry"
 // Do we need a find all in this context? Would we ever need to retrieve more than one entry at a time?
+
+// /api/entry/create
 router.route("/create")
   .post(entryController.createEntry);
 
@@ -16,8 +18,14 @@ router.route("/create")
 //   .put(entryController.update)
 //   .delete(entryController.remove);
 
+// /api/entry/view
 router
 .route("/view")
 .get(entryController.findAll)
+
+// /api/entry/:date
+router
+.route("/:date")
+.get(entryController.findByDate)
 
 module.exports = router;

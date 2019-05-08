@@ -5,6 +5,7 @@ const ObjectId = require("mongoose").Types.ObjectId
 const db = require("../models")
 
 module.exports = {
+  //find all entries from a certain user//
   findAll: function(req, res) {
     if (req.user) {
       console.log(req.user)
@@ -20,22 +21,24 @@ module.exports = {
       return res.json({nothing});
     }
   },
-  // To find a specific mood entry by ID
-  // no idea what's going on with the "then" statement
-  // findById: function(req, res) {
-  //       if (req.entry) {
-  //         db.Entry
-  //           .find({ _id: req.entry._id })
-  //           .populate("entries")
-  //           .then(users => {
-  //             const book = users[0].books.filter(b => b._id.toString() === req.params.id);
-  //             res.json({ book: book[0] });
-  //           })
-  //           .catch(err => res.status(422).json(err));
-  //       } else {
-  //         return res.json({ book: null });
-  //       }
-  //     },
+  // To find a specific mood entry by Date
+  findByDate: function(req, res) {
+    console.log("req.date:")
+    console.log(req.date)
+    console.log("Req.params.date:")
+    console.log(req.params.date)
+        if (req.params.date) {
+          db.Entry
+            .find({ Date: req.params.date})
+            .then(entry => {
+             console.log(entry)
+              res.json({ todaysentry: entry });
+            })
+            .catch(err => res.status(422).json(err));
+        } else {
+          return res.json({ todaysentry: null });
+        }
+      },
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
