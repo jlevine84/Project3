@@ -1,7 +1,8 @@
 import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
-
+import LogUserData from './../../components/LogUserData/LogUserData';
+import ViewUserData from './../../components/ViewUserData/ViewUserData';
 // Styling for map
 const style = {
 	position: "relative",
@@ -30,11 +31,12 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
-            Edit info Pop Up
-          </div>
+           <ViewUserData></ViewUserData>
+           </div>
           <div className="col-6">
-            New Input Pop Up
+          <LogUserData/>
           </div>
+          
         </div>
       </div>
     )
