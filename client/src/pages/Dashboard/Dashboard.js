@@ -19,15 +19,15 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-6">
             <div className="calendar-component">
-            {/* <Calendar style={style} width="302px"
-              onDayClick={(e, day)=> this.onDayClick(e, day)} /> */}
             <Calendar/>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-6">
-           <ViewUserData></ViewUserData>
+           <ViewUserData>
+           
+           </ViewUserData>
            </div>
           <div className="col-6">
           <LogUserData/>
