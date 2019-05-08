@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  <!-- linkages to bootstrap, jquery, charts.js, ajax-------------------------------------------------------------------->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>Polling Results</title>
+  </head>
+
+<!-- HTML body ------------------------------------------------------------------------------------------------------------>
+  <body>
+    <h1>Polling Results<button class="btn btn-success" onclick="updateChart()">Update</button></h1>
+
+  <!-- Charts.js requires a canvas style container to hold charts. Need to create an empty canvas div -->
+    <canvas id="myChart"></canvas>
+
+<!-- Javascript for taking in the data and building the chart -------------------------------------------------------------->
+  <script>
+
+    let data = [] // will need to define a data variable capturing the subtotals of all poll responses in an array. This variable will feed into the chart build
+    let labels = [] //will need to define a lables variable capturing each of the response options in an array. These will feed into the chart build.
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var resultsPie = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+          // data should be the aggregate count of the polling results. Will need to pull from the body of the polling results info.
+                data: [35,15,5,2]
+                // data: data   The above [35,15] is a placeholder. Once the data variable is populated we'll use it instead.
+            }],
+            // Labels should correspond with poll reponse options. Will need to pull these from the body of the polling results info
+            labels: [
+                'Cats',
+                'Dogs',
+                'Fish',
+                'Horses'
+            ]
+            // labels: labels   The above "Cats, Dogs" is a placeholder. Once the label variable is populated we'll use it instead.
+              },
+        options: {}
+    });
+
+// The below function executes an update of the chart. Could be attached to an update button or triggered to run whenever new results are received
+// Right now it's defined, but not attached to anything to prompt it to run
+function updateChart(){
+                chart.update();
+            }
+    </script>
+
+
+    
+  </body>
+</html>
