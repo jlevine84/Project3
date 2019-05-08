@@ -35,6 +35,7 @@ export default class Calendar extends React.Component {
   }
 
   currentDate =  () =>  {
+    console.log("currentDate: ", this.state.dateContext.get("date"));
     return this.state.dateContext.get("date");
   }
 
@@ -47,15 +48,6 @@ export default class Calendar extends React.Component {
     let firstDay = moment(dateContext).startOf("month").format("d"); // Day of week 0..1..5...6
     return firstDay;
   }
-  
-  // setDay = (day) => {
-  //   let dayNo = this.days.indexOf(day);
-  //   let dateContext = Object.assign({}, this.state.dateContext);
-  //   dateContext = moment(dateContext).set("day", dayNo);
-  //   this.setState({
-  //     dateContext: dateContext
-  //   })
-  // }
 
   // Allows user to select month to display from popup
   setMonth = (month) => {
@@ -117,9 +109,15 @@ export default class Calendar extends React.Component {
     )
   }
 
-  onDayClick = (e, day) =>  {
+  onDayClick = (e, day) => {
+    this.setState({
+        selectedDay: day
+    }, () => {
+        console.log("SELECTED DAY: ", this.state.selectedDay);
+    });
+
     this.props.onDayClick && this.props.onDayClick(e, day);
-  }
+}
 
   render() {
   // Map the weekdays i.e. Sun, Mon, Tue etc. as <td>
@@ -136,9 +134,9 @@ export default class Calendar extends React.Component {
       </td>
       );
     }
-
     console.log("blanks: ", blanks);
-    //
+    
+    // stores days in empty array after looping through for loop
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let className = (d == this.currentDay() ? "day current-day": "day");
