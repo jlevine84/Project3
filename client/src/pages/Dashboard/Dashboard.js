@@ -3,7 +3,9 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-// Styling for map
+
+
+
 const style = {
 	position: "relative",
 	margin: "50px auto"
@@ -31,7 +33,9 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
-           <ViewUserData></ViewUserData>
+           <ViewUserData>
+           
+           </ViewUserData>
            </div>
           <div className="col-6">
           <LogUserData/>
