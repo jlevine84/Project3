@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
         <div className="row">
           <div className="col-6">
            <ViewUserData>
-           
+              <canvas id="myChart"></canvas>
            </ViewUserData>
            </div>
           <div className="col-6">

@@ -7,11 +7,27 @@ import { throws } from 'assert';
 import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
 import { Redirect, Link } from 'react-router-dom';
+import Chart from './components/Chart'
 
 class App extends Component {
   
-  constructor() {
-    super();
+	constructor() {
+		super();
+		this.state = {
+			chartData: {}
+		}
+	}
+	
+	componentWillMount() {
+		this.getChartData();
+	}
+
+	getChartData() {
+		//AJAX calls here
+		this.setState({
+			chartData:{}
+		})
+	}
     
 		this.state = {
 			userEmail: null,
@@ -125,7 +141,8 @@ class App extends Component {
                 <Route exact path="/" component={() => <Dashboard username={this.state.user}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
 								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
-              </Switch>
+							</Switch>
+						<Chart chartData={this.state.chartData}
           </div>
 				)}
 				{/*No User logged in*/}
