@@ -2,15 +2,25 @@ import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 
-// Styling for map
+// Styling for calendar
 const style = {
 	position: "relative",
 	margin: "50px auto"
 }
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state={
+
+    }
+  }
+
   onDayClick = (e, day) =>  {
-    return <div className="activity-container">This is a div</div>
+    // let className = $(".activity-container").show();
+    return (
+      <div className="activity-container"><p>This is a div</p></div>
+    )
   }
 
   render() {
