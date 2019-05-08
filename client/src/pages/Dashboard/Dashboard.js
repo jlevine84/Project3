@@ -3,11 +3,6 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-// Styling for map
-const style = {
-	position: "relative",
-	margin: "50px auto"
-}
 
 class Dashboard extends React.Component {
   onDayClick = (e, day) =>  {
@@ -24,8 +19,9 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-6">
             <div className="calendar-component">
-            <Calendar style={style} width="302px"
-              onDayClick={(e, day)=> this.onDayClick(e, day)} />
+            {/* <Calendar style={style} width="302px"
+              onDayClick={(e, day)=> this.onDayClick(e, day)} /> */}
+            <Calendar/>
             </div>
           </div>
         </div>

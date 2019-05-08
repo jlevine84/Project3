@@ -7,9 +7,12 @@ tr {
     margin: 0;
 }
 .calendar-container {
+    width: 100%;
+    text-align: center;
     border: 2px solid skyblue;
 }
 .calendar {
+    text-align: center;
     background-color: white;
     border-spacing: 0;
     border-collapse: collapse;
@@ -23,25 +26,43 @@ tr {
     border-spacing: 0;
     padding-left: 5px;
 }
-.day,
+
+.date-and-year {
+    width: 100%
+}
+
+.current-month {
+    width: 50%;
+    float: left;
+}
+
+.current-year {
+    width: 50%;
+    text-align: right;
+    float: right;
+}
+
+.calendar-day,
 .empty-slot,
 .week-day {
     text-align: center;
     height: 40px;
+    border: solid 1px black;
 }
+
 .week-day {
     font-size: 0.8em;
 }
 .day {
     font-size: 0.8em;
 }
-.day {
+.calendar-day {
     cursor: pointer;
     width: 24px;
     height: 24px;
     line-height: 24px;
 }
-.current-day {
+.today {
     background-color: #4285f4;
     width: 28px;
     height: 28px;
@@ -81,6 +102,7 @@ tr {
 }
 .label-month,
 .label-year {
+    border: solid 1px red;
     font-size: 0.6em;
 }
 .label-month {
