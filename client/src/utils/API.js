@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  // getBooks: function() {
-  //   return axios.get("/api/books");
-  // },
+  
+  getAll: function() {
+    return axios.get("/api/entry/view");
+  },
   // // Gets the book with the given id
   // getBook: function(id) {
   //   return axios.get("/api/books/" + id);
@@ -17,5 +17,9 @@ export default {
   createEntry: function(Entry) {
     console.log("hitting API")
     return axios.post("api/entry/create", Entry);
+  },
+  getByDate: function(date){
+    console.log("hitting API")
+    return axios.get("api/entry/" + date)
   }
 };

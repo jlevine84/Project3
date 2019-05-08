@@ -1,26 +1,19 @@
 import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
+import LogUserData from './../../components/LogUserData/LogUserData';
+import ViewUserData from './../../components/ViewUserData/ViewUserData';
 
-// Styling for calendar
+
+// default styling for calendar
 const style = {
 	position: "relative",
 	margin: "50px auto"
 }
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state={
-
-    }
-  }
-
   onDayClick = (e, day) =>  {
-    // let className = $(".activity-container").show();
-    return (
-      <div className="activity-container"><p>This is a div</p></div>
-    )
+    return <div className="activity-container">This is a div</div>
   }
 
   render() {
@@ -40,11 +33,14 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
-            Edit info Pop Up
-          </div>
+           <ViewUserData>
+           
+           </ViewUserData>
+           </div>
           <div className="col-6">
-            New Input Pop Up
+          <LogUserData/>
           </div>
+          
         </div>
       </div>
     )
