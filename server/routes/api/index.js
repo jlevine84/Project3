@@ -4,10 +4,10 @@
 
 // Update for Dadirri
 const router = require("express").Router();
-const bookRoutes = require("./books");
+const entryRoutes = require("./entry");
 
 // Book routes
-router.use("/books", bookRoutes);
+router.use("/entry", entryRoutes);
 
 module.exports = router;
 
