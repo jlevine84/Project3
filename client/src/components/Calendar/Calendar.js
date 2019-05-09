@@ -226,7 +226,9 @@ export default class Calendar extends React.Component {
       );
     }
     var totalSlots = [...blanks, ...daysInMonth];
+    // Where rows for each week in month will be pushed for display
     let rows = [];
+    // Where each date for a given week in month will be pushed for display
     let cells = [];
 
     totalSlots.forEach((row, i) => {
