@@ -8,7 +8,7 @@ function Input(props) {
       <label>{props.title}</label>
       <textarea 
         className="form-control" 
-        placeholder={props.title}
+        placeholder={props.placeholder}
         name={props.name}
         onChange={props.update}
         rows="3"></textarea>

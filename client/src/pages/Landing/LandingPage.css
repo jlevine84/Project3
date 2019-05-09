@@ -42,4 +42,16 @@
      height:200px;
      width:200px;
  }
+ h4{ 
+     margin-right: 50px;
+     color: #767D7D;
+     text-align:right;
+     padding: 20px;
+ }
+ .link{
+     color: #767D7D
+ }
+ .link:hover{
+     color: rgb(112, 106, 104)
+ }
  

@@ -19,7 +19,8 @@ class App extends Component {
 			user: null,
 			showLogin:false,
 			showSignUp: false,
-			redirectTo: null
+			redirectTo: null,
+			name: ''
     };
 	}
 	
@@ -36,8 +37,10 @@ class App extends Component {
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
-					user: response.data,
-					redirectTo: "/dashboard"
+					user: response.data.user,
+					userEmail: response.data.user.email,
+					redirectTo: "/dashboard",
+					name: response.data.user.name
 				});
 				console.log("logged in from previous login")
 				console.log(this.state.userEmail)
@@ -75,12 +78,13 @@ class App extends Component {
         // update the state
         this.setState({
           loggedIn: true,
-					user: response.data,
+					user: response.data.user,
 					redirectTo: "/dashboard",
-					userEmail: username
+					userEmail: username,
+					name: response.data.user.name
 				});
 				console.log("logged in")
-				console.log(this.state.userEmail)
+				console.log(response.data.user)
 			}
 			else{
 				console.log("login failed")
@@ -91,10 +95,11 @@ class App extends Component {
 		})
 	}
 
-	SignUp = (email, password)=>{
+	SignUp = (email, password, name)=>{
 		AUTH.signup({
       email: email,
-      password: password
+			password: password,
+			name: name
     }).then(response => {
       if (!response.data.error) {
         console.log(response.data);
@@ -102,7 +107,8 @@ class App extends Component {
           loggedIn: true,
 					user: response.data,
 					redirectTo: "/dashboard",
-					userEmail: email
+					userEmail: email,
+					name: response.data.name
 				});
 				console.log("signed up")
 				console.log(this.state.userEmail)
@@ -122,9 +128,9 @@ class App extends Component {
           <div>
 						<Nav user={this.state.user} logout={this.logout}/>
               <Switch>
-                <Route exact path="/" component={() => <Dashboard username={this.state.user}/>} />
+                <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
+								<Route exact path="/dashboard" component={() => <Dashboard user={this.state.name}/>} />
               </Switch>
           </div>
 				)}

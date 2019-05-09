@@ -5,17 +5,14 @@ import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 
 class Dashboard extends React.Component {
-  onDayClick = (e, day) =>  {
-    return <div className="activity-container">This is a div</div>
-  }
 
   render() {
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <h1>Dadirri Dashboard Component</h1>
-            Dashboard Main Component
+            <h1>Welcome, {this.props.user}!</h1>
+           
           </div>
           <div className="col-6">
             <div className="calendar-component">

@@ -10,7 +10,8 @@ class SignupForm extends Component {
     super();
     
 		this.state = {
-			email: '',
+      email: '',
+      name: '',
 			password: '',
 			confirmPassword: '',
 			redirectTo: null
@@ -25,7 +26,7 @@ class SignupForm extends Component {
   
 	handleSubmit = (event) => {
 		event.preventDefault();
-	  this.props.SignUp(this.state.email, this.state.password)
+	  this.props.SignUp(this.state.email, this.state.password, this.state.name)
   }
   
 	render() {
@@ -49,6 +50,13 @@ class SignupForm extends Component {
                   value={this.state.email}
                   onChange={this.handleChange}
                 />
+                <label htmlFor="name">First Name: </label>
+                <Input
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
                 <label htmlFor="password">Password: </label>
                 <Input
                   type="password"
@@ -63,7 +71,7 @@ class SignupForm extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
                 />
-                <button type="button"onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Login</button>
+                <button type="button" className="btn btn-info" onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Already signed up? Go to Login</button>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
               </form>
             

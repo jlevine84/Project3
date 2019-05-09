@@ -11,7 +11,7 @@ module.exports = {
     }
   },
   register: (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
     // ADD VALIDATION
     db.User.findOne({ 'email': email }, (err, userMatch) => {
       if (userMatch) {
@@ -21,7 +21,8 @@ module.exports = {
       }
       const newUser = new db.User({
         'email': email,
-        'password': password
+        'password': password,
+        'name' : name
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);

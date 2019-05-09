@@ -5,6 +5,7 @@ import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
 import Axios from 'axios';
 import API from './../../utils/API';
+import './LogUserData.css'
 class LogUserData extends React.Component{
     state = {
         Mood: "5",
@@ -47,49 +48,68 @@ class LogUserData extends React.Component{
     return (
         <div>
             <div className="jumbotron">
-                <Slider 
-                name={"Mood"}
-                display={this.state.Mood}
-                update={this.updateValue}
-                />
-                <Slider 
-                name={"Anxiety"}
-                display={this.state.Anxiety}
-                update={this.updateValue}
-                />
-                <Slider 
-                name={"Energy"}
-                display={this.state.Energy}
-                update={this.updateValue}
-                />
-                <BooleanInput
-                name={"MedicineTaken"}
-                title={"Medicine Taken"}
-                update={this.updateValue}
-                />
-                <BooleanInput
-                name={"Exercise"}
-                title={"Exercise"}
-                update={this.updateValue}
-                />
-                <Input
-                name={"ExerciseAmount"}
-                title={"Exercise Amount"}
-                update={this.updateValue}
-                />
-                <DropDownInput
-                title={"Hours Slept: "}
-                name="SleepHours"
-                update={this.updateValue}
-                />
-                <Input
-                name="DailyLog"
-                title={"Daily Log"}
-                update={this.updateValue}
-                />
-
+            <h5>How are you feeling today?</h5>
+            <div className="row">
+                <div className="col-sm-12">
+                    <Slider 
+                        name={"Mood"}
+                        display={this.state.Mood}
+                        update={this.updateValue}
+                    />
+                    <Slider 
+                        name={"Anxiety"}
+                        display={this.state.Anxiety}
+                        update={this.updateValue}
+                    />
+                    <Slider 
+                        name={"Energy"}
+                        display={this.state.Energy}
+                        update={this.updateValue}
+                    />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-sm-12">
+                    <BooleanInput
+                        name={"MedicineTaken"}
+                        title={"Medicine Taken"}
+                        update={this.updateValue}
+                    />
+                    <BooleanInput
+                        name={"Exercise"}
+                        title={"Exercise"}
+                        update={this.updateValue}
+                    />
+                    <DropDownInput
+                        title={"Hours Slept: "}
+                        name="SleepHours"
+                        update={this.updateValue}
+                    />
+                </div>
+            </div> 
+            <div className="row">
+                <div className="col-sm-12">
+                    <Input
+                        name={"ExerciseAmount"}
+                        title={"Exercise Details"}
+                        placeholder={"Log your exercise details here"}
+                        update={this.updateValue}
+                    />
+                    <Input
+                        name="DailyLog"
+                        title={"Daily Log"}
+                        placeholder={"Log your thoughts about today here"}
+                        update={this.updateValue}
+                    />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-sm-9"></div>
+                <div className="col-sm-3">
+                    <button onClick={this.submitNewEntry} className="btn btn-success float">Submit</button>
+                </div>
+            </div>
             
-            <button onClick={this.submitNewEntry} className="btn btn-primary">Submit</button>
             </div>
         </div>
         );

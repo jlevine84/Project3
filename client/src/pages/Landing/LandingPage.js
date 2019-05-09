@@ -2,7 +2,7 @@ import React from 'react';
 import './LandingPage.css'
 import LoginForm from '../Auth/LoginForm';
 import SignupForm from '../Auth/SignupForm';
-
+import { Redirect, Link } from 'react-router-dom';
 class LandingPage extends React.Component{
 
   dismissModal = ()=>{
@@ -16,7 +16,9 @@ class LandingPage extends React.Component{
   render(){
     return(
       <div className="body">
+      <h4><Link to="/about" className="link">About Dadirri</Link></h4>
         <div class="container">
+        
           <br></br>
           <br></br>
           <br></br>
@@ -27,6 +29,7 @@ class LandingPage extends React.Component{
           <div className="buttonDiv">
             <button type="button" className="btn btn-light signUp" onClick={this.props.toggle1}>Sign In/Sign Up</button>
           </div>
+          
 
           {/* sign in modal */}
           <div 
@@ -43,7 +46,7 @@ class LandingPage extends React.Component{
               <div className="modal-content">
                 <div className="modal-header">
                   <div className="camera-box">
-                    <button onClick={this.dismissModal} className="xbutton">x</button>
+                    <button onClick={this.dismissModal} className="xbutton btn btn-light">x</button>
                     <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5>
                 
                   </div>                             
@@ -70,9 +73,8 @@ class LandingPage extends React.Component{
               <div className="modal-content">
                 <div className="modal-header">
                   <div className="camera-box">
-                  <button onClick={this.dismissSignUpModal} className="xbutton">x</button>
-                    <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5>
-                  
+                  <button onClick={this.dismissSignUpModal} className="xbutton btn btn-light">x</button>
+                    <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5> 
                   </div>                             
                 </div>
                 <div className="modal-body">
