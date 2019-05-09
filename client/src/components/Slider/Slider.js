@@ -6,7 +6,7 @@ function Slider(props) {
     <div className = "float">
       <label>{props.name}</label>
       <br/>
-      <input
+      <input className="sliders"
         name={props.name}
         type="range"
         min="0"

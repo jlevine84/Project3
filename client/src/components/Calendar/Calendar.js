@@ -4,23 +4,22 @@ import "./calendar.css"
 
 export default class Calendar extends React.Component {
   state = {
-    dateContext: moment(),
-    today: moment(),
-    showMonthPopup: false, 
-    showYearPopup: false,
+    dateContext: moment(), // provides condition to set elements in calendar (day, month, year, etc.)
+    today: moment(), // sets state to current day by default
+    showMonthPopup: false, // Popup for month set to not display by default
+    showYearPopup: false, // Popup for year set to not display by default
     selectedDay: null
   }
-
+  // Default values for constructor properties
   constructor(props) {
     super(props);
-    this.width = props.width || "350px";
-    this.style = props.style || {};
-    // this.style.width = this.width;
+    this.width = props.width || "350px"; // if width being passed from parent use that width or default of 350px
+    this.style = props.style || {}; // if style being passed from parent use that style or initialize empty object
   }
-  
+
   weekdays = moment.weekdays(); // ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-  months = moment.months();
+  months = moment.months(); // ["January", "February", etc.]
 
   // Moment.js functions for rendering year, month, date, etc.
   year =  () =>  {
@@ -42,13 +41,23 @@ export default class Calendar extends React.Component {
   currentDay =  () =>  {
     return this.state.dateContext.format("D");
   }
-
+  // passes dateContext into moment function to get the first day of each month to later be rendered
   firstDayOfMonth = () => {
     let dateContext = this.state.dateContext;
     let firstDay = moment(dateContext).startOf("month").format("d"); // Day of week 0..1..5...6
     return firstDay;
   }
   
+  // setDay = (day) => {
+  //   let dayNo = this.days.indexOf(day);
+  //   let dateContext = Object.assign({}, this.state.dateContext);
+  //   dateContext = moment(dateContext).set("day", dayNo);
+  //   this.setState({
+  //     dateContext: dateContext
+  //   })
+  // }
+
+  // Allows user to select month to display from popup
   setMonth = (month) => {
     let monthNo = this.months.indexOf(month);
     let dateContext = Object.assign({}, this.state.dataContext);
@@ -57,12 +66,14 @@ export default class Calendar extends React.Component {
       dateContext: dateContext
     });
   }
-  
+  // Function for changing the calendar to month selected in popup
   onSelectChange = (e, data) =>  {
+    // this.setDay(data);
     this.setMonth(data);
+    // this.props.onDayChange && this.props.onDayChange();
     this.props.onMonthChange && this.props.onMonthChange();
   }
-  // Pop-up menu for months with calendar click
+  // Pop-up menu for months with calendar click on the current month
   SelectList = (props) => {
     let popup = props.data.map((data) =>  {
       return (
@@ -106,6 +117,10 @@ export default class Calendar extends React.Component {
     )
   }
 
+  onDayClick = (e, day) =>  {
+    this.props.onDayClick && this.props.onDayClick(e, day);
+  }
+
   render() {
   // Map the weekdays i.e. Sun, Mon, Tue etc. as <td>
     let weekdays = this.weekdaysShort.map((day) =>  {
@@ -123,23 +138,30 @@ export default class Calendar extends React.Component {
     }
 
     console.log("blanks: ", blanks);
-
+    //
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let className = (d == this.currentDay() ? "day current-day": "day");
       daysInMonth.push(
         <td key={d} className={className} >
-          <span>{d}</span>
+          <span onClick={(e)=> this.onDayClick(e,d)}>{d}</span>
         </td>
       );
     }
 
     console.log("days: ", daysInMonth);
 
+    // The following is where the days are stored from trElems
+    // blanks are the days from the previous and next months that we don't want displayed when current month is selected 
+    // daysInMonth are the days in current month to display
     var totalSlots = [...blanks, ...daysInMonth];
+    // Where rows for each week in month will be pushed for display
     let rows = [];
+    // Where each date for a given week in month will be pushed for display
     let cells = [];
-
+    // Loops through slots
+    // Pushes days in cells array within row for each week
+    // Returns days in individual cells to new array through slice method
     totalSlots.forEach((row, i) =>  {
       if ((i % 7 ) !== 0) {
         cells.push(row);
@@ -154,7 +176,8 @@ export default class Calendar extends React.Component {
         rows.push(insertRow);
       }
     });
-
+    // trElems is where the days of the current month are displayed on the calendar
+    //     
     let trElems = rows.map((d, i) =>  {
       return (
         <tr key={i*100}>
