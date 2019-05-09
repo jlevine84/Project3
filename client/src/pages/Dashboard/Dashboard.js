@@ -5,7 +5,7 @@ import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 
 
-
+// default styling for calendar
 const style = {
 	position: "relative",
 	margin: "50px auto"
