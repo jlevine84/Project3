@@ -29,28 +29,97 @@
     let data = [] // will need to define a data variable capturing the subtotals of all poll responses in an array. This variable will feed into the chart build
     let labels = [] //will need to define a lables variable capturing each of the response options in an array. These will feed into the chart build.
 
-
     var ctx = document.getElementById('myChart').getContext('2d');
 
-    var resultsPie = new Chart(ctx, {
-    type: 'doughnut',
+    window.chartColors = {    // Legend colors
+                  red: 'rgb(255, 99, 132)',
+                  orange: 'rgb(255, 159, 64)',
+                  yellow: 'rgb(255, 205, 86)',
+                  green: 'rgb(75, 192, 192)',
+                  blue: 'rgb(54, 162, 235)',
+                  purple: 'rgb(153, 102, 255)',
+                  grey: 'rgb(201, 203, 207)',
+                  teal: 'rgb(0,128,128)' ,
+                  pink: 'rgb(255,0,255)',
+                  lightBlue: 'rgb(0,255,255)', 
+                  white: 'rgb(255, 255, 255)'       
+              };
+
+    var mixedChart = new Chart(ctx, {
+    type: 'bar',
     data: {
         datasets: [{
-          // data should be the aggregate count of the polling results. Will need to pull from the body of the polling results info.
-                data: [35,15,5,2]
-                // data: data   The above [35,15] is a placeholder. Once the data variable is populated we'll use it instead.
-            }],
-            // Labels should correspond with poll reponse options. Will need to pull these from the body of the polling results info
-            labels: [
-                'Cats',
-                'Dogs',
-                'Fish',
-                'Horses'
+            label: 'Anxiety',
+            data: [10, 20, 30, 40, 5, 10, 25],
+            backgroundColor: [
+              window.chartColors.red,
+              window.chartColors.red,
+              window.chartColors.red,
+              window.chartColors.red,
+              window.chartColors.red,
+              window.chartColors.red,
+              window.chartColors.red
             ]
-            // labels: labels   The above "Cats, Dogs" is a placeholder. Once the label variable is populated we'll use it instead.
-              },
-        options: {}
-    });
+        }, {
+            label: 'Depression',
+            data: [5, 3, 38, 50, 3, 20, 5, 15],
+            backgroundColor: [
+              window.chartColors.blue,
+              window.chartColors.blue,
+              window.chartColors.blue,
+              window.chartColors.blue,
+              window.chartColors.blue,
+              window.chartColors.blue,
+              window.chartColors.blue
+            ]
+        }, {
+            label: 'Energy',
+            data: [15, 1, 50, 5, 2, 20, 14],
+            backgroundColor: [
+              window.chartColors.yellow,
+              window.chartColors.yellow,
+              window.chartColors.yellow,
+              window.chartColors.yellow,
+              window.chartColors.yellow,
+              window.chartColors.yellow,
+              window.chartColors.yellow
+        ]
+        }, {
+            label: 'Sleep',
+            data: [5, 11, 20, 10, 1, 15, 5],
+            borderColor: [
+            window.chartColors.green
+            ],                  
+            backgroundColor: window.chartColors.white,
+            // Changes this dataset to become a line
+            type: 'line',
+    //     
+        }, {
+            label: 'Medication',
+            data: [0, 20, 20, 0, 0, 20, 0],
+            borderColor: [
+            window.chartColors.pink
+            ],    
+            lineTension: 0,
+            backgroundColor: window.chartColors.white,
+            // Changes this dataset to become a line
+            type: 'line'
+        }, {
+            label: 'Exercise',
+            data: [20, 20, 0, 20, 20, 0, 20],
+            borderColor: [
+            window.chartColors.teal
+            ],   
+            lineTension: 0,
+            backgroundColor: window.chartColors.white,
+            // Changes this dataset to become a line
+            type: 'line'
+        }],
+        labels: ['5/9', '5/10', '5/11', '5/12', '5/13', '5/14', '5/15']
+    },
+    options: {}
+});
+
 
 // The below function executes an update of the chart. Could be attached to an update button or triggered to run whenever new results are received
 // Right now it's defined, but not attached to anything to prompt it to run
