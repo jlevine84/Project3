@@ -13,7 +13,9 @@ const style = {
 
 class Dashboard extends React.Component {
   onDayClick = (e, day) =>  {
-    return <div className="activity-container">This is a div</div>
+    return (
+    <div className="activity-container"><h2>This is a div</h2></div>
+    )
   }
 
   render() {

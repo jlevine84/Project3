@@ -58,6 +58,25 @@ export default class Calendar extends React.Component {
       dateContext: dateContext
     });
   }
+  // toggles through the following months after current month *needs work
+  nextMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).add(1, "month");
+    this.setState({
+      dateContext: dateContext
+    });
+    this.props.onNextMonth && this.props.onNextMonth();
+  }
+  // toggles to previous months from the current month *needs work
+  prevMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).subtract(1, "month");
+    this.setState({
+      dateContext: dateContext
+    });
+    this.props.onPrevMonth && this.props.onNextMonth();
+  }
+
   // Function for changing the calendar to month selected in popup
   onSelectChange = (e, data) =>  {
     // this.setDay(data);
@@ -103,11 +122,24 @@ export default class Calendar extends React.Component {
   // Displays year on calendar
   YearNav = () => {
     return (
-      <span>
-        {this.year()}
-      </span>
-    )
-  }
+        this.state.showYearNav ?
+        <input
+            defaultValue = {this.year()}
+            className="editor-year"
+            ref={(yearInput) => { this.yearInput = yearInput}}
+            onKeyUp= {(e) => this.onKeyUpYear(e)}
+            onChange = {(e) => this.onYearChange(e)}
+            type="number"
+            placeholder="year"/>
+        :
+        <span
+            className="label-year"
+            onDoubleClick={(e)=> { this.showYearEditor()}}>
+            {this.year()}
+        </span>
+    );
+}
+
 
   onDayClick = (e, day) => {
     this.setState({
