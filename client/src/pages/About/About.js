@@ -1,14 +1,17 @@
 import React from 'react'
 import './about.css'
-
+import { Redirect, Link } from 'react-router-dom';
 function About() {
   return (
-    <div>
-      <div className="row no-gutters">
-        <div className="container-fluid about-title">
+    <div className="body">
+       <h4><Link to="/" className="link">Home</Link></h4>
+      
+        
           <h1>About Dadirri</h1>
-        </div>
-      </div>
+          <br></br>
+          <img src='./../../images/icon.png' className='icon  mx-auto d-block'></img>
+          <br></br>
+      
       <div className="row no-gutters">
         <div className="container about-info">
           <p>
@@ -38,6 +41,7 @@ function About() {
               <li><a href="https://github.com/JamilW">Jamil Weeks</a></li>
             </ul>
           </p>
+          <p className="centered"><Link to='/'>Begin your wellness journey now!</Link></p>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@ class LoginForm extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                   />
-                  <button type="button" onClick={(event) => { this.props.toggle1(); this.props.toggle2();}}>Register</button>
+                  <button type="button" className="btn btn-info" onClick={(event) => { this.props.toggle1(); this.props.toggle2();}}>Register</button>
                   <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
                 </form>
               

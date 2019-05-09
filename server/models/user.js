@@ -7,7 +7,8 @@ mongoose.promise = Promise;
 const userSchema = new Schema({
 
   email: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
+	password: { type: String, required: true },
+	name: {type: String},
   entries: [
     {
       // Store ObjectIds in the array
