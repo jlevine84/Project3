@@ -21,14 +21,13 @@ class Dashboard extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <h1>Dadirri Dashboard Component</h1>
-            Dashboard Main Component
+            <h1>Welcome, {this.props.user}!</h1>
+           
           </div>
           <div className="col-6">
-            <div className="calendar-component">
             <Calendar style={style} width="302px"
               onDayClick={(e, day)=> this.onDayClick(e, day)} />
-            </div>
+            
           </div>
         </div>
         <div className="row">

@@ -1,11 +1,12 @@
 import React from 'react';
-
+import './dropdownInput.css'
 
 function DropDownInput(props) {
 
 
     return (
-        <div class="form-group">
+        <div class="form-group dropdown">
+        <br></br>
     <label for="DropDownInput">{props.title}</label>
     <select class="form-control" id="DropDownInput" onChange={props.update} name={props.name}>
       <option value="1">1</option>
