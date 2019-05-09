@@ -1,119 +1,51 @@
-.calendar-container,
-.calendar,
-.calendar-header,
-td,
-tr {
-    padding: 0;
-    margin: 0;
-}
 .calendar-container {
-    width: 100%;
-    text-align: center;
-    border: 2px solid skyblue;
-}
-.calendar {
-    text-align: center;
-    background-color: white;
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-}
-.calendar-header {
-    border-bottom: 1px dashed skyblue;
-    font-size: 1.6em;
-}
-.calendar-header td {
-    border-spacing: 0;
-    padding-left: 5px;
+
 }
 
-.date-and-year {
-    width: 100%
+.calendar-nav {
+
 }
 
-.current-month {
-    width: 50%;
-    float: left;
+.calendarbtn {
+
 }
 
-.current-year {
-    width: 50%;
-    text-align: right;
-    float: right;
+.btn-prev {
+
 }
 
-.calendar-day,
-.empty-slot,
-.week-day {
-    text-align: center;
-    height: 40px;
-    border: solid 1px black;
+.month-label {
+
 }
 
-.week-day {
-    font-size: 0.8em;
+.year-label {
+
 }
-.day {
-    font-size: 0.8em;
+
+.btn-next {
+
 }
+
+.calendar-month-list {
+
+}
+
+.calendar-month-list {
+
+}
+
+.calendar-month {
+
+}
+
+.calendar-day-table {
+
+}
+
 .calendar-day {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    
 }
 
-.calendar-day:hover {
-    border: solid 2px green;
-}
-.today {
-    background-color: #4285f4;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: white;
-}
-.selected-day {
-    background-color:yellow;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: black;
-}
+.empty {
 
-.active {
-    background: yellow;
 }
-
-/* .month-popup {
-    position: absolute;
-    padding: 5px;
-    background: white;
-    border: 2px solid skyblue;
-}
-.month-popup div {
-    padding: 0.3em;
-}
-.nav-month {
-    position: absolute;
-    top: 0.6em;
-    font-size: 0.6em;
-    right:3px;
-}
-.prev {
-}
-.next {
-}
-.editor-year {
-    max-width: 3.6em;
-}
-.label-month,
-.label-year {
-    border: solid 1px red;
-    font-size: 0.6em;
-}
-.label-month {
-    cursor: pointer;
-} */
