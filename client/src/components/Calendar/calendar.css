@@ -1,51 +1,97 @@
 .calendar-container {
-
+  width: 50%;
+  border: solid 1px black;
 }
 
 .calendar-nav {
-
+  width: 100%;
+  border: solid 1px red;
 }
 
 .calendarbtn {
-
+  position: relative;
+  width: 25%;
 }
 
 .btn-prev {
-
+  position: relative;
+  width: 20%;
+  display: inline-block;
 }
 
 .month-label {
-
+  position: relative;
+  text-align: center;
+  margin-left: 5%;
+  width: 25%;
+  display: inline-block;
 }
 
 .year-label {
-
+  position: relative;
+  text-align: center;
+  margin-left: 5%;
+  width: 25%;
+  display: inline-block;
 }
 
 .btn-next {
-
+  width: 20%;
+  display: inline-block;
 }
 
 .calendar-month-list {
-
+  width: 100%;
+  height: 100%;
 }
 
-.calendar-month-list {
+.calendar-month-list th {
+  width: 100%;
+  height: 25%;
+}
 
+.calendar-month-list tbody {
+  overflow: auto;
 }
 
 .calendar-month {
+  text-align: center;
+  width: 33.33%;
+  height: 100%;
+  float: left;
+}
 
+.month-select {
+  text-align: center;
+  width: 100%;
+  height: 25%;
 }
 
 .calendar-day-table {
-
+  width: 100%;
+  text-align: center;
 }
 
-.calendar-day {
-    
+/* Non-selected calendar days */
+.day:hover {
+  cursor: pointer;
 }
 
+/* Today's date */
+.today {
+  background: teal;
+  color: white;
+  border: 1px solid rgb(10, 243, 243);
+}
+
+/* selected date */
+.selected-day {
+  background: yellow;
+  color: black;
+  border: 1px solid black;
+}
+
+/* Empty calendar days: Issue, if a day doesn't end on a Saturday, no blanks will be rendered */
 .empty {
 
 }

@@ -12,7 +12,9 @@ class Calendar extends React.Component {
     showDateTable: true,
     dateObject: moment(),
     allmonths: moment.months(),
-    selectedDay: null
+    selectedDay: moment().format("DD"),
+    selectedMonth: moment().format("MMMM"),
+    selectedYear: moment().format("YYYY")
   };
 
   // Day Functions
@@ -28,7 +30,9 @@ class Calendar extends React.Component {
         selectedDay: d
       },
       () => {
-        console.log("SELECTED DAY: ", this.state.selectedDay);
+        console.log("Month: ", this.state.selectedMonth)
+        console.log("Day: ", this.state.selectedDay)
+        console.log("Year: ", this.state.selectedYear)
       }
     );
   };
@@ -67,6 +71,7 @@ class Calendar extends React.Component {
     let dateObject = Object.assign({}, this.state.dateObject);
     dateObject = moment(dateObject).set("month", monthNo);
     this.setState({
+      selectedMonth: dateObject.format("MMMM"),
       dateObject: dateObject,
       showMonthTable: !this.state.showMonthTable,
       showDateTable: !this.state.showDateTable
@@ -86,7 +91,7 @@ class Calendar extends React.Component {
             this.setMonth(data);
           }}
         >
-          <span>{data}</span>
+        {data}
         </td>
       );
     });
@@ -108,7 +113,7 @@ class Calendar extends React.Component {
     // Push the data into the table
     rows.push(cells);
     let monthlist = rows.map((d, i) => {
-      return <tr>{d}</tr>;
+      return <tr key={i}>{d}</tr>;
     });
 
     // Populate Month Table
@@ -116,10 +121,10 @@ class Calendar extends React.Component {
       <table className="calendar-month-list">
         <thead>
           <tr>
-            <th colSpan="4">Select a Month</th>
+            <th className="col-12 month-select">Select a Month</th>
           </tr>
         </thead>
-        <tbody>{monthlist}</tbody>
+        <tbody className="month-list">{monthlist}</tbody>
       </table>
     );
   };  // End of the Month table rendering
@@ -134,7 +139,8 @@ class Calendar extends React.Component {
   onPrev = () => {
     let curr = "month";
     this.setState({
-      dateObject: this.state.dateObject.subtract(1, curr)
+      dateObject: this.state.dateObject.subtract(1, curr),
+      selectedMonth: this.state.dateObject.format("MMMM")
     });
   };
 
@@ -142,7 +148,8 @@ class Calendar extends React.Component {
   onNext = () => {
     let curr = "month";
     this.setState({
-      dateObject: this.state.dateObject.add(1, curr)
+      dateObject: this.state.dateObject.add(1, curr),
+      selectedMonth: this.state.dateObject.format("MMMM")
     });
   };
 
@@ -163,7 +170,7 @@ class Calendar extends React.Component {
 
     // Grab the shortened Days of the Week and map them into the table
     let weekdayshortname = this.weekdayshort.map(day => {
-      return <th key={day}>{day}</th>;
+      return <th className="col" key={day}>{day}</th>;
     });
 
     // Set blank spaces for Days not in the table
@@ -175,16 +182,11 @@ class Calendar extends React.Component {
     // Set the amount of days in the month and add function to select properties
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
-      let currentDay = d == this.currentDay() ? "today" : "";
+      let currentDay = (d == this.currentDay() ? "day today": "day");
+      let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
       daysInMonth.push(
-        <td key={d} className={`calendar-day ${currentDay}`}>
-          <span
-            onClick={e => {
-              this.onDayClick(e, d);
-            }}
-          >
-            {d}
-          </span>
+        <td onClick={(e)=> {this.onDayClick(e,d)}} key={d} className={currentDay + selectedClass}>
+        {d}
         </td>
       );
     }
@@ -222,19 +224,19 @@ class Calendar extends React.Component {
             }}
             class="calendarbtn btn-prev"
           >Previous</button>
-          {!this.state.showMonthTable && (
-            <span
+          {!this.state.showMonthTable ?  (
+            <div
               onClick={e => {
                 this.showMonth();
               }}
-              class="month-label"
+              className="month-label"
             >
               {this.month()}
-            </span>
-          )}
-          <span className="year-label">
+            </div>
+          ) : (<div className="month-label">{this.month()}</div>)}
+          <div className="year-label">
             {this.year()}
-          </span>
+          </div>
            <button
           onClick={e => {
             this.onNext();
