@@ -24,10 +24,11 @@ viewAllData = ()=>{
     console.log("hitting 1st function")
     API.getAll().then(response=>{console.log(response)})
 }
-viewByDate = (day, month, year)=>{
+
+viewByDate = ()=>{
     console.log("hitting viewByDate")
  
-    API.getByDate(`${month} ${day} ${year}`).then(response=>{
+    API.getByDate(this.props.date).then(response=>{
         console.log(response.data.todaysentry[0])
         if((response.data.todaysentry[0])){
             this.setState({
@@ -71,7 +72,7 @@ viewByDate = (day, month, year)=>{
             <div>
                 <h5>Your moods for /data here/</h5>
                 <button type="button" onClick={this.viewAllData}>Console Log all your entries!</button>
-                <ViewByDateForm viewByDate={this.viewByDate}/>
+                
                 {this.state.Date && <SeeUserData 
                  mood={this.state.Mood}
                  anxiety={this.state.Anxiety}
