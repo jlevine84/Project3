@@ -43,16 +43,19 @@ module.exports = {
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
     console.log("hitting entry Controller")
+    console.log(req.user._id)
     console.log(req.body)
-    console.log(req.user)
+    entry = req.body
       db.Entry
-        .create(req.body)
+      .findOneAndUpdate({ _id: req.user._id }, entry, {upsert: true})
         .then(dbEntry => {
-          console.log(dbEntry)
-          return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { entries: dbEntry._id } }, { new: true });
+          console.log("hitting next step!")
+          console.log(dbEntry._id)
+          return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { entries: dbEntry._id } });
         })
         .then((dbUser) => {
-          // If the User was updated successfully, send it back to the client
+          console.log("should have an entry!")
+          console.log(dbUser)
           res.json(dbUser);
         })
         .catch(err => res.status(422).json(err));
