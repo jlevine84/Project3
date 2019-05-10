@@ -1,6 +1,7 @@
 .calendar-component {
   height: 400px;
   max-width: 800px;
+  padding:100px;
 }
 
 .activity-container {

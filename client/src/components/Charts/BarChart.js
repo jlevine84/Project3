@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar, Line } from 'react-chartjs-2';
-
+import './BarChart.css'
 const data = {
     labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
     datasets: [
@@ -52,8 +52,7 @@ class BarChart extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2>Mental Health Data</h2>
+            <div className = "barChart">
                 <Bar
                     data={data}
                     width={500}

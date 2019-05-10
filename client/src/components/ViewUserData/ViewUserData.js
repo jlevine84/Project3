@@ -41,6 +41,7 @@ viewByDate = (day, month, year)=>{
                 ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
                 Date: response.data.todaysentry[0].Date,
             })
+            console.log("the state is: ")
             console.log(this.state)
         }
         else {
@@ -71,7 +72,7 @@ viewByDate = (day, month, year)=>{
                 <h5>Your moods for /data here/</h5>
                 <button type="button" onClick={this.viewAllData}>Console Log all your entries!</button>
                 <ViewByDateForm viewByDate={this.viewByDate}/>
-                {this.state.Mood && <SeeUserData 
+                {this.state.Date && <SeeUserData 
                  mood={this.state.Mood}
                  anxiety={this.state.Anxiety}
                  energy={this.state.Energy}
@@ -83,7 +84,7 @@ viewByDate = (day, month, year)=>{
                  date = {this.state.Date}
                  />
                 }
-                {!this.state.Mood && <SeeUserData
+                {!this.state.Date && <SeeUserData
                 noInfo={"No Info"}
                 />}
                 

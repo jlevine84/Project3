@@ -125,7 +125,7 @@ class App extends Component {
 				{/* User is logged in */}
         { this.state.loggedIn && (
           <div>
-						<Nav user={this.state.user} logout={this.logout}/>
+						<Nav user={this.state.user} logout={this.logout} user={this.state.name}/>
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />

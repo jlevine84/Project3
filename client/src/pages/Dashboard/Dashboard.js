@@ -21,15 +21,16 @@ class Dashboard extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
+          
+          <div className="col-6">
           <BarChart>
           </BarChart>
-          <div className="col-6">
-            <h1>Welcome, {this.props.user}!</h1>
+          <LineChart />
           </div>
           <div className="col-6">
             <div className="calendar-component">
-            <Calendar/>
-              <LineChart />
+            <Calendar grabCalendarDate= {this.grabCalendarDate}/>
+              
 
             </div>
           </div>
