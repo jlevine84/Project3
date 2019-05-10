@@ -24,7 +24,9 @@ viewAllData = ()=>{
     console.log("hitting 1st function")
     API.getAll().then(response=>{console.log(response)})
 }
-
+componentWillReceiveProps(){
+    this.viewByDate()
+}
 viewByDate = ()=>{
     console.log("hitting viewByDate")
  

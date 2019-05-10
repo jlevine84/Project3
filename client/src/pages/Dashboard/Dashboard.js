@@ -5,11 +5,11 @@ import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
-
+import moment from 'moment'
 class Dashboard extends React.Component {
 
   state = {
-    selectedDate: null
+    selectedDate: moment().format('MM DD YYYY')
   }
 
   grabCalendarDate = (selectedDate) => {
