@@ -8,6 +8,7 @@ function seeUserData(props){
             }
             {!props.noInfo && 
             <div>
+            <h5>Data for {props.date}</h5>
              <p>Mood: {props.mood}</p>
              <p>Anxiety: {props.anxiety}</p>
              <p>Energy: {props.energy}</p>

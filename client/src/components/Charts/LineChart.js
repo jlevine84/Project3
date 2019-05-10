@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-
+import './LineChart.css'
 const data = {
     labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
     datasets: [
@@ -22,8 +22,7 @@ class LineChart extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2>Sleep</h2>
+            <div className = "lineChart">
                 <Line
                     data={data}
                     width={500}
