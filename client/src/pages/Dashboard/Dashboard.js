@@ -3,7 +3,7 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-
+import BarChart from './../../components/Chart'
 
 
 const style = {
@@ -20,6 +20,8 @@ class Dashboard extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
+          <BarChart>
+          </BarChart>
           <div className="col-6">
             <h1>Dadirri Dashboard Component</h1>
             Dashboard Main Component
@@ -34,7 +36,6 @@ class Dashboard extends React.Component {
         <div className="row">
           <div className="col-6">
            <ViewUserData>
-              <canvas id="myChart"></canvas>
            </ViewUserData>
            </div>
           <div className="col-6">

@@ -1,95 +1,63 @@
-import React, { Component } from 'react';
-import ViewUserData from '../ViewUserData/ViewUserData';
-import { Bar, Line, Scatter } from "react-chartjs-2"
+import React from 'react';
+import { Bar, Line } from 'react-chartjs-2';
 
-class Chart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            chartData: props.chartData{
-                labels: [ //x axes]
-                ]
-            }
+const data = {
+    labels: ['May 05, 2019', 'May 06, 2019', 'May 07, 2019', 'May 08, 2019', 'May 09, 2019'],
+    datasets: [
+        {
+            label: 'Mood',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: [2, 8, 5, 4, 7]
         }
-    }
+    ],
+    labels: ['May 05, 2019', 'May 06, 2019', 'May 07, 2019', 'May 08, 2019', 'May 09, 2019'],
+    datasets: [
+        {
+            label: 'Anxiety',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: [3, 9, 6, 2, 6]
+        }
+    ],
+    labels: ['May 05, 2019', 'May 06, 2019', 'May 07, 2019', 'May 08, 2019', 'May 09, 2019'],
+    datasets: [
+        {
+            label: 'Energy',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: [5, 6, 3, 2, 4]
+        }
+    ],
+};
 
-    static defaultProps = {
-        displayTitle: true,
-        displayLegend: true,
-        legendPosition: bottom.
-        
-    }
+class BarChart extends React.Component {
+ 
 
     render() {
         return (
-            <div className="chart">
+            <div>
+                <h2>Mental Health Data (custom size)</h2>
                 <Bar
-                    data={this.state.moodsData}
-                    datasets: [{
-                        label: 'Moods Data'
-                        data: []
-            }]
+                    data={data}
+                    width={100}
+                    height={50}
                     options={{
-                        title: {
-                            display: this.props.displayTitle,
-                            text: 'Mental Health Data',
-                            fontSize: 25
-                        },
-                        legend: {
-                            display: this.props.displayLegend,
-                            position: this.props.legendPosition
-                        }
+                        maintainAspectRatio: false
                     }}
-                /> 
-                <Line
-                    data={this.state.hrsSleepData}
-                    options={{
-                        legend: {
-                            display: this.props.lineLegend,
-                            position: this.props.lineLegendPosition
-                        }
-                    }}
-                />
-                <Scatter
-                    data={this.state.medsexerData}
                 />
             </div>
-        )
+        );
     }
+};
 
-}
-
-var ctx = document.getElementById('myChart').getContext('2d');
-
-var mixedChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        datasets: [{
-            label: ['Mood', 'Anxiety', 'Energy'],
-            datasets: [{
-                label: 'Mood// mood data: [10, 20, 30, 40]',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [
-                //mood data: [5, 6, 7, 8]
-                // energy data: [10, 20, 30, 40]
-                // anxiety data: [10, 20, 30, 40]
-                ]
-        }, {
-            label: 'Line Dataset-Hrs Sleep',
-            // data: [50, 50, 50, 50],
-            // Changes this dataset to become a line
-            type: 'line'
-        }, {
-            label: 'Scatter Data-set Medications',
-            //data [0 for false, 10 for true]
-            type: 'scatter'
-        }]
-    
-          // labels: [Dates]
-    },
-    options: options
-});
-
-
-export default Chart
+export default BarChart
