@@ -5,8 +5,13 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.16.2",
+    "chart.js": "^2.8.0",
+    "chartjs": "^0.3.24",
     "moment": "^2.24.0",
     "react": "^16.0.0",
+    "react-chartjs": "^1.2.0",
+    "react-chartjs-2": "^2.7.6",
+    "react-chartsjs": "^0.2.14",
     "react-dom": "^16.0.0",
     "react-responsive-modal": "^3.6.0",
     "react-router-dom": "^4.1.2",
