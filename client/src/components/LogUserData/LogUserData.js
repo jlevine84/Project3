@@ -6,6 +6,7 @@ import DropDownInput from './../dropdownInput/DropDownInput';
 import Axios from 'axios';
 import API from './../../utils/API';
 import './LogUserData.css'
+import moment from 'moment';
 class LogUserData extends React.Component{
     state = {
         Mood: "5",
@@ -15,16 +16,27 @@ class LogUserData extends React.Component{
         Exercise: "",
         SleepHours: "0",
         DailyLog: "",
-        ExerciseAmount: ""
+        ExerciseAmount: "",
+        logged: false
     }
     
+    componentDidMount(){
+        API.getByDate(moment(Date.now()).format('MMMM DD YYYY')).then(response=>{
+            console.log("today's entries")
+            if (response.data.todaysentry[0]){
+                this.setState({
+                    logged:true
+                })
+            }
+        
+        })
+    }
     updateValue = event => {
     let name = event.target.name
     let value = event.target.value
     this.setState({[name]: value})
     console.log(this.state)
     }
-    
     
     submitNewEntry = () => {
         console.log("submitting")
@@ -36,17 +48,23 @@ class LogUserData extends React.Component{
         Exercise: this.state.Exercise,
         SleepHours: this.state.SleepHours,
         DailyLog: this.state.DailyLog,
-        ExerciseAmount: this.state.ExerciseAmount
+        ExerciseAmount: this.state.ExerciseAmount,
+        Date: moment(Date.now()).format('MMMM DD YYYY')
     }
     API.createEntry(newEntry)
     .then(response=>{
         console.log(response)
+        this.setState({
+            logged:true
+        })
     })
     }
     
     render() {
     return (
+        
         <div>
+            {!this.state.logged && 
             <div className="jumbotron">
             <h5>How are you feeling today?</h5>
             <div className="row">
@@ -111,6 +129,13 @@ class LogUserData extends React.Component{
             </div>
             
             </div>
+            }
+            {this.state.logged &&
+            <div className="jumbotron">
+            <h5>Thank you for logging today's data!</h5>
+            </div>
+            }
+            
         </div>
         );
     }
