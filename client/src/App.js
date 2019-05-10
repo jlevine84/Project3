@@ -11,10 +11,8 @@ import { Redirect, Link } from 'react-router-dom';
 
 class App extends Component {
 
-	constructor() {
-		super();
     
-		this.state = {
+		state = {
 			userEmail: null,
 			loggedIn: false,
 			user: null,
@@ -30,12 +28,12 @@ class App extends Component {
 	})
 	toggleModal2 = () => this.setState({
 		showSignUp: !this.state.showSignUp
-	})
+	});
   
-	componentDidMount() {
+	componentDidMount(){
 		AUTH.getUser().then(response => {
 			console.log(response.data);
-			if (!!response.data.user) {
+			if (response.data.user) {
 				this.setState({
 					loggedIn: true,
 					user: response.data.user,
@@ -131,13 +129,8 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-<<<<<<< HEAD
-								<Route exact path="/dashboard" component={() => <Dashboard user={this.state.name}/>} />
-              </Switch>
-=======
 								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
 							</Switch>
->>>>>>> charts.js
           </div>
 				)}
 				{/*No User logged in*/}
@@ -145,7 +138,6 @@ class App extends Component {
 					<div>
 						
 				<Switch>
-
 				<Route exact path="/" component={() => 
 				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
 				showSignInModal={this.state.showLogin} login={this.login}
@@ -159,6 +151,8 @@ class App extends Component {
 			</div>
 		)
 }
+}
+	
 
 
 export default App;
