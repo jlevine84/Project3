@@ -33,6 +33,12 @@ class Calendar extends React.Component {
         console.log("Month: ", this.state.selectedMonth)
         console.log("Day: ", this.state.selectedDay)
         console.log("Year: ", this.state.selectedYear)
+        let grabDate = {
+          month: this.state.selectedMonth,
+          day: this.state.selectedDay,
+          year: this.state.selectedYear
+        }
+        this.props.grabCalendarDate(grabDate)
       }
     );
   };

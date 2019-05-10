@@ -6,6 +6,15 @@ import ViewUserData from './../../components/ViewUserData/ViewUserData';
 
 class Dashboard extends React.Component {
 
+  state = {
+    selectedDate: null
+  }
+
+  grabCalendarDate = (selectedDate) => {
+    console.log(selectedDate)
+
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -16,7 +25,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-6">
             <div className="calendar-component">
-            <Calendar/>
+            <Calendar grabCalendarDate={this.grabCalendarDate}/>
             </div>
           </div>
         </div>
