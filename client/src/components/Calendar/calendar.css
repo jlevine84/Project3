@@ -1,88 +1,97 @@
-.calendar-container,
-.calendar,
-.calendar-header,
-td,
-tr {
-    padding: 0;
-    margin: 0;
-}
 .calendar-container {
-    border: 2px solid skyblue;
+  width: 50%;
+  border: solid 1px black;
 }
-.calendar {
-    background-color: white;
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
+
+.calendar-nav {
+  width: 100%;
+  border: solid 1px red;
 }
-.calendar-header {
-    border-bottom: 1px dashed skyblue;
-    font-size: 1.6em;
+
+.calendarbtn {
+  position: relative;
+  width: 25%;
 }
-.calendar-header td {
-    border-spacing: 0;
-    padding-left: 5px;
+
+.btn-prev {
+  position: relative;
+  width: 20%;
+  display: inline-block;
 }
-.day,
-.empty-slot,
-.week-day {
-    text-align: center;
-    height: 40px;
+
+.month-label {
+  position: relative;
+  text-align: center;
+  margin-left: 5%;
+  width: 25%;
+  display: inline-block;
 }
-.week-day {
-    font-size: 0.8em;
+
+.year-label {
+  position: relative;
+  text-align: center;
+  margin-left: 5%;
+  width: 25%;
+  display: inline-block;
 }
-.day {
-    font-size: 0.8em;
+
+.btn-next {
+  width: 20%;
+  display: inline-block;
 }
-.day {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+
+.calendar-month-list {
+  width: 100%;
+  height: 100%;
 }
-.current-day {
-    background-color: #4285f4;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: white;
+
+.calendar-month-list th {
+  width: 100%;
+  height: 25%;
 }
+
+.calendar-month-list tbody {
+  overflow: auto;
+}
+
+.calendar-month {
+  text-align: center;
+  width: 33.33%;
+  height: 100%;
+  float: left;
+}
+
+.month-select {
+  text-align: center;
+  width: 100%;
+  height: 25%;
+}
+
+.calendar-day-table {
+  width: 100%;
+  text-align: center;
+}
+
+/* Non-selected calendar days */
+.day:hover {
+  cursor: pointer;
+}
+
+/* Today's date */
+.today {
+  background: teal;
+  color: white;
+  border: 1px solid rgb(10, 243, 243);
+}
+
+/* selected date */
 .selected-day {
-    background-color:yellow;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: black;
+  background: yellow;
+  color: black;
+  border: 1px solid black;
 }
-.month-popup {
-    position: absolute;
-    padding: 5px;
-    background: white;
-    border: 2px solid skyblue;
-}
-.month-popup div {
-    padding: 0.3em;
-}
-.nav-month {
-    position: absolute;
-    top: 0.6em;
-    font-size: 0.6em;
-    right:3px;
-}
-.prev {
-}
-.next {
-}
-.editor-year {
-    max-width: 3.6em;
-}
-.label-month,
-.label-year {
-    font-size: 0.6em;
-}
-.label-month {
-    cursor: pointer;
+
+/* Empty calendar days: Issue, if a day doesn't end on a Saturday, no blanks will be rendered */
+.empty {
+
 }

@@ -4,7 +4,6 @@ const db = require("../models");
 module.exports = {
   getUser: (req, res, next) => {
     console.log('===== user!!======');
-    console.log(req.user);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
@@ -41,12 +40,10 @@ module.exports = {
     }
   },
   auth: function(req, res, next) {
-		console.log(req.body);
 		console.log('================');
 		next();
   },
   authenticate: (req, res) => {
-		console.log(req)
 		const user = JSON.parse(JSON.stringify(req.user)); // hack
 		const cleanUser = Object.assign({}, user);
 		if (cleanUser) {

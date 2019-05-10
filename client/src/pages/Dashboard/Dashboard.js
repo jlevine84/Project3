@@ -4,17 +4,7 @@ import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 
-
-// default styling for calendar
-const style = {
-	position: "relative",
-	margin: "50px auto"
-}
-
 class Dashboard extends React.Component {
-  onDayClick = (e, day) =>  {
-    return <div className="activity-container">This is a div</div>
-  }
 
   render() {
     return (
@@ -25,9 +15,9 @@ class Dashboard extends React.Component {
            
           </div>
           <div className="col-6">
-            <Calendar style={style} width="302px"
-              onDayClick={(e, day)=> this.onDayClick(e, day)} />
-            
+            <div className="calendar-component">
+            <Calendar/>
+            </div>
           </div>
         </div>
         <div className="row">
