@@ -13,8 +13,11 @@ class Dashboard extends React.Component {
   }
 
   grabCalendarDate = (selectedDate) => {
-    console.log(selectedDate)
-
+   let date = selectedDate.month+ " " + selectedDate.day + " " +selectedDate.year
+   console.log(date)
+   this.setState({
+     selectedDate: date
+   });
   }
 
   render() {
@@ -37,7 +40,7 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
-           <ViewUserData>
+           <ViewUserData  date={this.state.selectedDate}>
            </ViewUserData>
            </div>
           <div className="col-6">

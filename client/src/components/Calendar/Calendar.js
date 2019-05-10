@@ -25,9 +25,10 @@ class Calendar extends React.Component {
 
   // Selected Day function
   onDayClick = (e, d) => {
+    let newD = moment(d, 'D').format("DD")
     this.setState(
       {
-        selectedDay: d
+        selectedDay: newD
       },
       () => {
         console.log("Month: ", this.state.selectedMonth)
