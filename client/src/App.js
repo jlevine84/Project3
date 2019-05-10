@@ -8,10 +8,11 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import About from './pages/About/About';
 import { Redirect, Link } from 'react-router-dom';
 
+
 class App extends Component {
-  
-  constructor() {
-    super();
+
+	constructor() {
+		super();
     
 		this.state = {
 			userEmail: null,
@@ -22,7 +23,7 @@ class App extends Component {
 			redirectTo: null,
 			name: ''
     };
-	}
+	
 	
 	toggleModal1 = () => this.setState({
 		showLogin: !this.state.showLogin
@@ -130,8 +131,13 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
+<<<<<<< HEAD
 								<Route exact path="/dashboard" component={() => <Dashboard user={this.state.name}/>} />
               </Switch>
+=======
+								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
+							</Switch>
+>>>>>>> charts.js
           </div>
 				)}
 				{/*No User logged in*/}
@@ -152,7 +158,7 @@ class App extends Component {
 				)} 
 			</div>
 		)
-	}
 }
+
 
 export default App;
