@@ -23,13 +23,10 @@ module.exports = {
   },
   // To find a specific mood entry by Date
   findByDate: function(req, res) {
-    console.log("req.date:")
-    console.log(req.date)
-    console.log("Req.params.date:")
-    console.log(req.params.date)
+    console.log(`req: ${JSON.stringify(req.params.date)}`)
         if (req.params.date) {
           db.Entry
-            .find({ Date: req.params.date})
+            .find({ Date: req.params.date })
             .then(entry => {
              console.log(entry)
               res.json({ todaysentry: entry });

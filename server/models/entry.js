@@ -15,6 +15,7 @@ const entrySchema = new Schema({
   Date: { type: String, unique: true, default: moment(Date.now()).format('MMMM DD YYYY')},
   UserID: {type: String, required: true}
 
+
 })
 
 const Entry = mongoose.model("Entry", entrySchema);

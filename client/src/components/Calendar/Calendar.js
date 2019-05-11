@@ -7,7 +7,6 @@ class Calendar extends React.Component {
   weekdayshort = moment.weekdaysShort();
 
   state = {
-    showYearTable: false,
     showMonthTable: false,
     showDateTable: true,
     dateObject: moment(),
@@ -20,29 +19,21 @@ class Calendar extends React.Component {
   // Day Functions
   // Get the current Day
   currentDay = () => {
-    return this.state.dateObject.format("D");
+    return this.state.dateObject.format("DD");
   };
 
   // Selected Day function
-  onDayClick = (e, d) => {
-    let newD = moment(d, 'D').format("DD")
-    this.setState(
-      {
-        selectedDay: newD
-      },
-      () => {
-        console.log("Month: ", this.state.selectedMonth)
-        console.log("Day: ", this.state.selectedDay)
-        console.log("Year: ", this.state.selectedYear)
-        let grabDate = {
-          month: this.state.selectedMonth,
-          day: this.state.selectedDay,
-          year: this.state.selectedYear
-        }
-        this.props.grabCalendarDate(grabDate)
-      }
-    );
-  };
+  onDayClick = async (event) => {
+    console.log("Event Values :" + event.target.getAttribute('value'))
+    let newD = moment(event.target.getAttribute('value'), 'D').format("DD")
+    console.log(`newD is: ${newD}`)
+    await this.setState({ selectedDay: newD })
+    console.log(`New Day on Calendar: ${this.state.selectedDay}`)
+    let grabMonth = this.state.selectedMonth
+    let grabDay = this.state.selectedDay
+    let grabYear = this.state.selectedYear
+    this.props.grabCalendarDate(grabMonth, grabDay, grabYear)
+  }
 
   // Month Functions
   // Get the Days in the Month
@@ -60,7 +51,7 @@ class Calendar extends React.Component {
     let dateObject = this.state.dateObject;
     let firstDay = moment(dateObject)
       .startOf("month")
-      .format("d"); // Day of week 0...1..5...6
+      .format("DD"); // Day of week 0...1..5...6
     return firstDay;
   };
 
@@ -139,7 +130,7 @@ class Calendar extends React.Component {
   // Year functions
   // Get the current Year
   year = () => {
-    return this.state.dateObject.format("Y");
+    return this.state.dateObject.format("YYYY");
   };
 
   // Function for navigating the table backwards
@@ -192,7 +183,12 @@ class Calendar extends React.Component {
       let currentDay = (d == this.currentDay() ? "day today": "day");
       let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
       daysInMonth.push(
-        <td onClick={(e)=> {this.onDayClick(e,d)}} key={d} className={currentDay + selectedClass}>
+        <td 
+          key={d}
+          value={d}
+          onClick={event => this.onDayClick(event)}
+          className={currentDay + selectedClass}
+        >
         {d}
         </td>
       );
