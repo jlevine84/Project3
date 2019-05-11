@@ -129,7 +129,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.user.user.email}/>} />
+								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.name}/>} />
 							</Switch>
           </div>
 				)}
