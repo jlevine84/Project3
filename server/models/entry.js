@@ -12,7 +12,7 @@ const entrySchema = new Schema({
   SleepHours: Number,
   Exercise: { type: Boolean, required: true },
   ExerciseAmount: String,
-  Date: { type: String, unique: true, default: moment(Date.now()).format('MMMM DD YYYY')},
+  Date: { type: String, default: moment(Date.now()).format('MMMM DD YYYY')},
   UserID: {type: String, required: true}
 
 
