@@ -1,5 +1,4 @@
 import React from 'react';
-import ViewByDateForm from './../../components/viewByDateForm/viewByDateForm';
 import './ViewUserData.css';
 import SeeUserData from './../seeUserData/seeUserData';
 

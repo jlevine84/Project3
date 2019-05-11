@@ -21,8 +21,13 @@ class Dashboard extends React.Component {
     DailyLog: "",
     ExerciseAmount: "",
     Date: "",
+
     dbreturn:{},
     test: "test"
+
+    dateRangeStart: "", 
+    dateRangeEnd: ""
+
   }
 
   componentDidMount() {
@@ -32,7 +37,8 @@ class Dashboard extends React.Component {
 
   grabCalendarDate = (grabMonth, grabDay, grabYear) => {
     let date = `${grabMonth} ${grabDay} ${grabYear}`
-    this.setState({ selectedDate: date });
+    this.setState({ selectedDate: date })
+    this.viewByDate()
   }
 
   pullAll = () => {
@@ -78,11 +84,13 @@ class Dashboard extends React.Component {
     }).catch(err => console.log(err))
   }
 
+  // Stuff for Jeffy to Dooz
+  grabDateRange = () => {
 
-  grabCalendarDate = (grabMonth, grabDay, grabYear) => {
-    let date = `${grabMonth} ${grabDay} ${grabYear}`
-    this.setState({ selectedDate: date })
-    this.viewByDate()
+  }
+
+  viewDateRange = () => {
+
   }
 
   render() {
@@ -104,6 +112,7 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
+            
             <ViewUserData  
               selectedDate={this.state.selectedDate}
               mood={this.state.Mood}
