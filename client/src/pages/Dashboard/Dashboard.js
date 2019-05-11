@@ -20,7 +20,9 @@ class Dashboard extends React.Component {
     SleepHours: "",
     DailyLog: "",
     ExerciseAmount: "",
-    Date: ""
+    Date: "",
+    dateRangeStart: "", 
+    dateRangeEnd: ""
   }
 
   componentDidMount() {
@@ -65,6 +67,14 @@ class Dashboard extends React.Component {
     }).catch(err => console.log(err))
   }
 
+  // Stuff for Jeffy to Dooz
+  grabDateRange = () => {
+
+  }
+
+  viewDateRange = () => {
+
+  }
 
   render() {
     return (
@@ -82,6 +92,7 @@ class Dashboard extends React.Component {
         </div>
         <div className="row">
           <div className="col-6">
+            
             <ViewUserData  
               selectedDate={this.state.selectedDate}
               mood={this.state.Mood}
