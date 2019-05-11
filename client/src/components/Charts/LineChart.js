@@ -6,16 +6,18 @@ const data = {
     datasets: [
         {
             label: 'Sleep',
-            fillColor: 'rgba(220,220,220,0.2)',
+            backgroundColor: 'rgba(55, 240, 240, 0.19)',
             strokeColor: 'rgba(220,220,220,1)',
             pointColor: 'rgba(220,220,220,1)',
             pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
+            pointHighlightFill: '#37F0F0',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [9, 7, 14, 10, 3],
+            data: [9, 7, 14, 10, 3], 
         },
     ]
 }
+
+
 
 class LineChart extends React.Component {
 
@@ -28,7 +30,8 @@ class LineChart extends React.Component {
                     width={500}
                     height={100}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        scales: { yAxes: [{ ticks: { beginAtZero: true, max: 20 } }], xAxes: [{ ticks: { beginAtZero: true } }] }
                     }}
                 />
             </div>
