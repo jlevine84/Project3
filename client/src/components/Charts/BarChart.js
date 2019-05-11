@@ -10,8 +10,8 @@ const data = {
             backgroundColor: 'rgba(255,99,132,0.2)',
             borderColor: 'rgba(255,99,132,1)',
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(236, 230, 64, 0.44)',
-            hoverBorderColor: 'rgba(236, 230, 64, 0.82)',
+            hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
+            hoverBorderColor: 'rgb(93, 142, 61)',
             data: [2, 8, 5, 4, 7]
         },
         {
@@ -28,12 +28,25 @@ const data = {
             backgroundColor: 'rgba(41, 142, 182, 0.29)',
             borderColor: 'rgba(41, 142, 182, 0.8)',
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(236, 230, 64, 0.44)',
-            hoverBorderColor: 'rgba(236, 230, 64, 0.82)',
+            hoverBackgroundColor: 'rgba(241, 28, 138, 0.6)',
+            hoverBorderColor: 'rgb(241, 28, 138)',
             data: [5, 6, 3, 2, 4]
         }
     ],
-       
+
+    options: {
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 10
+                }
+            }]
+        }
+    }
+
 }
 
 
