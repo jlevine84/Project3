@@ -24,13 +24,23 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    this.viewByDate()
+    this.viewByDate();
+    this.pullAll()
   }
 
   grabCalendarDate = (grabMonth, grabDay, grabYear) => {
     let date = `${grabMonth} ${grabDay} ${grabYear}`
     this.setState({ selectedDate: date });
   }
+
+  pullAll = () => {
+    console.log('pull all executed')
+    API.getAll()
+    .then(response =>{
+        console.log(response)
+    })
+  }
+  // will need to foreach through data.logs.entries and parse into arrays
 
   viewByDate = async () => {
     console.log(`First API Fire: ${this.state.selectedDate}`)

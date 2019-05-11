@@ -2,6 +2,16 @@ import React from 'react';
 import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
+
+// pullAll = async () => {
+//     console.log('pull all executed')
+//     API.getAll(req, res)
+//     .then(
+//         console.log(res)
+//     )
+
+
+
 const data = {
     labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
     datasets: [
@@ -33,7 +43,6 @@ const data = {
             data: [5, 6, 3, 2, 4]
         }
     ],
-
     options: {
         scales: {
             yAxes: [{
@@ -46,7 +55,6 @@ const data = {
             }]
         }
     }
-
 }
 
 
