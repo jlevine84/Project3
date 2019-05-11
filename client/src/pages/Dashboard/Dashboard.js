@@ -27,6 +27,12 @@ class Dashboard extends React.Component {
     this.viewByDate()
   }
 
+  grabCalendarDate = (grabMonth, grabDay, grabYear) => {
+    let date = `${grabMonth} ${grabDay} ${grabYear}`
+    this.setState({ selectedDate: date })
+    this.viewByDate()
+  }
+
   viewByDate = async () => {
     console.log(`First API Fire: ${this.state.selectedDate}`)
     API.getByDate(this.state.selectedDate)
@@ -59,12 +65,6 @@ class Dashboard extends React.Component {
     }).catch(err => console.log(err))
   }
 
-
-  grabCalendarDate = (grabMonth, grabDay, grabYear) => {
-    let date = `${grabMonth} ${grabDay} ${grabYear}`
-    this.setState({ selectedDate: date })
-    this.viewByDate()
-  }
 
   render() {
     return (
