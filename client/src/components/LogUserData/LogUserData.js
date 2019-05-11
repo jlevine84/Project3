@@ -48,8 +48,10 @@ class LogUserData extends React.Component{
         SleepHours: this.state.SleepHours,
         DailyLog: this.state.DailyLog,
         ExerciseAmount: this.state.ExerciseAmount,
-        Date: moment(Date.now()).format('MMMM DD YYYY')
+        Date: moment(Date.now()).format('MMMM DD YYYY'),
+        UserID: this.props.userID
     }
+    console.log(newEntry)
     API.createEntry(newEntry)
     .then(response=>{
         console.log(response)

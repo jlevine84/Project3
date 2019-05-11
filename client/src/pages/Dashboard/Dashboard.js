@@ -102,7 +102,9 @@ class Dashboard extends React.Component {
             />
           </div>
           <div className="col-6">
-            <LogUserData/>
+
+          <LogUserData userID={this.props.userID}/>
+
           </div>
         </div>
       </div>
