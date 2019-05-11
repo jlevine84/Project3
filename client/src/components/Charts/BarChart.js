@@ -2,14 +2,13 @@ import React from 'react';
 import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
+// import Dashboard from '../../pages/Dashboard/Dashboard'
 
-// pullAll = async () => {
-//     console.log('pull all executed')
-//     API.getAll(req, res)
-//     .then(
-//         console.log(res)
-//     )
 
+  function getData(props){
+        console.log(props)
+  
+}
 
 
 const data = {
@@ -60,8 +59,9 @@ const data = {
 
 class BarChart extends React.Component {
  
-
     render() {
+        console.log(this.props);
+
         return (
             <div className = "barChart">
                 <Bar

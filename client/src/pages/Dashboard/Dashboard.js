@@ -20,7 +20,9 @@ class Dashboard extends React.Component {
     SleepHours: "",
     DailyLog: "",
     ExerciseAmount: "",
-    Date: ""
+    Date: "",
+    dbreturn:{},
+    test: "test"
   }
 
   componentDidMount() {
@@ -38,6 +40,8 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         console.log(response)
+        this.setState({dbreturn: response.data.logs.entries[0]})
+        console.log(this.state.dbreturn)
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -86,7 +90,10 @@ class Dashboard extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <BarChart/>
+            <BarChart
+            dbreturn = {this.state.dbreturn}
+            test = {this.state.test}
+            />
             <LineChart/>
           </div>
           <div className="col-6">
@@ -112,7 +119,6 @@ class Dashboard extends React.Component {
             />
           </div>
           <div className="col-6">
-
           <LogUserData userID={this.props.userID}/>
 
           </div>
