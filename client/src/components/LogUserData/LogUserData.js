@@ -22,7 +22,6 @@ class LogUserData extends React.Component{
     
     componentDidMount(){
         API.getByDate(moment(Date.now()).format('MMMM DD YYYY')).then(response=>{
-            console.log("today's entries")
             if (response.data.todaysentry[0]){
                 this.setState({
                     logged:true
