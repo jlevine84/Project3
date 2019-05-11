@@ -42,9 +42,10 @@ module.exports = {
     console.log("hitting entry Controller")
     console.log(req.user._id)
     console.log(req.body)
+    console.log(req.body.Date)
     entry = req.body
       db.Entry
-      .findOneAndUpdate({ _id: req.user._id }, entry, {upsert: true})
+      .findOneAndUpdate({_id: req.user._id, Date: req.body.Date}, entry, {upsert: true})
         .then(dbEntry => {
           console.log("hitting next step!")
           console.log(dbEntry._id)
