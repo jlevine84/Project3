@@ -42,7 +42,7 @@ class App extends Component {
 					name: response.data.user.name
 				});
 				console.log("logged in from previous login")
-				console.log(this.state.userEmail)
+				console.log(this.state.user._id)
 			} else {
 				console.log("no user")
 				this.setState({
@@ -127,9 +127,9 @@ class App extends Component {
           <div>
 						<Nav user={this.state.user} logout={this.logout} user={this.state.name}/>
               <Switch>
-                <Route exact path="/" component={() => <Dashboard user={this.state.name}/>} />
+                <Route exact path="/" component={() => <Dashboard userID={this.state.user._id} user={this.state.name}/>} />
 								<Route exact path="/about" component={() => <About user={this.state.user}/>} />
-								<Route exact path="/dashboard" component={() => <Dashboard username={this.state.name}/>} />
+								<Route exact path="/dashboard" component={() => <Dashboard userID={this.state.user._id} username={this.state.name}/>} />
 							</Switch>
           </div>
 				)}

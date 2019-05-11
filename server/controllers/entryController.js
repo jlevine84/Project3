@@ -43,16 +43,16 @@ module.exports = {
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
     console.log("hitting entry Controller")
-    console.log(req.user._id)
+    console.log(req.body.UserID)
     console.log(req.body)
     console.log(req.body.Date)
     entry = req.body
       db.Entry
-      .findOneAndUpdate({_id: req.user._id, Date: req.body.Date}, entry, {upsert: true})
+      .findOneAndUpdate({UserID: req.body.UserID, Date: req.body.Date}, entry, {upsert: true})
         .then(dbEntry => {
           console.log("hitting next step!")
           console.log(dbEntry._id)
-          return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { entries: dbEntry._id } });
+          return db.User.findOneAndUpdate({ _id: req.body.UserID }, { $push: { entries: dbEntry._id } });
         })
         .then((dbUser) => {
           console.log("should have an entry!")
