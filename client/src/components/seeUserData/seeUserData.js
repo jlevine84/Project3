@@ -12,6 +12,7 @@ function seeUserData(props){
                     <p>Mood: {props.mood}</p>
                     <p>Anxiety: {props.anxiety}</p>
                     <p>Energy: {props.energy}</p>
+                    <p>Hours Slept: {props.sleepHours}</p>
                     <p>Medicine Taken: {props.medicineTaken}</p>
                     <p>Exercised : {props.exercise}</p>
                     <p>Daily Log: {props.dailyLog}</p>
