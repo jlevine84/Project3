@@ -1,22 +1,19 @@
 import axios from "axios";
 
 export default {
-  
+  // Get all Entries
   getAll: function() {
     return axios.get("/api/entry/view");
   },
-  // // Gets the book with the given id
-  // getBook: function(id) {
-  //   return axios.get("/api/books/" + id);
-  // },
-  // // Deletes the book with the given id
-  // deleteBook: function(id) {
-  //   return axios.delete("/api/books/" + id);
-  // },
-  // Saves a book to the database
+  // Get Entries for a specific range
+  getRange: function(startDate, endDate) {
+    return axios.get(`/api/entry/?startDate=${startDate}&endDate=${endDate}`)
+  },
+  // Saves an Entry to the database
   createEntry: function(Entry) {
     return axios.post("api/entry/create", Entry);
   },
+  // Get an Entry for a specific date
   getByDate: function(date){
     return axios.get("api/entry/" + date)
   }

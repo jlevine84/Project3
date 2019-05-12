@@ -18,6 +18,8 @@ router.route("/create")
 //   .put(entryController.update)
 //   .delete(entryController.remove);
 
+router.route("/").get(entryController.findByRange)
+
 // /api/entry/view
 router
 .route("/view")

@@ -12,7 +12,7 @@ class Calendar extends React.Component {
     dateObject: moment(),
     allmonths: moment.months(),
     selectedDay: moment().format("DD"),
-    selectedMonth: moment().format("MMMM"),
+    selectedMonth: moment().format("MM"),
     selectedYear: moment().format("YYYY")
   };
 
@@ -29,7 +29,7 @@ class Calendar extends React.Component {
     let grabMonth = this.state.selectedMonth
     let grabDay = this.state.selectedDay
     let grabYear = this.state.selectedYear
-    this.props.grabCalendarDate(grabMonth, grabDay, grabYear)
+    this.props.grabCalendarDate(grabYear, grabDay, grabMonth)
   }
 
   // Month Functions
