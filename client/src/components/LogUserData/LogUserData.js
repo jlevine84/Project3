@@ -5,7 +5,6 @@ import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
 import API from './../../utils/API';
 import './LogUserData.css'
-import moment from 'moment';
 
 class LogUserData extends React.Component{
 
@@ -74,8 +73,6 @@ class LogUserData extends React.Component{
             await this.setState({
                 logged:true
             })
-
-
         })
         .then(() => this.props.prevEntryCallBack())
         .catch(err => console.log(err))

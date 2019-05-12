@@ -6,7 +6,7 @@ import './BarChart.css'
 
 
   function getData(props){
-        console.log(props)
+        
   
 }
 
@@ -60,7 +60,6 @@ const data = {
 class BarChart extends React.Component {
  
     render() {
-        console.log(this.props);
 
         return (
             <div className = "barChart">

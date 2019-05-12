@@ -15,11 +15,9 @@ export default {
   // },
   // Saves a book to the database
   createEntry: function(Entry) {
-    console.log("hitting API")
     return axios.post("api/entry/create", Entry);
   },
   getByDate: function(date){
-    console.log(date)
     return axios.get("api/entry/" + date)
   }
 };

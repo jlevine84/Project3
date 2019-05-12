@@ -7,6 +7,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
+import Input from '../../components/Input/Input'
 
 class Dashboard extends React.Component {
 
@@ -22,8 +23,8 @@ class Dashboard extends React.Component {
     ExerciseAmount: "",
     Date: "",
 
-    dbreturn:{},
-    test: "test"
+    dbreturn:[],
+    test: "test",
 
     dateRangeStart: "", 
     dateRangeEnd: ""
@@ -47,7 +48,6 @@ class Dashboard extends React.Component {
     .then(response =>{
         console.log(response)
         this.setState({dbreturn: response.data.logs.entries[0]})
-        console.log(this.state.dbreturn)
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -88,12 +88,24 @@ class Dashboard extends React.Component {
   }
 
   // Stuff for Jeffy to Dooz
+  // Create two inputs and a submit button
+  // format the inputs to only accept dates in a specific format and alert the user if the inputs are invalid
+  // Grab the values of the the two inputs
   grabDateRange = () => {
-
+    console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
+    let startDate = this.state.dateRangeStart.split('/').join(' ')
+    let endDate = this.state.dateRangeEnd.split('/').join(' ')
+    console.log(startDate, endDate)
   }
 
   viewDateRange = () => {
 
+  }
+
+  updateValue = async event => {
+    let name = event.target.name
+    let value = event.target.value
+    await this.setState({ [name]: value} )
   }
 
   render() {
@@ -102,8 +114,8 @@ class Dashboard extends React.Component {
         <div className="row">
           <div className="col-6">
             <BarChart
-            dbreturn = {this.state.dbreturn}
-            test = {this.state.test}
+              dbreturn = {this.state.dbreturn}
+              test = {this.state.test}
             />
             <LineChart/>
           </div>
@@ -112,6 +124,21 @@ class Dashboard extends React.Component {
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
             </div>
           </div>
+        </div>
+        <div className="row">
+            <Input
+              placeholder="MM/DD/YYYY"
+              title="Start Date"
+              name="dateRangeStart"
+              update={this.updateValue}
+            />
+            <Input
+              placeholder="MM/DD/YYYY"
+              title="End Date"
+              name="dateRangeEnd"
+              update={this.updateValue}
+            />
+            <button onClick={this.grabDateRange} className="btn btn-secondary">Search</button>
         </div>
         <div className="row">
           <div className="col-6">
