@@ -2,6 +2,15 @@ import React from 'react';
 import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
+// import Dashboard from '../../pages/Dashboard/Dashboard'
+
+
+  function getData(props){
+        console.log(props)
+  
+}
+
+
 const data = {
     labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
     datasets: [
@@ -33,7 +42,6 @@ const data = {
             data: [5, 6, 3, 2, 4]
         }
     ],
-
     options: {
         scales: {
             yAxes: [{
@@ -46,14 +54,14 @@ const data = {
             }]
         }
     }
-
 }
 
 
 class BarChart extends React.Component {
  
-
     render() {
+        console.log(this.props);
+
         return (
             <div className = "barChart">
                 <Bar
