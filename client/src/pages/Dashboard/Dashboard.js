@@ -36,7 +36,6 @@ class Dashboard extends React.Component {
   }
 
   viewByDate = async () => {
-    console.log(`First API Fire: ${this.state.selectedDate}`)
     API.getByDate(this.state.selectedDate)
     .then( async response => {
       if (response.data.todaysentry[0]) {
@@ -65,6 +64,10 @@ class Dashboard extends React.Component {
         })
       }
     }).catch(err => console.log(err))
+  }
+
+  prevEntryCallBack = () => {
+    this.viewByDate()
   }
 
   // Stuff for Jeffy to Dooz
@@ -109,8 +112,11 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-6">
 
-          <LogUserData userID={this.props.userID}/>
-
+          <LogUserData 
+            userID={this.props.userID}
+            selectedDate={this.state.selectedDate}
+            prevEntryCallBack={this.prevEntryCallBack}           
+          />
           </div>
         </div>
       </div>

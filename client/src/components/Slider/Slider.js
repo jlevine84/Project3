@@ -9,9 +9,9 @@ function Slider(props) {
       <input className="sliders"
         name={props.name}
         type="range"
-        min="0"
+        min="1"
         max="10"
-        defaultValue="5"
+        defaultValue={props.defaultValue}
         onChange={props.update}
       />
       <p>{props.display}</p>
