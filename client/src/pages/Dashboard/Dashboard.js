@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
     Date: "",
 
     dbreturn:{},
-    test: "test"
+    test: "test",
 
     dateRangeStart: "", 
     dateRangeEnd: ""
