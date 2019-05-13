@@ -46,12 +46,8 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         console.log(response)
-<<<<<<< HEAD
-        this.setState({dbreturn: response.data.logs.entries[0]})
-=======
         this.setState({dbreturn: response.data.logs.entries})
         console.log(this.state.dbreturn)
->>>>>>> ce5dddae4ab659ca370f9a3279359396f2b34216
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -124,12 +120,7 @@ class Dashboard extends React.Component {
         <div className="row">
           <div className="col-6">
             <BarChart
-<<<<<<< HEAD
-              dbreturn = {this.state.dbreturn}
-              test = {this.state.test}
-=======
             dbreturn = {this.state.dbreturn}
->>>>>>> ce5dddae4ab659ca370f9a3279359396f2b34216
             />
             <LineChart/>
           </div>
