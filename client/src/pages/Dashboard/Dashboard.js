@@ -21,10 +21,7 @@ class Dashboard extends React.Component {
     DailyLog: "",
     ExerciseAmount: "",
     Date: "",
-
     dbreturn:{},
-    test: "test"
-
     dateRangeStart: "", 
     dateRangeEnd: ""
 
@@ -46,7 +43,7 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         console.log(response)
-        this.setState({dbreturn: response.data.logs.entries[0]})
+        this.setState({dbreturn: response.data.logs.entries})
         console.log(this.state.dbreturn)
     })
   }
@@ -103,7 +100,6 @@ class Dashboard extends React.Component {
           <div className="col-6">
             <BarChart
             dbreturn = {this.state.dbreturn}
-            test = {this.state.test}
             />
             <LineChart/>
           </div>
