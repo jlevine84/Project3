@@ -13,7 +13,7 @@ module.exports = {
         .findOne({ _id: req.user._id})
         .populate('entries')
         .then(logs => {
-          
+          console.log(logs)
           res.json({logs});
         })
         .catch(err => res.status(422).json(err));
