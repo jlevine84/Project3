@@ -40,6 +40,7 @@ class LandingPage extends React.Component{
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
+            loginError={this.props.loginError}
             >
           
             <div className="modal-dialog modal-dialog-centered" role="document">
