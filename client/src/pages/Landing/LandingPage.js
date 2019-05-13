@@ -45,11 +45,8 @@ class LandingPage extends React.Component{
             <div className="modal-dialog modal-dialog-centered" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <div className="camera-box">
-                    <button onClick={this.dismissModal} className="xbutton btn btn-light">x</button>
-                    <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5>
-                
-                  </div>                             
+                  <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5>
+                    <button onClick={this.dismissModal} className="xbutton btn btn-light">x</button>                             
                 </div>
                 <div className="modal-body">
                   <LoginForm login={this.props.login} toggle1={this.props.toggle1} toggle2={this.props.toggle2}/>
@@ -72,10 +69,8 @@ class LandingPage extends React.Component{
             <div className="modal-dialog modal-dialog-centered" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <div className="camera-box">
-                  <button onClick={this.dismissSignUpModal} className="xbutton btn btn-light">x</button>
-                    <h5 className="modal-title" id="exampleModalLabel">Login to Dadirri</h5> 
-                  </div>                             
+                    <h5 className="modal-title" id="exampleModalLabel">Sign Up for Dadirri</h5> 
+                    <button onClick={this.dismissSignUpModal} className="xbutton btn btn-light float-left">x</button>                           
                 </div>
                 <div className="modal-body">
                   <SignupForm SignUp = {this.props.SignUp} toggle1={this.props.toggle1} toggle2={this.props.toggle2} showSignInModal={this.props.showSignInModal}/>
