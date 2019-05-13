@@ -12,10 +12,8 @@ const entrySchema = new Schema({
   SleepHours: Number,
   Exercise: { type: Boolean, required: true },
   ExerciseAmount: String,
-  Date: { type: String, default: moment(Date.now()).format('MMMM DD YYYY')},
-  UserID: {type: String, required: true}
-
-
+  Date: { type: Number, required: true },
+  UserID: {type: String, required: true }
 })
 
 const Entry = mongoose.model("Entry", entrySchema);
