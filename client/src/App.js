@@ -68,7 +68,7 @@ class App extends Component {
 					user: null,
 					redirectTo: "/"
 				});
-				"logged out from button click"
+				console.log("logged out from button click")
 			}
 		});
 	}
