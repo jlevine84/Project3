@@ -219,7 +219,7 @@ class Calendar extends React.Component {
     });
 
     return (
-      <div className="calendar-container">
+      <div className="calendar-container-fluid">
         <div className="calendar-nav">
           <button
             onClick={e => {
