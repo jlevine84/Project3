@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
             SleepHours: response.data.todaysentry[0].SleepHours,
             DailyLog: response.data.todaysentry[0].DailyLog,
             ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
-            Date: moment(response.data.todaysentry[0].Date, 'YYYYDDMM').format('MMMM DD YYYY'),
+            Date: moment(response.data.todaysentry[0].Date, 'YYYYDDMM').format('MMMM Do YYYY'),
             Logged: true
         })
       } else {
@@ -89,9 +89,10 @@ class Dashboard extends React.Component {
   }
 
   // Stuff for Jeffy to Dooz
-  // Create two inputs and a submit button
-  // format the inputs to only accept dates in a specific format and alert the user if the inputs are invalid
-  // Grab the values of the the two inputs
+  // Validation of inputs, Log new Entry and search fields.
+  // Validation of future calendar dates
+  // If the exercise button is false or unselected; Don't render the Exercise.
+  // Ability to update a user's entry.
   grabDateRange = () => {
     console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
     let startDate = this.state.dateRangeStart.split('/').join('')
@@ -120,34 +121,38 @@ class Dashboard extends React.Component {
         <div className="row">
           <div className="col-6">
             <BarChart
-            dbreturn = {this.state.dbreturn}
+              dbreturn = {this.state.dbreturn}
             />
             <LineChart/>
           </div>
           <div className="col-6">
             <div className="calendar-component">
-              <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              <div className="col">
+                <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              </div>
+              <div className="w-100"/>
+              <div className="row search-row">
+                <Input
+                  className="input-start"
+                  placeholder="MM/DD/YYYY"
+                  title="Start Date"
+                  name="dateRangeStart"
+                  update={this.updateValue}
+                />
+                <Input
+                  className="input-end"
+                  placeholder="MM/DD/YYYY"
+                  title="End Date"
+                  name="dateRangeEnd"
+                  update={this.updateValue}
+                />
+                <button onClick={this.grabDateRange} className="btn btn-secondary btn-range">Search</button>
+              </div>  
             </div>
           </div>
         </div>
         <div className="row">
-            <Input
-              placeholder="MM/DD/YYYY"
-              title="Start Date"
-              name="dateRangeStart"
-              update={this.updateValue}
-            />
-            <Input
-              placeholder="MM/DD/YYYY"
-              title="End Date"
-              name="dateRangeEnd"
-              update={this.updateValue}
-            />
-            <button onClick={this.grabDateRange} className="btn btn-secondary">Search</button>
-        </div>
-        <div className="row">
           <div className="col-6">
-            
             <ViewUserData  
               selectedDate={this.state.selectedDate}
               mood={this.state.Mood}
@@ -163,12 +168,11 @@ class Dashboard extends React.Component {
             />
           </div>
           <div className="col-6">
-
-          <LogUserData 
-            userID={this.props.userID}
-            selectedDate={this.state.selectedDate}
-            prevEntryCallBack={this.prevEntryCallBack}           
-          />
+            <LogUserData 
+              userID={this.props.userID}
+              selectedDate={this.state.selectedDate}
+              prevEntryCallBack={this.prevEntryCallBack}           
+            />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import './slider.css'
 function Slider(props) {
   return (
     <div className = "float">
-      <label>{props.name}</label>
+      <label>* {props.name}</label>
       <br/>
       <input className="sliders"
         name={props.name}
