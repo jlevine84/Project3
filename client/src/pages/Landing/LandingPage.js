@@ -40,7 +40,7 @@ class LandingPage extends React.Component{
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
-            loginError={this.props.loginError}
+            
             >
           
             <div className="modal-dialog modal-dialog-centered" role="document">
@@ -50,7 +50,7 @@ class LandingPage extends React.Component{
                     <button onClick={this.dismissModal} className="xbutton btn btn-light">x</button>                             
                 </div>
                 <div className="modal-body">
-                  <LoginForm login={this.props.login} toggle1={this.props.toggle1} toggle2={this.props.toggle2}/>
+                  <LoginForm login={this.props.login} toggle1={this.props.toggle1} toggle2={this.props.toggle2} loginError={this.props.loginError}/>
                 </div>
               </div>
             </div>
