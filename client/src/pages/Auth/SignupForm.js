@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
+import { throws } from 'assert';
 
 class SignupForm extends Component {
 
@@ -14,7 +15,9 @@ class SignupForm extends Component {
       name: '',
 			password: '',
 			confirmPassword: '',
-			redirectTo: null
+      redirectTo: null,
+      divErrorClass: 'none',
+      divErrorClass2: 'none'
 		};
   }
   
@@ -25,8 +28,25 @@ class SignupForm extends Component {
   }
   
 	handleSubmit = (event) => {
-		event.preventDefault();
-	  this.props.SignUp(this.state.email, this.state.password, this.state.name)
+    event.preventDefault();
+    if (this.state.email && this.state.name && this.state.password && this.state.confirmPassword){
+      if(this.state.email && (this.state.password === this.state.confirmPassword)){
+        this.props.SignUp(this.state.email, this.state.password, this.state.name)
+      }
+      else{
+        this.setState({
+          divErrorClass: 'block'
+        })
+      }
+    }
+    else{
+      this.setState({
+        divErrorClass2: 'block'
+      })
+
+    }
+   
+	  
   }
   
 	render() {
@@ -71,6 +91,8 @@ class SignupForm extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
                 />
+                <div style={{color: 'red',display:`${this.state.divErrorClass2}`}}>Please enter all fields</div>
+                <div style={{color: 'red',display:`${this.state.divErrorClass}`}}>Passwords do not match</div>
                 <button type="button" className="btn btn-info" onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Already signed up? Go to Login</button>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
               </form>
