@@ -8,7 +8,7 @@ function DropDownInput(props) {
         <div class="form-group dropdown">
         <br></br>
     <label for="DropDownInput">{props.title}</label>
-    <select class="form-control" id="DropDownInput" onChange={props.update} name={props.name}>
+    <select class="form-control" id="DropDownInput" onChange={props.update} name={props.name} defaultValue={props.defaultValue}>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>

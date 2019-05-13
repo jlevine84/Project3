@@ -7,11 +7,12 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
+import Input from '../../components/Input/Input'
 
 class Dashboard extends React.Component {
 
   state = {
-    selectedDate: moment().format('MMMM DD YYYY'),
+    selectedDate: moment().format('YYYYDDMM'),
     Mood: "",
     Anxiety: "",
     Energy: "",
@@ -20,20 +21,38 @@ class Dashboard extends React.Component {
     SleepHours: "",
     DailyLog: "",
     ExerciseAmount: "",
-    Date: ""
+    Date: "",
+    Logged: null,
+    dbreturn:{},
+    dateRangeStart: "", 
+    dateRangeEnd: ""
+
   }
 
   componentDidMount() {
+    this.viewByDate();
+    this.pullAll()
+  }
+
+  grabCalendarDate = (grabYear, grabDay, grabMonth) => {
+    console.log(`${grabYear}${grabDay}${grabMonth}`)
+    let date = `${grabYear}${grabDay}${grabMonth}`
+    this.setState({ selectedDate: date })
     this.viewByDate()
   }
 
-  grabCalendarDate = (grabMonth, grabDay, grabYear) => {
-    let date = `${grabMonth} ${grabDay} ${grabYear}`
-    this.setState({ selectedDate: date });
+  pullAll = () => {
+    console.log('pull all executed')
+    API.getAll()
+    .then(response =>{
+        console.log(response)
+        this.setState({dbreturn: response.data.logs.entries})
+        console.log(this.state.dbreturn)
+    })
   }
+  // will need to foreach through data.logs.entries and parse into arrays
 
   viewByDate = async () => {
-    console.log(`First API Fire: ${this.state.selectedDate}`)
     API.getByDate(this.state.selectedDate)
     .then( async response => {
       if (response.data.todaysentry[0]) {
@@ -46,7 +65,8 @@ class Dashboard extends React.Component {
             SleepHours: response.data.todaysentry[0].SleepHours,
             DailyLog: response.data.todaysentry[0].DailyLog,
             ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
-            Date: response.data.todaysentry[0].Date
+            Date: moment(response.data.todaysentry[0].Date, 'YYYYDDMM').format('MMMM Do YYYY'),
+            Logged: true
         })
       } else {
         await this.setState({ 
@@ -64,11 +84,35 @@ class Dashboard extends React.Component {
     }).catch(err => console.log(err))
   }
 
-
-  grabCalendarDate = (grabMonth, grabDay, grabYear) => {
-    let date = `${grabMonth} ${grabDay} ${grabYear}`
-    this.setState({ selectedDate: date })
+  prevEntryCallBack = () => {
     this.viewByDate()
+  }
+
+  // Stuff for Jeffy to Dooz
+  // Validation of inputs, Log new Entry and search fields.
+  // Validation of future calendar dates
+  // If the exercise button is false or unselected; Don't render the Exercise.
+  // Ability to update a user's entry.
+  grabDateRange = () => {
+    console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
+    let startDate = this.state.dateRangeStart.split('/').join('')
+    let endDate = this.state.dateRangeEnd.split('/').join('')
+    console.log(startDate, endDate)
+    this.viewDateRange(moment(startDate, 'MMDDYYYY').format('YYYYDDMM'), moment(endDate, 'MMDDYYYY').format('YYYYDDMM'))
+  }
+
+  viewDateRange = (startDate, endDate) => {
+    console.log(startDate + " " + endDate)
+    API.getRange(startDate, endDate)
+      .then(response => {
+
+      }).catch(err => console.log(err))
+  }
+
+  updateValue = async event => {
+    let name = event.target.name
+    let value = event.target.value
+    await this.setState({ [name]: value} )
   }
 
   render() {
@@ -76,12 +120,34 @@ class Dashboard extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <BarChart/>
+            <BarChart
+              dbreturn = {this.state.dbreturn}
+            />
             <LineChart/>
           </div>
           <div className="col-6">
             <div className="calendar-component">
-              <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              <div className="col">
+                <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              </div>
+              <div className="w-100"/>
+              <div className="row search-row">
+                <Input
+                  className="input-start"
+                  placeholder="MM/DD/YYYY"
+                  title="Start Date"
+                  name="dateRangeStart"
+                  update={this.updateValue}
+                />
+                <Input
+                  className="input-end"
+                  placeholder="MM/DD/YYYY"
+                  title="End Date"
+                  name="dateRangeEnd"
+                  update={this.updateValue}
+                />
+                <button onClick={this.grabDateRange} className="btn btn-secondary btn-range">Search</button>
+              </div>  
             </div>
           </div>
         </div>
@@ -98,13 +164,15 @@ class Dashboard extends React.Component {
               dailyLog={this.state.DailyLog}
               exerciseAmount={this.state.ExerciseAmount}
               date={this.state.Date}
-              noInfo={"No Info"}
+              logged={this.state.Logged}
             />
           </div>
           <div className="col-6">
-
-          <LogUserData userID={this.props.userID}/>
-
+            <LogUserData 
+              userID={this.props.userID}
+              selectedDate={this.state.selectedDate}
+              prevEntryCallBack={this.prevEntryCallBack}           
+            />
           </div>
         </div>
       </div>
