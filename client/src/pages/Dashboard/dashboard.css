@@ -1,7 +1,23 @@
 .calendar-component {
   height: 400px;
   max-width: 800px;
-  padding:100px;
+  padding:50px;
+}
+
+.search-row {
+  padding-top: 25px;
+}
+
+.btn-search {
+
+}
+
+.input-start {
+
+}
+
+.input-end {
+
 }
 
 .activity-container {

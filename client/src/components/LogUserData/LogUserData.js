@@ -5,6 +5,7 @@ import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
 import API from './../../utils/API';
 import './LogUserData.css'
+import moment from 'moment'
 
 class LogUserData extends React.Component{
 
@@ -12,8 +13,8 @@ class LogUserData extends React.Component{
         Mood: "5",
         Anxiety: "5",
         Energy: "5",
-        MedicineTaken: "",
-        Exercise: "",
+        MedicineTaken: "false",
+        Exercise: "false",
         SleepHours: "0",
         DailyLog: "",
         ExerciseAmount: "",
@@ -39,8 +40,8 @@ class LogUserData extends React.Component{
                     Mood: "5",
                     Anxiety: "5",
                     Energy: "5",
-                    MedicineTaken: "",
-                    Exercise: "",
+                    MedicineTaken: false,
+                    Exercise: false,
                     SleepHours: "0",
                     DailyLog: "",
                     ExerciseAmount: "",
@@ -71,7 +72,7 @@ class LogUserData extends React.Component{
     API.createEntry(newEntry)
         .then(async response=>{
             await this.setState({
-                logged:true
+                logged: true
             })
         })
         .then(() => this.props.prevEntryCallBack())
@@ -79,10 +80,17 @@ class LogUserData extends React.Component{
     }
     
     render() {
+        const entryDate = moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY')
         return (      
             <div>
                 {!this.state.logged && 
                     <div className="jumbotron">
+                        <div className="row">
+                            <div className="col-sm-12">
+                                <h2>New Entry for: {entryDate}</h2>
+                            </div>
+                        </div>
+                        <hr/>
                         <h5>How are you feeling today?</h5>
                         <div className="row">
                             <div className="col-sm-12">
@@ -153,7 +161,7 @@ class LogUserData extends React.Component{
                 }
                 {this.state.logged &&
                     <div className="jumbotron">
-                        <h5>Thank you for logging today's data!</h5>
+                        <h2>Thank you for logging {entryDate}'s data!</h2>
                     </div>
                 }
             </div>

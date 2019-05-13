@@ -4,7 +4,7 @@ import './booleaninput.css'
 function BooleanInput(props) {
   return (
     <div className="medicines-Taken form-check float">
-      <p>{props.title}</p>
+      <p>* {props.title}</p>
       <input 
         className="form-check-input" 
         type="radio" 
