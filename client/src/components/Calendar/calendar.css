@@ -18,6 +18,13 @@
   background: #78E2D7;
   color: white;
 }
+
+.calendarbtn:hover {background: #78E2D7}
+.calendarbtn:active {
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
+  background: #78E2D7;
+}
 /* 
 .col  {
   padding-right: .5px;
