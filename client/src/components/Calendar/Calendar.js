@@ -113,13 +113,13 @@ class Calendar extends React.Component {
 
     // Populate Month Table
     return (
-      <table className="calendar-month-list">
+      <table className="select-month-table">
         <thead>
           <tr>
-            <th className="col-12 month-select">Select a Month</th>
+            <th>Select a Month</th>
           </tr>
         </thead>
-        <tbody className="month-list">{monthlist}</tbody>
+        <tbody>{monthlist}</tbody>
       </table>
     );
   };  // End of the Month table rendering
@@ -165,7 +165,7 @@ class Calendar extends React.Component {
 
     // Grab the shortened Days of the Week and map them into the table
     let weekdayshortname = this.weekdayshort.map(day => {
-      return <th className="col" key={day}>{day}</th>;
+      return <th key={day}>{day}</th>;
     });
 
     // Set blank spaces for Days not in the table
@@ -216,7 +216,7 @@ class Calendar extends React.Component {
     });
 
     return (
-      <div className="calendar-container-fluid">
+      <div className="calendar-container">
         <div className="calendar-nav">
           <button
             onClick={e => {
@@ -231,11 +231,11 @@ class Calendar extends React.Component {
               }}
               className="month-label"
             >
-              {this.month()}
+              Month: {this.month()}
             </div>
           ) : (<div className="month-label">{this.month()}</div>)}
           <div className="year-label">
-            {this.year()}
+            Year: {this.year()}
           </div>
            <button
           onClick={e => {
@@ -245,21 +245,17 @@ class Calendar extends React.Component {
           >Next</button>
         </div>
        
-        <div className="calendar-month-list">
-          {this.state.showMonthTable && (
-            <this.MonthList data={moment.months()} />
-          )}
-        </div>
+        {this.state.showMonthTable && (
+          <this.MonthList data={moment.months()} />
+        )}
 
         {this.state.showDateTable && (
-          <div className="calendar-day-table">
-            <table className="calendar-day">
-              <thead>
-                <tr>{weekdayshortname}</tr>
-              </thead>
-              <tbody>{daysinmonth}</tbody>
-            </table>
-          </div>
+          <table className="select-day-table">
+            <thead>
+              <tr>{weekdayshortname}</tr>
+            </thead>
+            <tbody>{daysinmonth}</tbody>
+          </table>
         )}
       </div>
     );

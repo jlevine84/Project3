@@ -7,7 +7,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import Input from '../../components/Input/Input'
+import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
 
 class Dashboard extends React.Component {
 
@@ -25,7 +25,12 @@ class Dashboard extends React.Component {
     Logged: null,
     dbreturn:{},
     test: "test",
-
+    startDay: '01',
+    startMonth: 'January',
+    startYear: '2019',
+    endDay:'01',
+    endMonth: 'December',
+    endYear: '2020',
     dateRangeStart: "", 
     dateRangeEnd: ""
 
@@ -80,7 +85,8 @@ class Dashboard extends React.Component {
           SleepHours: "",
           DailyLog: "",
           ExerciseAmount: "",
-          Date: ""
+          Date: "",
+          Logged: false
         })
       }
     }).catch(err => console.log(err))
@@ -96,9 +102,8 @@ class Dashboard extends React.Component {
   // If the exercise button is false or unselected; Don't render the Exercise.
   // Ability to update a user's entry.
   grabDateRange = () => {
-    console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
-    let startDate = this.state.dateRangeStart.split('/').join('')
-    let endDate = this.state.dateRangeEnd.split('/').join('')
+    let startDate= this.state.startMonth + " " + this.state.startDay + " " + this.state.startYear;
+    let endDate = this.state.endMonth + " " + this.state.endDay + " " + this.state.endYear;
     console.log(startDate, endDate)
     this.viewDateRange(moment(startDate, 'MMDDYYYY').format('YYYYDDMM'), moment(endDate, 'MMDDYYYY').format('YYYYDDMM'))
   }
@@ -114,69 +119,56 @@ class Dashboard extends React.Component {
   updateValue = async event => {
     let name = event.target.name
     let value = event.target.value
+    console.log(name)
+    console.log(value)
     await this.setState({ [name]: value} )
   }
 
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-6">
-            <BarChart
-              dbreturn = {this.state.dbreturn}
-            />
-            <LineChart
-              dbreturn={this.state.dbreturn}
-            />
-          </div>
-          <div className="col-6">
-            <div className="calendar-component">
-              <div className="col">
-                <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              </div>
-              <div className="w-100"/>
-              <div className="row search-row">
-                <Input
-                  className="input-start"
-                  placeholder="MM/DD/YYYY"
-                  title="Start Date"
-                  name="dateRangeStart"
-                  update={this.updateValue}
-                />
-                <Input
-                  className="input-end"
-                  placeholder="MM/DD/YYYY"
-                  title="End Date"
-                  name="dateRangeEnd"
-                  update={this.updateValue}
-                />
-                <button onClick={this.grabDateRange} className="btn btn-secondary btn-range">Search</button>
-              </div>  
+        <div className="container-fluid container-top">
+          <div className="row">
+            <div className="col-6 charts">
+              <BarChart
+                dbreturn = {this.state.dbreturn}
+              />
+              <LineChart
+                dbreturn={this.state.dbreturn}
+              />
+            </div>
+            <div className="col-6 calendar">
+              <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              {/* Search Range Component */}
+              <DateRangeSearch updateValue={this.updateValue} grabDateRange={this.grabDateRange}></DateRangeSearch>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-6">
-            <ViewUserData  
-              selectedDate={this.state.selectedDate}
-              mood={this.state.Mood}
-              anxiety={this.state.Anxiety}
-              energy={this.state.Energy}
-              medicineTaken={this.state.MedicineTaken.toString()}
-              exercise={this.state.Exercise.toString()}
-              sleepHours={this.state.SleepHours}
-              dailyLog={this.state.DailyLog}
-              exerciseAmount={this.state.ExerciseAmount}
-              date={this.state.Date}
-              logged={this.state.Logged}
-            />
-          </div>
-          <div className="col-6">
-            <LogUserData 
-              userID={this.props.userID}
-              selectedDate={this.state.selectedDate}
-              prevEntryCallBack={this.prevEntryCallBack}           
-            />
+        <div className="container-fluid container-bottom">
+          <div className="row">
+            {/* <div className="col"></div> */}
+            <div className="col-6">
+              <ViewUserData  
+                selectedDate={this.state.selectedDate}
+                mood={this.state.Mood}
+                anxiety={this.state.Anxiety}
+                energy={this.state.Energy}
+                medicineTaken={this.state.MedicineTaken.toString()}
+                exercise={this.state.Exercise.toString()}
+                sleepHours={this.state.SleepHours}
+                dailyLog={this.state.DailyLog}
+                exerciseAmount={this.state.ExerciseAmount}
+                date={this.state.Date}
+                logged={this.state.Logged}
+              />
+            </div>
+            <div className="col-6">
+              <LogUserData 
+                userID={this.props.userID}
+                selectedDate={this.state.selectedDate}
+                prevEntryCallBack={this.prevEntryCallBack}           
+              />
+            </div>
           </div>
         </div>
       </div>

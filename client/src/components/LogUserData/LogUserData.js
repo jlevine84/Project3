@@ -86,8 +86,8 @@ class LogUserData extends React.Component{
                 {!this.state.logged && 
                     <div className="jumbotron">
                         <div className="row">
-                            <div className="col-sm-12">
-                                <h2>New Entry for: {entryDate}</h2>
+                            <div className="col-sm-12 top">
+                                <h5>New Entry for: {entryDate}</h5>
                             </div>
                         </div>
                         <hr/>
@@ -161,7 +161,7 @@ class LogUserData extends React.Component{
                 }
                 {this.state.logged &&
                     <div className="jumbotron">
-                        <h2>Thank you for logging {entryDate}'s data!</h2>
+                        <h5>Thank you for logging {entryDate}'s data!</h5>
                     </div>
                 }
             </div>
