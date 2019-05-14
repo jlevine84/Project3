@@ -124,7 +124,9 @@ class Dashboard extends React.Component {
             <BarChart
             dbreturn = {this.state.dbreturn}
             />
-            <LineChart/>
+            <LineChart
+              dbreturn={this.state.dbreturn}
+            />
           </div>
           <div className="col-6">
             <div className="calendar-component">

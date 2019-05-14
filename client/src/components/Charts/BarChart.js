@@ -34,38 +34,37 @@ function getData(props){
 }
 
 const data = {
-    labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
+    labels: dates,
     // once loop is working, replace with dates array
     datasets: [
         {
-            label: '',
+            label: 'Mood',
             backgroundColor: 'rgba(255,99,132,0.2)',
             borderColor: 'rgba(255,99,132,1)',
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
             hoverBorderColor: 'rgb(93, 142, 61)',
-            data: 
-            [2, 8, 5, 4, 7]
+            data: mood
             // once loop is working, replace with mood array
         },
         {
-            label: '',
+            label: 'Anxiety',
             backgroundColor: 'rgba(83, 181, 181, 0.4)',
             borderColor: 'rgba(41, 182, 182, 0.77)',
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(236, 230, 64, 0.44)',
             hoverBorderColor: 'rgba(236, 230, 64, 0.82)',
-            data: [3, 9, 6, 2, 6]
+            data: anxiety
             // once loop is working, replace with anxiety array
         },
         {
-            label: '',
+            label: 'Energy',
             backgroundColor: 'rgba(41, 142, 182, 0.29)',
             borderColor: 'rgba(41, 142, 182, 0.8)',
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(241, 28, 138, 0.6)',
             hoverBorderColor: 'rgb(241, 28, 138)',
-            data: [5, 6, 3, 2, 4]
+            data: energy
             // once loop is working, replace with energy array
         }
     ],
@@ -83,18 +82,18 @@ const data = {
     }
 }
 
-
 class BarChart extends React.Component {
- 
+
     render() {
 
-        console.log(this.props.dbreturn)
+        // console.log(this.props.dbreturn)
+        
         getData(this.props.dbreturn); 
-        console.log(dates)  
-        console.log(anxiety)
-        console.log(sleep)
-        console.log(mood)
-        console.log(energy)
+        // console.log(dates)  
+        // console.log(anxiety)
+        // console.log(sleep)
+        // console.log(mood)
+        // console.log(energy)
 
         return (
             <div className = "barChart">
