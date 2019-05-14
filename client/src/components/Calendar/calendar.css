@@ -1,6 +1,7 @@
 .calendar-container {
   margin-left: 20%;
   margin-right: 20%;
+  margin-top:5%;
   max-width: 60%;
   border: solid 1px rgb(196, 196, 196);
   box-shadow: 3px 2px 2px black;

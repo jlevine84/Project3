@@ -7,8 +7,8 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import Input from '../../components/Input/Input'
-
+import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
+import { throws } from 'assert';
 class Dashboard extends React.Component {
 
   state = {
@@ -133,26 +133,7 @@ class Dashboard extends React.Component {
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
               {/* Search Range Component */}
-              <div className="input-range">
-                <Input
-                  className="input-start"
-                  placeholder="MM/DD/YYYY"
-                  title="Start Date"
-                  name="dateRangeStart"
-                  update={this.updateValue}
-                />
-                <Input
-                  className="input-end"
-                  placeholder="MM/DD/YYYY"
-                  title="End Date"
-                  name="dateRangeEnd"
-                  update={this.updateValue}
-                />
-                <button onClick={this.grabDateRange} className="btn btn-secondary btn-range">Search</button>
-              </div>
-
-              {/* Instructions Component */}
-              <div className="instructions">Instructions</div>
+              <DateRangeSearch updateValue={this.updateValue} grabDateRange={this.grabDateRange}></DateRangeSearch>
             </div>
           </div>
         </div>
