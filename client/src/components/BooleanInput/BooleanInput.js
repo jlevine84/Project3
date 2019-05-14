@@ -20,6 +20,7 @@ function BooleanInput(props) {
         name={props.name}
         value="false"
         onClick={props.update} 
+        defaultChecked="true"
       />
       <p>False</p>
     </div>
