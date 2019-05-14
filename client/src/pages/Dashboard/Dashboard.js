@@ -148,26 +148,28 @@ class Dashboard extends React.Component {
           <div className="row">
             {/* <div className="col"></div> */}
             <div className="col-6">
-              <ViewUserData  
-                selectedDate={this.state.selectedDate}
-                mood={this.state.Mood}
-                anxiety={this.state.Anxiety}
-                energy={this.state.Energy}
-                medicineTaken={this.state.MedicineTaken.toString()}
-                exercise={this.state.Exercise.toString()}
-                sleepHours={this.state.SleepHours}
-                dailyLog={this.state.DailyLog}
-                exerciseAmount={this.state.ExerciseAmount}
-                date={this.state.Date}
-                logged={this.state.Logged}
-              />
+          
+            <ViewUserData  
+            selectedDate={this.state.selectedDate}
+            mood={this.state.Mood}
+            anxiety={this.state.Anxiety}
+            energy={this.state.Energy}
+            medicineTaken={this.state.MedicineTaken.toString()}
+            exercise={this.state.Exercise.toString()}
+            sleepHours={this.state.SleepHours}
+            dailyLog={this.state.DailyLog}
+            exerciseAmount={this.state.ExerciseAmount}
+            date={this.state.Date}
+            logged={this.state.Logged}
+            prevEntryCallBack={this.prevEntryCallBack}
+            selectedDate={this.state.selectedDate}
+            userID={this.props.userID}
+          />
+              
+              
             </div>
             <div className="col-6">
-              <LogUserData 
-                userID={this.props.userID}
-                selectedDate={this.state.selectedDate}
-                prevEntryCallBack={this.prevEntryCallBack}           
-              />
+              
             </div>
           </div>
         </div>
