@@ -1,23 +1,23 @@
-.calendar-component {
-  height: 400px;
-  max-width: 800px;
-  padding:50px;
+.row {
+  height: 100%;
+  width: 100%;
 }
 
-.search-row {
-  padding-top: 25px;
-}
-
-.btn-search {
-
+.input-range {
+  max-height: 20%;
+  width: 100%;
 }
 
 .input-start {
-
+  width: 50%;
 }
 
 .input-end {
+  width: 50%;
+}
 
+.instructions {
+  max-height: 20%;
 }
 
 .activity-container {

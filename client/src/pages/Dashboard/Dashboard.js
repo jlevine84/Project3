@@ -120,22 +120,20 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-6">
-            <BarChart
-              dbreturn = {this.state.dbreturn}
-            />
-            <LineChart
-              dbreturn={this.state.dbreturn}
-            />
-          </div>
-          <div className="col-6">
-            <div className="calendar-component">
-              <div className="col">
-                <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              </div>
-              <div className="w-100"/>
-              <div className="row search-row">
+        <div className="container-fluid container-top">
+          <div className="row">
+            <div className="col-6 charts">
+              <BarChart
+                dbreturn = {this.state.dbreturn}
+              />
+              <LineChart
+                dbreturn={this.state.dbreturn}
+              />
+            </div>
+            <div className="col-6 calendar">
+              <Calendar grabCalendarDate={this.grabCalendarDate}/>
+              {/* Search Range Component */}
+              <div className="input-range">
                 <Input
                   className="input-start"
                   placeholder="MM/DD/YYYY"
@@ -151,32 +149,38 @@ class Dashboard extends React.Component {
                   update={this.updateValue}
                 />
                 <button onClick={this.grabDateRange} className="btn btn-secondary btn-range">Search</button>
-              </div>  
+              </div>
+
+              {/* Instructions Component */}
+              <div className="instructions">Instructions</div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-6">
-            <ViewUserData  
-              selectedDate={this.state.selectedDate}
-              mood={this.state.Mood}
-              anxiety={this.state.Anxiety}
-              energy={this.state.Energy}
-              medicineTaken={this.state.MedicineTaken.toString()}
-              exercise={this.state.Exercise.toString()}
-              sleepHours={this.state.SleepHours}
-              dailyLog={this.state.DailyLog}
-              exerciseAmount={this.state.ExerciseAmount}
-              date={this.state.Date}
-              logged={this.state.Logged}
-            />
-          </div>
-          <div className="col-6">
-            <LogUserData 
-              userID={this.props.userID}
-              selectedDate={this.state.selectedDate}
-              prevEntryCallBack={this.prevEntryCallBack}           
-            />
+        <div className="container-fluid container-bottom">
+          <div className="row">
+            {/* <div className="col"></div> */}
+            <div className="col-6">
+              <ViewUserData  
+                selectedDate={this.state.selectedDate}
+                mood={this.state.Mood}
+                anxiety={this.state.Anxiety}
+                energy={this.state.Energy}
+                medicineTaken={this.state.MedicineTaken.toString()}
+                exercise={this.state.Exercise.toString()}
+                sleepHours={this.state.SleepHours}
+                dailyLog={this.state.DailyLog}
+                exerciseAmount={this.state.ExerciseAmount}
+                date={this.state.Date}
+                logged={this.state.Logged}
+              />
+            </div>
+            <div className="col-6">
+              <LogUserData 
+                userID={this.props.userID}
+                selectedDate={this.state.selectedDate}
+                prevEntryCallBack={this.prevEntryCallBack}           
+              />
+            </div>
           </div>
         </div>
       </div>
