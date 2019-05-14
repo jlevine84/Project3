@@ -37,7 +37,7 @@ class LoginForm extends Component {
             <Col size="md-12">
              
                 <form style={{marginTop: 10}}>
-                  <label htmlFor="username">Username: </label>
+                  <label htmlFor="username">Email: </label>
                   <Input
                     type="text"
                     name="username"

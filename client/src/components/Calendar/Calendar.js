@@ -12,7 +12,7 @@ class Calendar extends React.Component {
     dateObject: moment(),
     allmonths: moment.months(),
     selectedDay: moment().format("DD"),
-    selectedMonth: moment().format("MMMM"),
+    selectedMonth: moment().format("MM"),
     selectedYear: moment().format("YYYY")
   };
 
@@ -24,15 +24,12 @@ class Calendar extends React.Component {
 
   // Selected Day function
   onDayClick = async (event) => {
-    console.log("Event Values :" + event.target.getAttribute('value'))
     let newD = moment(event.target.getAttribute('value'), 'D').format("DD")
-    console.log(`newD is: ${newD}`)
     await this.setState({ selectedDay: newD })
-    console.log(`New Day on Calendar: ${this.state.selectedDay}`)
     let grabMonth = this.state.selectedMonth
     let grabDay = this.state.selectedDay
     let grabYear = this.state.selectedYear
-    this.props.grabCalendarDate(grabMonth, grabDay, grabYear)
+    this.props.grabCalendarDate(grabYear, grabDay, grabMonth)
   }
 
   // Month Functions

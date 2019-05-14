@@ -13,7 +13,7 @@ module.exports = {
         .findOne({ _id: req.user._id})
         .populate('entries')
         .then(logs => {
-          
+          console.log(logs)
           res.json({logs});
         })
         .catch(err => res.status(422).json(err));
@@ -24,19 +24,33 @@ module.exports = {
   // To find a specific mood entry by Date
   findByDate: function(req, res) {
     console.log(`req: ${JSON.stringify(req.params.date)}`)
-        if (req.params.date) {
-          console.log
-          db.Entry
-            .find({UserID: req.user._id, Date: req.params.date })
-            .then(entry => {
-             console.log(entry)
-              res.json({ todaysentry: entry });
-            })
-            .catch(err => res.status(422).json(err));
-        } else {
-          return res.json({ todaysentry: null });
-        }
-      },
+    if (req.params.date) {
+      console.log
+      db.Entry
+        .find({UserID: req.user._id, Date: req.params.date })
+        .then(entry => {
+          console.log(entry)
+          res.json({ todaysentry: entry });
+        })
+        .catch(err => res.status(422).json(err));
+    } else {
+      return res.json({ todaysentry: null });
+    }
+  },
+  // Find entries by date range
+  findByRange: function(req, res) {
+    let startDate = req.query.startDate
+    let endDate = req.query.endDate
+    if (req.user) {
+      db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } })
+        .then(entries => {
+          res.json({ rangeData: entries})
+          console.log(JSON.stringify(entries))
+        }).catch(err => console.log(err))
+    } else {
+      return res.json({ rangeData: null})
+    }
+  },
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
