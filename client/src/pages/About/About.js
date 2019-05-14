@@ -5,8 +5,6 @@ function About() {
   return (
     <div className="body">
        <h4><Link to="/" className="link">Home</Link></h4>
-      
-        
           <h1>About Dadirri</h1>
           <br></br>
           <img src='./../../images/icon.png' className='icon  mx-auto d-block'></img>
@@ -15,27 +13,28 @@ function About() {
       <div className="row no-gutters">
         <div className="container about-info">
           <p>
-            Dadirri, by definition, is an Aboriginal term meaning, “A state of stillness, inner reflection, and deep listening,” and we aim to 
-            help our users by providing them a platform in which to do so.
+            <strong>Dadirri</strong>, by definition, is an Aboriginal term meaning, <strong>“A state of stillness, inner reflection, and deep listening.”</strong> 
           </p>
           <p>
-            The goal of Dadirri is to provide a secure means for users to track their mental health in an easy to use and helpful manner. 
-            To achieve those goals, Dadirri allows users to log helpful information that they can use to keep track of their progress.
+            Dadirri's goal is to help our users by providing them a secure platform in which you can track your mental health in an easy to use and helpful manner. To achieve those goals, Dadirri allows users to log helpful information so you can keep track of your goals, progress, and mental wellness.
           </p>
           <p>
-            Our goal and wish is that we can help you by providing a secure place to do this. Use Dadirri as a secure
-             tool to keep track of your daily mental health through the use of:
+            Dadirri uses your daily entries to help chart and show trends through a myriad of date functionalities. If you ever forget to enter or want to update your daily entries; Don't worry! You can always select a date then enter or update a day's information!
+          </p>
+          <p>
+            Take full advantage of our helpful tools which include:
             <ul>
-              <li>A Diary Entry</li>
-              <li>A Mood Scale</li>
-              <li>An Anxiety Scale</li>
-              <li>An Energy Scale</li>
-              <li>An Exercise Tracker</li>
-              <li>A Medication Tracker</li>
+              <li>A daily diary where you can record any thoughts or feelings you have.</li>
+              <li>Multiple easy to use trackers to log your overall health.</li>
+              <li>A Contact list for your Doctor's information for easy reference.</li>
+              <li>The ability to keep track of medications as well as a reminder to take them.</li>
             </ul>
           </p>
+          <hr/>
+          <p className="centered"><Link to='/'>Begin your journey with us today!</Link></p>
+          <hr/>
           <p>
-            Dadirri Team:
+            The Dadirri Team:
             <ul>
               <li><a href="https://github.com/ralracish">Carlar Blackman</a></li>
               <li><a href="https://github.com/kendallsdavis">Kendall Davis</a></li>
@@ -44,7 +43,6 @@ function About() {
               <li><a href="https://github.com/JamilW">Jamil Weeks</a></li>
             </ul>
           </p>
-          <p className="centered"><Link to='/'>Begin your wellness journey now!</Link></p>
         </div>
       </div>
     </div>

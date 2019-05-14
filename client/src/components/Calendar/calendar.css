@@ -1,6 +1,10 @@
-.calendar-container {
-  width: 80%;
+.calendar-container-fluid {
+  width: 100%;
   border: solid 1px black;
+  box-shadow: 5px 10px black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .calendar-nav {
@@ -11,7 +15,20 @@
 .calendarbtn {
   position: relative;
   width: 25%;
+  background: #78E2D7;
+  color: white;
 }
+
+.calendarbtn:hover {background: #78E2D7}
+.calendarbtn:active {
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
+  background: #78E2D7;
+}
+/* 
+.col  {
+  padding-right: .5px;
+} */
 
 .btn-prev {
   position: relative;
@@ -86,7 +103,7 @@
 
 /* selected date */
 .selected-day {
-  background: yellow;
+  background: #C6E7EC;
   color: black;
   border: 1px solid black;
 }

@@ -19,15 +19,18 @@ class App extends Component {
 			showLogin:false,
 			showSignUp: false,
 			redirectTo: null,
-			name: ''
+			name: '',
+			loginError: 'none'
     };
 	
 	
 	toggleModal1 = () => this.setState({
-		showLogin: !this.state.showLogin
+		showLogin: !this.state.showLogin,
+		loginError: 'none'
 	})
 	toggleModal2 = () => this.setState({
-		showSignUp: !this.state.showSignUp
+		showSignUp: !this.state.showSignUp,
+		loginError: 'none'
 	});
   
 	componentDidMount(){
@@ -39,7 +42,8 @@ class App extends Component {
 					user: response.data.user,
 					userEmail: response.data.user.email,
 					redirectTo: "/dashboard",
-					name: response.data.user.name
+					name: response.data.user.name,
+					loginError: 'none'
 				});
 				console.log("logged in from previous login")
 				console.log(this.state.user._id)
@@ -64,7 +68,7 @@ class App extends Component {
 					user: null,
 					redirectTo: "/"
 				});
-				"logged out from button click"
+				console.log("logged out from button click")
 			}
 		});
 	}
@@ -85,12 +89,11 @@ class App extends Component {
 				console.log("logged in")
 				console.log(response.data.user)
 			}
-			else{
-				console.log("login failed")
-			}
 			
     }).catch(error=>{
-			console.log(error)
+			this.setState({
+				loginError: 'block'
+			})
 		})
 	}
 
@@ -139,7 +142,7 @@ class App extends Component {
 						
 				<Switch>
 				<Route exact path="/" component={() => 
-				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2}
+				<LandingPage user={this.state.user} toggle1 = {this.toggleModal1} toggle2={this.toggleModal2} loginError={this.state.loginError}
 				showSignInModal={this.state.showLogin} login={this.login}
 				showSignUpModal={this.state.showSignUp} SignUp={this.SignUp}/>}  />
 				<Route exact path="/about" component={() => <About user={this.state.user}/>} />
