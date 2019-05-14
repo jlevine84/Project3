@@ -1,13 +1,14 @@
 import React from 'react';
-import Input from './../Input/Input';
 import './dateRangeSearch.css';
 
 class dateRangeSearch extends React.Component{
+    
+
     render(){
         return(
             <div>
                 <br></br>
-                <h6>Enter a date range to see data from that range</h6>
+                <h6>Select a date to see that day's entry or select range of dates.</h6>
                 <div className="input-range">
                     <form>
                         <div className="form-group dropdown">
@@ -80,6 +81,7 @@ class dateRangeSearch extends React.Component{
         <div className="dropdown">
         <br></br>
         <br></br>
+        <br/>
         <h6>TO:</h6>
         </div>
         <div className="form-group dropdown">
