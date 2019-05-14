@@ -8,7 +8,7 @@ import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
-import { throws } from 'assert';
+
 class Dashboard extends React.Component {
 
   state = {
@@ -25,7 +25,12 @@ class Dashboard extends React.Component {
     Logged: null,
     dbreturn:{},
     test: "test",
-
+    startDay: '01',
+    startMonth: 'January',
+    startYear: '2019',
+    endDay:'01',
+    endMonth: 'December',
+    endYear: '2020',
     dateRangeStart: "", 
     dateRangeEnd: ""
 
@@ -80,7 +85,8 @@ class Dashboard extends React.Component {
           SleepHours: "",
           DailyLog: "",
           ExerciseAmount: "",
-          Date: ""
+          Date: "",
+          Logged: false
         })
       }
     }).catch(err => console.log(err))
@@ -96,9 +102,8 @@ class Dashboard extends React.Component {
   // If the exercise button is false or unselected; Don't render the Exercise.
   // Ability to update a user's entry.
   grabDateRange = () => {
-    console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
-    let startDate = this.state.dateRangeStart.split('/').join('')
-    let endDate = this.state.dateRangeEnd.split('/').join('')
+    let startDate= this.state.startMonth + " " + this.state.startDay + " " + this.state.startYear;
+    let endDate = this.state.endMonth + " " + this.state.endDay + " " + this.state.endYear;
     console.log(startDate, endDate)
     this.viewDateRange(moment(startDate, 'MMDDYYYY').format('YYYYDDMM'), moment(endDate, 'MMDDYYYY').format('YYYYDDMM'))
   }
@@ -114,6 +119,8 @@ class Dashboard extends React.Component {
   updateValue = async event => {
     let name = event.target.name
     let value = event.target.value
+    console.log(name)
+    console.log(value)
     await this.setState({ [name]: value} )
   }
 
