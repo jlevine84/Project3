@@ -2,8 +2,7 @@ import React from "react";
 import moment from "moment";
 import "./calendar.css";
 
-class Calendar extends React.Component {
-  // Get the abbreviated days of the week
+export default class Calendar extends React.Component {
   weekdayshort = moment.weekdaysShort();
 
   state = {
@@ -16,43 +15,30 @@ class Calendar extends React.Component {
     selectedYear: moment().format("YYYY")
   };
 
-  // Day Functions
-  // Get the current Day
-  currentDay = () => {
-    return this.state.dateObject.format("DD");
-  };
-
-  // Selected Day function
-  onDayClick = async (event) => {
-    let newD = moment(event.target.getAttribute('value'), 'D').format("DD")
-    await this.setState({ selectedDay: newD })
-    let grabMonth = this.state.selectedMonth
-    let grabDay = this.state.selectedDay
-    let grabYear = this.state.selectedYear
-    this.props.grabCalendarDate(grabYear, grabDay, grabMonth)
-  }
-
-  // Month Functions
-  // Get the Days in the Month
   daysInMonth = () => {
     return this.state.dateObject.daysInMonth();
   };
 
-  // Get the current Month
-  month = () => {
-    return this.state.dateObject.format("MMMM");
+  year = () => {
+    return this.state.dateObject.format("Y");
   };
 
-  // Find the first Day of each Month
+  currentDay = () => {
+    return this.state.dateObject.format("D");
+  };
+
   firstDayOfMonth = () => {
     let dateObject = this.state.dateObject;
     let firstDay = moment(dateObject)
       .startOf("month")
-      .format("DD"); // Day of week 0...1..5...6
+      .format("d"); // Day of week 0...1..5...6
     return firstDay;
   };
 
-  // Show the Month selector
+  month = () => {
+    return this.state.dateObject.format("MMMM");
+  };
+
   showMonth = (e, month) => {
     this.setState({
       showMonthTable: !this.state.showMonthTable,
@@ -60,7 +46,6 @@ class Calendar extends React.Component {
     });
   };
 
-  // Set the selected Month
   setMonth = month => {
     let monthNo = this.state.allmonths.indexOf(month);
     let dateObject = Object.assign({}, this.state.dateObject);
@@ -73,9 +58,7 @@ class Calendar extends React.Component {
     });
   };
 
-  // Render the Month List
   MonthList = props => {
-    // Map the Months
     let months = [];
     props.data.map(data => {
       months.push(
@@ -86,12 +69,10 @@ class Calendar extends React.Component {
             this.setMonth(data);
           }}
         >
-        {data}
+          <span>{data}</span>
         </td>
       );
     });
-
-    // Set up Month table elements
     let rows = [];
     let cells = [];
 
@@ -104,14 +85,11 @@ class Calendar extends React.Component {
         cells.push(row);
       }
     });
-
-    // Push the data into the table
     rows.push(cells);
     let monthlist = rows.map((d, i) => {
-      return <tr key={i}>{d}</tr>;
+      return <tr>{d}</tr>;
     });
 
-    // Populate Month Table
     return (
       <table className="select-month-table">
         <thead>
@@ -122,33 +100,34 @@ class Calendar extends React.Component {
         <tbody>{monthlist}</tbody>
       </table>
     );
-  };  // End of the Month table rendering
-
-  // Year functions
-  // Get the current Year
-  year = () => {
-    return this.state.dateObject.format("YYYY");
   };
 
-  // Function for navigating the table backwards
   onPrev = () => {
-    let curr = "month";
+    let curr = "";
+    if (this.state.showYearTable === true) {
+      curr = "year";
+    } else {
+      curr = "month";
+    }
     this.setState({
       dateObject: this.state.dateObject.subtract(1, curr),
-      selectedMonth: this.state.dateObject.format("MMMM")
+      selectedMonth: this.state.dateObject.format("MM")
     });
   };
 
-  // Function for navigating the table backwards
   onNext = () => {
-    let curr = "month";
+    let curr = "";
+    if (this.state.showYearTable === true) {
+      curr = "year";
+    } else {
+      curr = "month";
+    }
     this.setState({
       dateObject: this.state.dateObject.add(1, curr),
-      selectedMonth: this.state.dateObject.format("MMMM")
+      selectedMonth: this.state.dateObject.format("MM")
     });
   };
 
-  // Update the Dates of the table to render the correct days
   getDates(startDate, stopDate) {
     var dateArray = [];
     var currentDate = moment(startDate);
@@ -160,24 +139,27 @@ class Calendar extends React.Component {
     return dateArray;
   }
 
-  // Main render method
-  render() {
+  // Selected Day function
+  onDayClick = async (event) => {
+    let newD = moment(event.target.getAttribute('value'), 'D').format("DD")
+    await this.setState({ selectedDay: newD })
+    let grabMonth = this.state.selectedMonth
+    let grabDay = this.state.selectedDay
+    let grabYear = this.state.selectedYear
+    this.props.grabCalendarDate(grabYear, grabDay, grabMonth)
+  }
 
-    // Grab the shortened Days of the Week and map them into the table
+  render() {
     let weekdayshortname = this.weekdayshort.map(day => {
       return <th key={day}>{day}</th>;
     });
-
-    // Set blank spaces for Days not in the table
     let blanks = [];
     for (let i = 0; i < this.firstDayOfMonth(); i++) {
       blanks.push(<td className="calendar-day empty">{""}</td>);
     }
-
-    // Set the amount of days in the month and add function to select properties
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
-      let currentDay = (d == this.currentDay() ? "day today": "day");
+      let currentDay = d == this.currentDay() ? "today" : "";
       let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
       daysInMonth.push(
         <td 
@@ -190,8 +172,6 @@ class Calendar extends React.Component {
         </td>
       );
     }
-
-    // Set up data values for rendering the Days
     var totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
     let cells = [];
@@ -210,7 +190,6 @@ class Calendar extends React.Component {
       }
     });
 
-    // Map the days in the month to the table
     let daysinmonth = rows.map((d, i) => {
       return <tr>{d}</tr>;
     });
@@ -246,7 +225,7 @@ class Calendar extends React.Component {
         </div>
        
         {this.state.showMonthTable && (
-          <this.MonthList data={moment.months()} />
+          <this.MonthList props={this.month()} data={moment.months()} />
         )}
 
         {this.state.showDateTable && (
@@ -261,5 +240,3 @@ class Calendar extends React.Component {
     );
   }
 }
-
-export default Calendar
