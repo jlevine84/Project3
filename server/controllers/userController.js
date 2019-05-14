@@ -10,7 +10,7 @@ module.exports = {
       return res.json({ user: null });
     }
   },
-  register: (req, res) => {
+  register: (req, res, next) => {
     const { email, password, name } = req.body;
     // ADD VALIDATION
     db.User.findOne({ 'email': email }, (err, userMatch) => {
@@ -25,8 +25,9 @@ module.exports = {
         'name' : name
       });
       newUser.save((err, savedUser) => {
-        if (err) return res.json(err);
-        return res.json(savedUser);
+        if (err) return res.status(500).json(err);
+        // return res.json(savedUser);
+        next()
       });
     });
   },
