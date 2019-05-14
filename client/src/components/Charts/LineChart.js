@@ -1,8 +1,19 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import './LineChart.css'
+
+const dates = [];
+const sleep = []
+
+function getData(props) {
+    // can't test functionality of for loop until db call can return all entries. Currently only returning one.
+    for (var i = 0; i < props.length; i++) {
+        dates.push(props[i]['Date'])
+        sleep.push(props[i]['SleepHours'])
+    }
+}
 const data = {
-    labels: ['05/05/19', '05/06/19', '05/07/19', '05/08/19', '05/09/19'],
+    labels: dates,
     datasets: [
         {
             label: 'Sleep',
@@ -12,19 +23,18 @@ const data = {
             pointStrokeColor: '#fff',
             pointHighlightFill: '#37F0F0',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [9, 7, 14, 10, 3], 
+            data: sleep, 
         },
     ]
 }
-
-
 
 class LineChart extends React.Component {
 
 
     render() {
+        getData(this.props.dbreturn); 
         return (
-            <div className = "lineChart">
+            <div className="lineChart">
                 <Line
                     data={data}
                     width={500}
