@@ -1,15 +1,16 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import './LineChart.css'
-
+import moment from 'moment'
 const dates = [];
 const sleep = []
 
-function getData(props) {
+function getData(data) {
     // can't test functionality of for loop until db call can return all entries. Currently only returning one.
-    for (var i = 0; i < props.length; i++) {
-        dates.push(props[i]['Date'])
-        sleep.push(props[i]['SleepHours'])
+    for (var i = data.length-1; i> -1; i--) {
+        let dateFormatted = moment(data[i]['Date'], 'YYYYDDMM').format('MMMM DD')
+        dates.push(dateFormatted)
+        sleep.push(data[i]['SleepHours'])
     }
 }
 const data = {
