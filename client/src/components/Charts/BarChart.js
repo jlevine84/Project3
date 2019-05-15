@@ -85,16 +85,12 @@ const data = {
 class BarChart extends React.Component {
 
     render() {
-
-        // console.log(this.props.dbreturn)
         
         getData(this.props.dbreturn); 
-        // console.log(dates)  
-        // console.log(anxiety)
-        // console.log(sleep)
-        // console.log(mood)
-        // console.log(energy)
-
+        const object = {
+            object: this.props.dbreturn
+        }
+        console.log(object)
         return (
             <div className = "barChart">
                 <Bar
