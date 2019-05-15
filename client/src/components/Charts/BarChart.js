@@ -87,8 +87,18 @@ const data = {
 }
 
 class BarChart extends React.Component {
-
-    componentWillUnMount(){
+componentDidUpdate(){
+    dates = []
+ energy = []
+ mood = []
+ anxiety = []
+ sleep = []
+ dailyLog = []
+ exerciseAmount = []
+ medicineTaken = []
+ exercise = []
+}
+    componentWillUnmount(){
  dates = []
  energy = []
  mood = []
