@@ -2,6 +2,7 @@ import React from 'react';
 import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
+import { model } from 'mongoose';
 // import Dashboard from '../../pages/Dashboard/Dashboard'
 
 let dates = []
@@ -105,8 +106,7 @@ class BarChart extends React.Component {
                     height={100}
                     options={{
                         maintainAspectRatio: false,
-                        scales: { yAxes: [{ ticks: { beginAtZero: true, max: 10 } }], xAxes: [{ ticks: { beginAtZero: true } }] }
-
+                        scales: { yAxes: [{ ticks: { beginAtZero: true, max: 10 } }], xAxes: [{ ticks: { beginAtZero: true } }], }
                     }}
                 />
             </div>

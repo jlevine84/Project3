@@ -3,7 +3,7 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-import BarChart from '../../components/Charts/BarChart.js'
+import BarChart from '../../components/Charts/ReChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
