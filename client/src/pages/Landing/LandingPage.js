@@ -25,7 +25,7 @@ class LandingPage extends React.Component{
           <br></br>
           <br></br>
           <img src="././images/icon.png" alt="Nautilus" className="img-glow mx-auto d-block"/>
-          <h1 className="title">Dadirri</h1>
+          <h1 className="titlex">Dadirri</h1>
           <div className="buttonDiv">
             <button type="button" className="btn btn-light signUp" onClick={this.props.toggle1}>Sign In/Sign Up</button>
           </div>
