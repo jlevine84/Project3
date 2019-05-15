@@ -2,7 +2,7 @@ import React from 'react';
 import './dateRangeSearch.css';
 import moment from 'moment'
 
-class dateRangeSearch extends React.Component{
+class DateRangeSearch extends React.Component{
 
     state = {
         startMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
@@ -195,4 +195,4 @@ class dateRangeSearch extends React.Component{
     }
 }
 
-export default dateRangeSearch;
+export default DateRangeSearch;
