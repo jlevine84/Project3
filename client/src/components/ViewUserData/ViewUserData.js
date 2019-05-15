@@ -123,7 +123,7 @@ class ViewUserData extends React.Component {
              {(this.state.logged && !this.state.edit) ?
              <div className ="jumbotron">
              <div>
-                 <h5>Data for {this.state.viewDate}</h5>
+                 <h5>Data for {entryDate}</h5>
                  <p><strong>Mood: </strong>{this.props.mood}</p>
                  <p><strong>Anxiety: </strong>{this.props.anxiety}</p>
                  <p><strong>Energy: </strong>{this.props.energy}</p>
