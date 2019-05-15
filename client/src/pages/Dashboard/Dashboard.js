@@ -3,12 +3,13 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-import BarChart from '../../components/Charts/BarChart.js'
-import LineChart from '../../components/Charts/LineChart.js'
+// import BarChart from '../../components/Charts/BarChart.js'
+// import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
 import { throws } from 'assert';
+
 class Dashboard extends React.Component {
 
   state = {
@@ -141,25 +142,24 @@ class Dashboard extends React.Component {
             {/* <div className="col"></div> */}
             <div className="col-6">
               <ViewUserData  
-                selectedDate={this.state.selectedDate}
-                mood={this.state.Mood}
-                anxiety={this.state.Anxiety}
-                energy={this.state.Energy}
-                medicineTaken={this.state.MedicineTaken.toString()}
-                exercise={this.state.Exercise.toString()}
-                sleepHours={this.state.SleepHours}
-                dailyLog={this.state.DailyLog}
-                exerciseAmount={this.state.ExerciseAmount}
-                date={this.state.Date}
-                logged={this.state.Logged}
-              />
+              selectedDate={this.state.selectedDate}
+              mood={this.state.Mood}
+              anxiety={this.state.Anxiety}
+              energy={this.state.Energy}
+              medicineTaken={this.state.MedicineTaken.toString()}
+              exercise={this.state.Exercise.toString()}
+              sleepHours={this.state.SleepHours}
+              dailyLog={this.state.DailyLog}
+              exerciseAmount={this.state.ExerciseAmount}
+              date={this.state.Date}
+              logged={this.state.Logged}
+              prevEntryCallBack={this.prevEntryCallBack}
+              selectedDate={this.state.selectedDate}
+              userID={this.props.userID}
+              />  
             </div>
             <div className="col-6">
-              <LogUserData 
-                userID={this.props.userID}
-                selectedDate={this.state.selectedDate}
-                prevEntryCallBack={this.prevEntryCallBack}           
-              />
+              
             </div>
           </div>
         </div>

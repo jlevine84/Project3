@@ -1,7 +1,7 @@
-import React from 'react';
-import { defaults } from 'react-chartjs-2';
-import { Bar, Line } from 'react-chartjs-2';
-import './BarChart.css'
+// import React from 'react';
+// import { defaults } from 'react-chartjs-2';
+// import { Bar, Line } from 'react-chartjs-2';
+// import './BarChart.css'
 // import Dashboard from '../../pages/Dashboard/Dashboard'
 
 // let dates = []
