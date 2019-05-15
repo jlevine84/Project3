@@ -1,6 +1,6 @@
 .float{
-    float:right;
-    margin: 20px;
+    float:left!important;
+    margin:20px!important;
 }
 input[type=range] {
     -webkit-appearance: none;

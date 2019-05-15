@@ -4,8 +4,8 @@ import Input from '../Input/Input'
 import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
 import API from './../../utils/API';
-import './LogUserData.css'
-import moment from 'moment'
+import './LogUserData.css';
+import moment from 'moment';
 
 class LogUserData extends React.Component{
 
@@ -83,7 +83,7 @@ class LogUserData extends React.Component{
         const entryDate = moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY')
         return (      
             <div>
-                {!this.state.logged && 
+                
                     <div className="jumbotron">
                         <div className="row">
                             <div className="col-sm-12 top">
@@ -95,18 +95,21 @@ class LogUserData extends React.Component{
                         <div className="row">
                             <div className="col-sm-12">
                                 <Slider 
+                                    className="slider"
                                     name={"Mood"}
                                     display={this.state.Mood}
                                     update={this.updateValue}
                                     defaultValue={this.state.Mood}
                                 />
                                 <Slider 
+                                    className="slider"
                                     name={"Anxiety"}
                                     display={this.state.Anxiety}
                                     update={this.updateValue}
                                     defaultValue={this.state.Anxiety}
                                 />
-                                <Slider 
+                                <Slider
+                                    className="slider" 
                                     name={"Energy"}
                                     display={this.state.Energy}
                                     update={this.updateValue}
@@ -158,12 +161,8 @@ class LogUserData extends React.Component{
                         </div>
                     
                     </div>
-                }
-                {this.state.logged &&
-                    <div className="jumbotron">
-                        <h5>Thank you for logging {entryDate}'s data!</h5>
-                    </div>
-                }
+                
+                
             </div>
         );
     }
