@@ -1,8 +1,19 @@
 import React from 'react';
 import './dateRangeSearch.css';
+import moment from 'moment'
 
 class dateRangeSearch extends React.Component{
+
+    state = {
+        dateRangeStart: "", 
+        dateRangeEnd: ""
+    }
     
+    updateValue = async event => {
+        let name = event.target.name
+        let value = event.target.value
+        await this.setState({ [name]: value} )
+    }
 
     render(){
         return(
@@ -14,7 +25,7 @@ class dateRangeSearch extends React.Component{
                         <div className="form-group dropdown">
                             <br></br>
                                 <label for="startMonth">Month</label>
-                                    <select className="form-control drop-down1" id="startMonth" onChange={this.props.updateValue} name= {`startMonth`} defaultValue={`January`}>
+                                    <select className="form-control drop-down1" id="startMonth" onChange={this.props.updateValue} name={`startMonth`} defaultValue={`January`}>
                                         <option>January</option>
                                         <option>February</option>
                                         <option>March</option>
@@ -142,7 +153,7 @@ class dateRangeSearch extends React.Component{
                         <div className="form-group dropdown3">
                             <br></br>
                                 <label for="endYear">Year</label>
-                                    <select className="form-control drop-down2" id="endYear" onChange={this.props.updateValue} name= {`endYear`} defaultValue={`2019`}>
+                                    <select className="form-control drop-down2" id="endYear" onChange={this.props.updateValue} name={`endYear`} defaultValue={`2019`}>
                                         <option value="2018">2018</option>
                                         <option value="2019">2019</option>
                                         <option value="2020">2020</option>

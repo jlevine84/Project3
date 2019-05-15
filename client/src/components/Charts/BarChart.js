@@ -85,8 +85,31 @@
 // }
 
 // class BarChart extends React.Component {
-
+// componentDidUpdate(){
+//     dates = []
+//  energy = []
+//  mood = []
+//  anxiety = []
+//  sleep = []
+//  dailyLog = []
+//  exerciseAmount = []
+//  medicineTaken = []
+//  exercise = []
+// }
+//     componentWillUnmount(){
+//  dates = []
+//  energy = []
+//  mood = []
+//  anxiety = []
+//  sleep = []
+//  dailyLog = []
+//  exerciseAmount = []
+//  medicineTaken = []
+//  exercise = []
+//     }
 //     render() {
+
+        // console.log(this.props.dbreturn)
         
 //         getData(this.props.dbreturn); 
 //         const object = {

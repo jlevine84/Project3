@@ -2,8 +2,8 @@
 // import { Line } from 'react-chartjs-2';
 // import './LineChart.css'
 
-// const dates = [];
-// const sleep = []
+// let dates = [];
+// let sleep = []
 
 // function getData(props) {
 //     // can't test functionality of for loop until db call can return all entries. Currently only returning one.
@@ -29,7 +29,14 @@
 // }
 
 // class LineChart extends React.Component {
-
+//  componentDidUpdate(){
+//      dates =[];
+//      sleep=[];
+//  }
+//  componentWillUnmount(){
+//     dates=[];
+//     sleep=[];
+// }
 
 //     render() {
 //         getData(this.props.dbreturn); 
