@@ -7,7 +7,7 @@ import ViewUserData from './../../components/ViewUserData/ViewUserData';
 // import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
+import DateRangeSearch from '../../components/dateRangeSearch/DateRangeSearch';
 import { throws } from 'assert';
 
 class Dashboard extends React.Component {
@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
     Logged: null,
     dbreturn:{},
     test: "test",
-
+    currentDate: moment().format('YYYYDDMM'),
     dateRangeStart: "", 
     dateRangeEnd: ""
 
@@ -38,7 +38,6 @@ class Dashboard extends React.Component {
   }
 
   grabCalendarDate = (grabYear, grabDay, grabMonth) => {
-    console.log(`${grabYear}${grabDay}${grabMonth}`)
     let date = `${grabYear}${grabDay}${grabMonth}`
     this.setState({ selectedDate: date })
     this.viewByDate()
@@ -47,9 +46,7 @@ class Dashboard extends React.Component {
   pullAll = () => {
     API.getAll()
     .then(response =>{
-
         this.setState({dbreturn: response.data.logs2})
-
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -95,26 +92,12 @@ class Dashboard extends React.Component {
   // Validation of future calendar dates
   // If the exercise button is false or unselected; Don't render the Exercise.
   // Ability to update a user's entry.
-  grabDateRange = () => {
-    console.log(`Search Range: ${this.state.dateRangeStart} ${this.state.dateRangeEnd}`)
-    let startDate = this.state.dateRangeStart.split('/').join('')
-    let endDate = this.state.dateRangeEnd.split('/').join('')
-    console.log(startDate, endDate)
-    this.viewDateRange(moment(startDate, 'MMDDYYYY').format('YYYYDDMM'), moment(endDate, 'MMDDYYYY').format('YYYYDDMM'))
-  }
 
   viewDateRange = (startDate, endDate) => {
-    console.log(startDate + " " + endDate)
     API.getRange(startDate, endDate)
       .then(response => {
 
       }).catch(err => console.log(err))
-  }
-
-  updateValue = async event => {
-    let name = event.target.name
-    let value = event.target.value
-    await this.setState({ [name]: value} )
   }
 
   render() {
@@ -133,7 +116,7 @@ class Dashboard extends React.Component {
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
               {/* Search Range Component */}
-              <DateRangeSearch updateValue={this.updateValue} grabDateRange={this.grabDateRange}></DateRangeSearch>
+              <DateRangeSearch viewDateRange={this.viewDateRange} currentDate={this.state.currentDate}></DateRangeSearch>
             </div>
           </div>
         </div>
