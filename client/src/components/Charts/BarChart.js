@@ -16,20 +16,22 @@ let exercise = []
 
 
 
-function getData(props){         
+function getData(data){  
+    console.log("data")       
+    console.log(data)
 // can't test functionality of for loop until db call can return all entries. Currently only returning one.
-    for(var i = 0; i<props.length; i++){
+    for(var i = 0; i<data.length; i++){
         // console.log(props[i])
         // console.log(props[i]['Anxiety'])
-        anxiety.push(props[i]['Anxiety'])
-        dailyLog.push(props[i]['DailyLog'])
-        dates.push(props[i]['Date'])
-        energy.push(props[i]['Energy'])
-        exercise.push(props[i]['Exercise'])
-        exerciseAmount.push(props[i]['ExerciseAmount'])
-        medicineTaken.push(props[i]['MedicineTaken'])
-        mood.push(props[i]['Mood'])
-        sleep.push(props[i]['SleepHours'])
+        anxiety.push(data[i]['Anxiety'])
+        dailyLog.push(data[i]['DailyLog'])
+        dates.push(data[i]['Date'])
+        energy.push(data[i]['Energy'])
+        exercise.push(data[i]['Exercise'])
+        exerciseAmount.push(data[i]['ExerciseAmount'])
+        medicineTaken.push(data[i]['MedicineTaken'])
+        mood.push(data[i]['Mood'])
+        sleep.push(data[i]['SleepHours'])
     }
 }
 

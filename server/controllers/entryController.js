@@ -9,12 +9,12 @@ module.exports = {
   findAll: function(req, res) {
     if (req.user) {
       console.log(req.user)
-      db.User
-        .findOne({ _id: req.user._id})
-        .populate('entries')
+      db.Entry
+        .find({UserID: req.user._id})
         .then(logs => {
+          console.log("all good!")
           console.log(logs)
-          res.json({logs});
+          res.json({logs2:logs});
         })
         .catch(err => res.status(422).json(err));
     } else {

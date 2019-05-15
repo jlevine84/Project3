@@ -47,7 +47,10 @@ class Dashboard extends React.Component {
     console.log('pull all executed')
     API.getAll()
     .then(response =>{
-        this.setState({dbreturn: response.data.logs.entries})
+        console.log("Response")
+        console.log(response)
+        this.setState({dbreturn: response.data.logs2})
+        console.log("dbreturn")
         console.log(this.state.dbreturn)
     })
   }
