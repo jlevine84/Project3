@@ -44,14 +44,11 @@ class Dashboard extends React.Component {
   }
 
   pullAll = () => {
-    console.log('pull all executed')
     API.getAll()
     .then(response =>{
-        console.log("Response")
-        console.log(response)
+
         this.setState({dbreturn: response.data.logs2})
-        console.log("dbreturn")
-        console.log(this.state.dbreturn)
+
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -125,12 +122,12 @@ class Dashboard extends React.Component {
         <div className="container-fluid container-top">
           <div className="row">
             <div className="col-6 charts">
-              <BarChart
+              {/* <BarChart
                 dbreturn = {this.state.dbreturn}
               />
               <LineChart
                 dbreturn={this.state.dbreturn}
-              />
+              /> */}
             </div>
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
