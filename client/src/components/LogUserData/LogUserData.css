@@ -4,11 +4,13 @@
 }
 
 h2, h5 {
-    
     text-align: center;
 }
 .top{
     padding:5px;
     height:25px;
     margin:0px;
+}
+.slider{
+    margin:10px;
 }
