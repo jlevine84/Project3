@@ -1,14 +1,13 @@
 import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
-import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 // import BarChart from '../../components/Charts/BarChart.js'
 // import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from '../../components/dateRangeSearch/DateRangeSearch';
-import { throws } from 'assert';
+import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
+// import { throws } from 'assert';
 
 class Dashboard extends React.Component {
 
@@ -88,16 +87,14 @@ class Dashboard extends React.Component {
   }
 
   // Stuff for Jeffy to Dooz
-  // Validation of inputs, Log new Entry and search fields.
-  // Validation of future calendar dates
   // If the exercise button is false or unselected; Don't render the Exercise.
-  // Ability to update a user's entry.
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
       .then(response => {
 
       }).catch(err => console.log(err))
+
   }
 
   render() {
@@ -106,12 +103,12 @@ class Dashboard extends React.Component {
         <div className="container-fluid container-top">
           <div className="row">
             <div className="col-6 charts">
-              {/* <BarChart
+              <BarChart
                 dbreturn = {this.state.dbreturn}
               />
               <LineChart
                 dbreturn={this.state.dbreturn}
-              /> */}
+              />
             </div>
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
@@ -124,22 +121,23 @@ class Dashboard extends React.Component {
           <div className="row">
             {/* <div className="col"></div> */}
             <div className="col-6">
+              {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
-              selectedDate={this.state.selectedDate}
-              mood={this.state.Mood}
-              anxiety={this.state.Anxiety}
-              energy={this.state.Energy}
-              medicineTaken={this.state.MedicineTaken.toString()}
-              exercise={this.state.Exercise.toString()}
-              sleepHours={this.state.SleepHours}
-              dailyLog={this.state.DailyLog}
-              exerciseAmount={this.state.ExerciseAmount}
-              date={this.state.Date}
-              logged={this.state.Logged}
-              prevEntryCallBack={this.prevEntryCallBack}
-              selectedDate={this.state.selectedDate}
-              userID={this.props.userID}
-              />  
+                selectedDate={this.state.selectedDate}
+                mood={this.state.Mood}
+                anxiety={this.state.Anxiety}
+                energy={this.state.Energy}
+                medicineTaken={this.state.MedicineTaken.toString()}
+                exercise={this.state.Exercise.toString()}
+                sleepHours={this.state.SleepHours}
+                dailyLog={this.state.DailyLog}
+                exerciseAmount={this.state.ExerciseAmount}
+                date={this.state.Date}
+                logged={this.state.Logged}
+                prevEntryCallBack={this.prevEntryCallBack}
+                selectedDate={this.state.selectedDate}
+                userID={this.props.userID}
+              />}
             </div>
             <div className="col-6">
               

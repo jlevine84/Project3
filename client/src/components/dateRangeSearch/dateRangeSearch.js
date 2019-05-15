@@ -10,7 +10,8 @@ class dateRangeSearch extends React.Component{
         startYear: "2019",
         endMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
         endDay: moment(this.props.currentDate, 'YYYYDDMM').format('DD'),
-        endYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY')
+        endYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY'),
+        selectedDate: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY')
     }
 
     // componentWillMount() {
@@ -40,14 +41,20 @@ class dateRangeSearch extends React.Component{
         let endMonth = moment(this.state.endMonth, 'MMMM').format('MM')
         let startDate = `${startYear}${startDay}${startMonth}`
         let endDate = `${endYear}${endDay}${endMonth}`
-        this.props.viewDateRange(startDate, endDate)
+        this.setState({ selectedDate: endDate })
+        if (endDate > this.props.currentDate) console.log('The end date can not be greater than today. Please try again.')
+        else this.props.viewDateRange(startDate, endDate)
     }
 
     render(){
         return(
             <div>
                 <br></br>
-                <h6>Select a date to see that day's entry or select range of dates.</h6>
+                {this.props.currentDate >= this.state.selectedDate ? 
+                    <h6>Select a date to see that day's entry or select range of dates.</h6> :
+                    <h6>The end date can not be greater than today's date.</h6>
+                }
+
                 <div className="input-range">
                     <form>
                         <div className="form-group dropdown">
@@ -115,7 +122,7 @@ class dateRangeSearch extends React.Component{
      
                                     </select>
                         
-                        </div>
+                </div>
         {/*END DATE INPUT*/}
         <div className="dropdown">
         <br></br>
