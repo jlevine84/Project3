@@ -1,8 +1,7 @@
 import React from 'react';
-import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
-import Dashboard from '../../pages/Dashboard/Dashboard'
+import moment from 'moment';
 
 let dates = []
 let energy = []
@@ -17,15 +16,13 @@ let exercise = []
 
 
 function getData(data){  
-    console.log("data")       
-    console.log(data)
+
 // can't test functionality of for loop until db call can return all entries. Currently only returning one.
-    for(var i = 0; i<data.length; i++){
-        // console.log(props[i])
-        // console.log(props[i]['Anxiety'])
+    for(var i = data.length -1; i>-1; i--){
+        let dateFormatted = moment(data[i]['Date'], 'YYYYDDMM').format('MMMM DD')      
         anxiety.push(data[i]['Anxiety'])
         dailyLog.push(data[i]['DailyLog'])
-        dates.push(data[i]['Date'])
+        dates.push(dateFormatted)          
         energy.push(data[i]['Energy'])
         exercise.push(data[i]['Exercise'])
         exerciseAmount.push(data[i]['ExerciseAmount'])
@@ -85,37 +82,34 @@ const data = {
 }
 
 class BarChart extends React.Component {
-componentDidUpdate(){
-    dates = []
- energy = []
- mood = []
- anxiety = []
- sleep = []
- dailyLog = []
- exerciseAmount = []
- medicineTaken = []
- exercise = []
-}
-    componentWillUnmount(){
- dates = []
- energy = []
- mood = []
- anxiety = []
- sleep = []
- dailyLog = []
- exerciseAmount = []
- medicineTaken = []
- exercise = []
-    }
-    render() {
 
-        console.log(this.props.dbreturn)
-        
+    componentDidUpdate() {
+        dates = []
+        energy = []
+        mood = []
+        anxiety = []
+        sleep = []
+        dailyLog = []
+        exerciseAmount = []
+        medicineTaken = []
+        exercise = []
+    }
+
+    componentWillUnmount() {
+        dates = []
+        energy = []
+        mood = []
+        anxiety = []
+        sleep = []
+        dailyLog = []
+        exerciseAmount = []
+        medicineTaken = []
+        exercise = []
+    }
+
+    render() {
+    
         getData(this.props.dbreturn); 
-        const object = {
-            object: this.props.dbreturn
-        }
-        console.log(object)
         return (
             <div className = "barChart">
                 <Bar
