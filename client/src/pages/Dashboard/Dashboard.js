@@ -2,8 +2,8 @@ import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
-// import BarChart from '../../components/Charts/BarChart.js'
-// import LineChart from '../../components/Charts/LineChart.js'
+import BarChart from '../../components/Charts/BarChart.js'
+import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
