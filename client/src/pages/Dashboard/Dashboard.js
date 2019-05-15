@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
       .then(response => {
-
+        console.log(response)
       }).catch(err => console.log(err))
 
   }

@@ -5,25 +5,14 @@ import moment from 'moment'
 class dateRangeSearch extends React.Component{
 
     state = {
-        startMonth: "January",
-        startDay: "01", 
-        startYear: "2019",
+        startMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
+        startDay: moment(this.props.currentDate, 'YYYYDDMM').format('DD'), 
+        startYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY'),
         endMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
         endDay: moment(this.props.currentDate, 'YYYYDDMM').format('DD'),
         endYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY'),
         selectedDate: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY')
     }
-
-    // componentWillMount() {
-    //     let endMonth = moment(this.state.currentDate, 'YYYYDDMM').format('MMMM')
-    //     let endDay = moment(this.state.currentDate, 'YYYYDDMM').format('MMMM')
-    //     let endYear = moment(this.state.currentDate, 'YYYYDDMM').format('YYYY')
-    //     this.setState({
-    //         endMonth: endMonth,
-    //         endDay: endDay,
-    //         endYear: endYear
-    //     })
-    // }
     
     updateValue = async event => {
         let name = event.target.name
@@ -54,13 +43,12 @@ class dateRangeSearch extends React.Component{
                     <h6>Select a date to see that day's entry or select range of dates.</h6> :
                     <h6>The end date can not be greater than today's date.</h6>
                 }
-
                 <div className="input-range">
                     <form>
                         <div className="form-group dropdown">
                             <br></br>
                                 <label for="startMonth">Month</label>
-                                    <select className="form-control drop-down1" id="startMonth" onChange={this.updateValue} name={`startMonth`} defaultValue={`January`}>
+                                    <select className="form-control drop-down1" id="startMonth" onChange={this.updateValue} name={`startMonth`} defaultValue={this.state.startMonth}>
                                         <option>January</option>
                                         <option>February</option>
                                         <option>March</option>
@@ -78,7 +66,7 @@ class dateRangeSearch extends React.Component{
                         <div className="form-group dropdown2">
                             <br></br>
                                 <label for="startDay">Day</label>
-                                    <select className="form-control drop-down2" id="startDay" onChange={this.updateValue} name= {`startDay`} defaultValue={`01`}>
+                                    <select className="form-control drop-down2" id="startDay" onChange={this.updateValue} name= {`startDay`} defaultValue={this.state.startDay}>
                                         <option value="01">01</option>
                                         <option value="02">02</option>
                                         <option value="03">03</option>
@@ -115,7 +103,7 @@ class dateRangeSearch extends React.Component{
                         <div className="form-group dropdown3">
                             <br></br>
                                 <label for="startYear">Year</label>
-                                    <select className="form-control drop-down2" id="startYear" onChange={this.updateValue} name= {`startYear`} defaultValue={`2019`}>
+                                    <select className="form-control drop-down2" id="startYear" onChange={this.updateValue} name= {`startYear`} defaultValue={this.state.startYear}>
                                         <option value="2018">2018</option>
                                         <option value="2019">2019</option>
                                         <option value="2020">2020</option>
