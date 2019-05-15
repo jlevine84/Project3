@@ -10,7 +10,7 @@ module.exports = {
     if (req.user) {
       console.log(req.user)
       db.Entry
-        .find({UserID: req.user._id})
+        .find({UserID: req.user._id}).sort({ Date: -1 })
         .then(logs => {
           console.log("all good!")
           console.log(logs)
@@ -42,7 +42,7 @@ module.exports = {
     let startDate = req.query.startDate
     let endDate = req.query.endDate
     if (req.user) {
-      db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } })
+      db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } }).sort({ Date: -1 })
         .then(entries => {
           res.json({ rangeData: entries})
           console.log(JSON.stringify(entries))

@@ -2,12 +2,13 @@ import React from 'react';
 import './ViewUserData.css';
 import moment from 'moment'
 import API from './../../utils/API';
-import LogUserData from './../LogUserData/LogUserData';
 import Slider from '../Slider/Slider'
 import Input from '../Input/Input'
 import BooleanInput from '../BooleanInput/BooleanInput'
 import DropDownInput from './../dropdownInput/DropDownInput';
+
 class ViewUserData extends React.Component {
+
     state=({
         viewDate: moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY'),
         edit: false,
@@ -219,11 +220,9 @@ class ViewUserData extends React.Component {
                    
                     <div className="col-sm-3">
                         <button onClick={this.submitNewEntry} className="btn btn-success float">Submit</button>
-                       
-                       
+                        
                     </div>
                 </div>
-            
             </div>
              )}
            

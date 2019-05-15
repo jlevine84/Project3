@@ -1,13 +1,13 @@
 import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
-import LogUserData from './../../components/LogUserData/LogUserData';
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from './../../components/dateRangeSearch/dateRangeSearch';
+import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
+// import { throws } from 'assert';
 
 class Dashboard extends React.Component {
 
@@ -25,12 +25,7 @@ class Dashboard extends React.Component {
     Logged: null,
     dbreturn:{},
     test: "test",
-    startDay: '01',
-    startMonth: 'January',
-    startYear: '2019',
-    endDay:'01',
-    endMonth: 'December',
-    endYear: '2020',
+    currentDate: moment().format('YYYYDDMM'),
     dateRangeStart: "", 
     dateRangeEnd: ""
 
@@ -42,21 +37,15 @@ class Dashboard extends React.Component {
   }
 
   grabCalendarDate = (grabYear, grabDay, grabMonth) => {
-    console.log(`${grabYear}${grabDay}${grabMonth}`)
     let date = `${grabYear}${grabDay}${grabMonth}`
     this.setState({ selectedDate: date })
     this.viewByDate()
   }
 
   pullAll = () => {
-    console.log('pull all executed')
     API.getAll()
     .then(response =>{
-        console.log("Response")
-        console.log(response)
         this.setState({dbreturn: response.data.logs2})
-        console.log("dbreturn")
-        console.log(this.state.dbreturn)
     })
   }
   // will need to foreach through data.logs.entries and parse into arrays
@@ -87,8 +76,7 @@ class Dashboard extends React.Component {
           SleepHours: "",
           DailyLog: "",
           ExerciseAmount: "",
-          Date: "",
-          Logged: false
+          Date: ""
         })
       }
     }).catch(err => console.log(err))
@@ -99,31 +87,14 @@ class Dashboard extends React.Component {
   }
 
   // Stuff for Jeffy to Dooz
-  // Validation of inputs, Log new Entry and search fields.
-  // Validation of future calendar dates
   // If the exercise button is false or unselected; Don't render the Exercise.
-  // Ability to update a user's entry.
-  grabDateRange = () => {
-    let startDate= this.state.startMonth + " " + this.state.startDay + " " + this.state.startYear;
-    let endDate = this.state.endMonth + " " + this.state.endDay + " " + this.state.endYear;
-    console.log(startDate, endDate)
-    this.viewDateRange(moment(startDate, 'MMDDYYYY').format('YYYYDDMM'), moment(endDate, 'MMDDYYYY').format('YYYYDDMM'))
-  }
 
   viewDateRange = (startDate, endDate) => {
-    console.log(startDate + " " + endDate)
     API.getRange(startDate, endDate)
       .then(response => {
-
+        console.log(response)
       }).catch(err => console.log(err))
-  }
 
-  updateValue = async event => {
-    let name = event.target.name
-    let value = event.target.value
-    console.log(name)
-    console.log(value)
-    await this.setState({ [name]: value} )
   }
 
   render() {
@@ -142,7 +113,7 @@ class Dashboard extends React.Component {
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
               {/* Search Range Component */}
-              <DateRangeSearch updateValue={this.updateValue} grabDateRange={this.grabDateRange}></DateRangeSearch>
+              <DateRangeSearch viewDateRange={this.viewDateRange} currentDate={this.state.currentDate}></DateRangeSearch>
             </div>
           </div>
         </div>
@@ -150,25 +121,23 @@ class Dashboard extends React.Component {
           <div className="row">
             {/* <div className="col"></div> */}
             <div className="col-6">
-          
-            <ViewUserData  
-            selectedDate={this.state.selectedDate}
-            mood={this.state.Mood}
-            anxiety={this.state.Anxiety}
-            energy={this.state.Energy}
-            medicineTaken={this.state.MedicineTaken.toString()}
-            exercise={this.state.Exercise.toString()}
-            sleepHours={this.state.SleepHours}
-            dailyLog={this.state.DailyLog}
-            exerciseAmount={this.state.ExerciseAmount}
-            date={this.state.Date}
-            logged={this.state.Logged}
-            prevEntryCallBack={this.prevEntryCallBack}
-            selectedDate={this.state.selectedDate}
-            userID={this.props.userID}
-          />
-              
-              
+              {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
+              <ViewUserData  
+                selectedDate={this.state.selectedDate}
+                mood={this.state.Mood}
+                anxiety={this.state.Anxiety}
+                energy={this.state.Energy}
+                medicineTaken={this.state.MedicineTaken.toString()}
+                exercise={this.state.Exercise.toString()}
+                sleepHours={this.state.SleepHours}
+                dailyLog={this.state.DailyLog}
+                exerciseAmount={this.state.ExerciseAmount}
+                date={this.state.Date}
+                logged={this.state.Logged}
+                prevEntryCallBack={this.prevEntryCallBack}
+                selectedDate={this.state.selectedDate}
+                userID={this.props.userID}
+              />}
             </div>
             <div className="col-6">
               

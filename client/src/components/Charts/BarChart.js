@@ -1,9 +1,7 @@
 import React from 'react';
-import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
 import moment from 'moment';
-// import Dashboard from '../../pages/Dashboard/Dashboard'
 
 let dates = []
 let energy = []
@@ -18,13 +16,10 @@ let exercise = []
 
 
 function getData(data){  
-    console.log("data")       
-    console.log(data)
+
 // can't test functionality of for loop until db call can return all entries. Currently only returning one.
     for(var i = data.length -1; i>-1; i--){
         let dateFormatted = moment(data[i]['Date'], 'YYYYDDMM').format('MMMM DD')      
-        console.log("date to format")
-        console.log(dateFormatted)
         anxiety.push(data[i]['Anxiety'])
         dailyLog.push(data[i]['DailyLog'])
         dates.push(dateFormatted)          
@@ -87,39 +82,34 @@ const data = {
 }
 
 class BarChart extends React.Component {
-componentDidUpdate(){
-    dates = []
- energy = []
- mood = []
- anxiety = []
- sleep = []
- dailyLog = []
- exerciseAmount = []
- medicineTaken = []
- exercise = []
-}
-    componentWillUnmount(){
- dates = []
- energy = []
- mood = []
- anxiety = []
- sleep = []
- dailyLog = []
- exerciseAmount = []
- medicineTaken = []
- exercise = []
+
+    componentDidUpdate() {
+        dates = []
+        energy = []
+        mood = []
+        anxiety = []
+        sleep = []
+        dailyLog = []
+        exerciseAmount = []
+        medicineTaken = []
+        exercise = []
     }
+
+    componentWillUnmount() {
+        dates = []
+        energy = []
+        mood = []
+        anxiety = []
+        sleep = []
+        dailyLog = []
+        exerciseAmount = []
+        medicineTaken = []
+        exercise = []
+    }
+
     render() {
-
-        // console.log(this.props.dbreturn)
-        
+    
         getData(this.props.dbreturn); 
-        // console.log(dates)  
-        // console.log(anxiety)
-        // console.log(sleep)
-        // console.log(mood)
-        // console.log(energy)
-
         return (
             <div className = "barChart">
                 <Bar
