@@ -17,7 +17,7 @@ function BarChart (props)  {
         let exercise = []
     
         for (var i = data.length -1; i>-1; i--) {
-          let dateFormatted = moment(data[i]['Date'], 'YYYYDDMM').format('MMMM DD')      
+          let dateFormatted = moment(data[i]['Date'], 'YYYYMMDD').format('MMMM DD')      
           anxiety.push(data[i]['Anxiety'])
           dailyLog.push(data[i]['DailyLog'])
           dates.push(dateFormatted)          

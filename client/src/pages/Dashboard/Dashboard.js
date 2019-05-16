@@ -11,7 +11,7 @@ import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
 class Dashboard extends React.Component {
 
   state = {
-    selectedDate: moment().format('YYYYDDMM'),
+    selectedDate: moment().format('YYYYMMDD'),
     Mood: "",
     Anxiety: "",
     Energy: "",
@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
     Date: "",
     Logged: null,
     dbreturn:{},
-    currentDate: moment().format('YYYYDDMM')
+    currentDate: moment().format('YYYYMMDD')
 
   }
 
@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
   }
 
   grabCalendarDate = (grabYear, grabDay, grabMonth) => {
-    let date = `${grabYear}${grabDay}${grabMonth}`
+    let date = `${grabYear}${grabMonth}${grabDay}`
     this.setState({ selectedDate: date })
     this.viewByDate()
   }
@@ -44,7 +44,6 @@ class Dashboard extends React.Component {
         this.setState({dbreturn: response.data.allLogs})
     })
   }
-  // will need to foreach through data.logs.entries and parse into arrays
 
   viewByDate = async () => {
     API.getByDate(this.state.selectedDate)
@@ -59,7 +58,7 @@ class Dashboard extends React.Component {
             SleepHours: response.data.todaysentry[0].SleepHours,
             DailyLog: response.data.todaysentry[0].DailyLog,
             ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
-            Date: moment(response.data.todaysentry[0].Date, 'YYYYDDMM').format('MMMM Do YYYY'),
+            Date: moment(response.data.todaysentry[0].Date, 'YYYYMMDD').format('MMMM Do YYYY'),
             Logged: true
         })
       } else {
@@ -88,8 +87,8 @@ class Dashboard extends React.Component {
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
-      .then(response => {
-        this.setState({ dbreturn: response.data.rangeData})
+      .then(async response => {
+        await this.setState({ dbreturn: response.data.rangeData})
       }).catch(err => console.log(err))
 
   }
@@ -110,7 +109,10 @@ class Dashboard extends React.Component {
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
               {/* Search Range Component */}
-              <DateRangeSearch viewDateRange={this.viewDateRange} currentDate={this.state.currentDate}></DateRangeSearch>
+              <DateRangeSearch 
+                viewDateRange={this.viewDateRange}
+                currentDate={this.state.currentDate}
+              />
             </div>
           </div>
         </div>

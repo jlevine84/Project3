@@ -9,8 +9,8 @@ import DropDownInput from './../dropdownInput/DropDownInput';
 
 class ViewUserData extends React.Component {
 
-    state=({
-        viewDate: moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY'),
+    state = {
+        viewDate: moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY'),
         edit: false,
         Mood: "5",
         Anxiety: "5",
@@ -23,30 +23,8 @@ class ViewUserData extends React.Component {
         Date: this.props.selectedDate,
         UserID: this.props.userID,
         logged: false
-    }) 
+    } 
 
-    submitNewEntry = () => {
-        let newEntry = {
-            Mood: this.state.Mood,
-            Anxiety: this.state.Anxiety,
-            Energy: this.state.Energy,
-            MedicineTaken: this.state.MedicineTaken,
-            Exercise: this.state.Exercise,
-            SleepHours: this.state.SleepHours,
-            DailyLog: this.state.DailyLog,
-            ExerciseAmount: this.state.ExerciseAmount,
-            Date: this.props.selectedDate,
-            UserID: this.props.userID
-        }
-    API.createEntry(newEntry)
-        .then(async response=>{
-            await this.setState({
-                logged: true
-            })
-        })
-        .then(() => this.props.prevEntryCallBack())
-        .catch(err => console.log(err))
-    }
     switchToEdit=() => {
         this.setState({
            edit:true
@@ -81,7 +59,7 @@ class ViewUserData extends React.Component {
                     DailyLog: "",
                     ExerciseAmount: "",
                     logged: false, 
-                    viewDate: moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY'), 
+                    viewDate: moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY'), 
                 })
         }).catch(err => console.log(err))
     }
@@ -105,12 +83,12 @@ class ViewUserData extends React.Component {
             Date: this.props.selectedDate,
             UserID: this.props.userID
         }
-    API.createEntry(newEntry)
-        .then(async response=>{
-            await this.setState({
-                logged: true,
-                edit:false,
-            })
+        API.createEntry(newEntry)
+            .then(async response=>{
+                await this.setState({
+                    logged: true,
+                    edit: false,
+                })
         })
         .then(() => this.props.prevEntryCallBack())
         .catch(err => console.log(err))
@@ -118,7 +96,7 @@ class ViewUserData extends React.Component {
     
 
     render(){
-        const entryDate = moment(this.props.selectedDate, 'YYYYDDMM').format('MMMM Do YYYY')
+        const entryDate = moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY')
         return(
          <div>
              {(this.state.logged && !this.state.edit) ?
@@ -130,13 +108,18 @@ class ViewUserData extends React.Component {
                  <p><strong>Energy: </strong>{this.props.energy}</p>
                  <p><strong>Hours Slept: </strong>{this.props.sleepHours}</p>
                  <p><strong>Medicine Taken: </strong>{this.props.medicineTaken}</p>
-                 <p><strong>Exercised : </strong>{this.props.exercise}</p>
+                 {this.props.exercise === "true" ?  
+                    <div>
+                    <p><strong>Exercised: </strong>{this.props.exercise}</p>
+                    <p><strong>Exercise Details: </strong>
+                    <br></br>
+                    {this.props.exerciseAmount}</p>
+                    </div>: ""
+                }
                  <p><strong>Daily Log: </strong>
                  <br></br>
                  {this.props.dailyLog}</p>
-                 <p><strong>Exercise Details: </strong>
-                 <br></br>
-                 {this.props.exerciseAmount}</p>
+
                  <button type="button" className="btn btn-success float2" onClick={this.switchToEdit}>Edit this entry</button>
              </div>
          
@@ -197,12 +180,14 @@ class ViewUserData extends React.Component {
                 </div> 
                 <div className="row">
                     <div className="col-sm-12">
+                    {this.state.Exercise === "true" ?
                         <Input
                             name={"ExerciseAmount"}
                             title={"Exercise Details"}
                             placeholder={"Log your exercise details here"}
                             update={this.updateValue}
-                        />
+                        /> : ""
+                    }
                         <Input
                             name="DailyLog"
                             title={"Daily Log"}
