@@ -17,16 +17,16 @@ function BarChart (props)  {
         let exercise = []
     
         for (var i = data.length -1; i>-1; i--) {
-          let dateFormatted = moment(data[i]['Date'], 'YYYYMMDD').format('MMMM DD')      
-          anxiety.push(data[i]['Anxiety'])
-          dailyLog.push(data[i]['DailyLog'])
-          dates.push(dateFormatted)          
-          energy.push(data[i]['Energy'])
-          exercise.push(data[i]['Exercise'])
-          exerciseAmount.push(data[i]['ExerciseAmount'])
-          medicineTaken.push(data[i]['MedicineTaken'])
-          mood.push(data[i]['Mood'])
-          sleep.push(data[i]['SleepHours'])
+            let dateFormatted = moment(data[i]['Date'], 'YYYYMMDD').format('MMMM DD')      
+            anxiety.push(data[i]['Anxiety'])
+            dailyLog.push(data[i]['DailyLog'])
+            dates.push(dateFormatted)          
+            energy.push(data[i]['Energy'])
+            exercise.push(data[i]['Exercise'])
+            exerciseAmount.push(data[i]['ExerciseAmount'])
+            medicineTaken.push(data[i]['MedicineTaken'])
+            mood.push(data[i]['Mood'])
+            sleep.push(data[i]['SleepHours'])
         }
     
     

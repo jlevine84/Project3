@@ -88,3 +88,6 @@ input[type=range] {
     background: #ffffff;
   }
   
+  .sliders {
+    -webkit-appearance: slider-vertical;
+  }

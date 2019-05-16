@@ -10,7 +10,8 @@ class DateRangeSearch extends React.Component{
         startYear: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY'),
         endMonth: moment(this.props.currentDate, 'YYYYMMDD').format('MMMM'),
         endDay: moment(this.props.currentDate, 'YYYYMMDD').format('DD'),
-        endYear: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY')
+        endYear: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY'),
+        selectedDate: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY')
     }
     
     updateValue = async event => {
@@ -29,6 +30,7 @@ class DateRangeSearch extends React.Component{
         let endMonth = moment(this.state.endMonth, 'MMMM').format('MM')
         let startDate = `${startYear}${startMonth}${startDay}`
         let endDate = `${endYear}${endMonth}${endDay}`
+        this.setState({ selectedDate: moment(endDate, 'YYYYMMDD').format('YYYYMMDD')})
         if (endDate > this.props.currentDate) console.log('The end date can not be greater than today. Please try again.')
         else this.props.viewDateRange(startDate, endDate)
     }
@@ -37,7 +39,7 @@ class DateRangeSearch extends React.Component{
         return(
             <div>
                 <br></br>
-                {this.props.currentDate >= this.state.selectedDate ? 
+                {parseFloat(this.props.currentDate) >= parseFloat(this.state.selectedDate) ? 
                     <h6>Select a date to see that day's entry or select range of dates.</h6> :
                     <h6>The end date can not be greater than today's date.</h6>
                 }
