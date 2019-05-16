@@ -8,13 +8,10 @@ module.exports = {
   //find all entries from a certain user//
   findAll: function(req, res) {
     if (req.user) {
-      console.log(req.user)
       db.Entry
         .find({UserID: req.user._id}).sort({ Date: -1 })
         .then(logs => {
-          console.log("all good!")
-          console.log(logs)
-          res.json({logs2:logs});
+          res.json({allLogs:logs});
         })
         .catch(err => res.status(422).json(err));
     } else {
@@ -23,13 +20,10 @@ module.exports = {
   },
   // To find a specific mood entry by Date
   findByDate: function(req, res) {
-    console.log(`req: ${JSON.stringify(req.params.date)}`)
     if (req.params.date) {
-      console.log
       db.Entry
         .find({UserID: req.user._id, Date: req.params.date })
         .then(entry => {
-          console.log(entry)
           res.json({ todaysentry: entry });
         })
         .catch(err => res.status(422).json(err));
@@ -45,7 +39,6 @@ module.exports = {
       db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } }).sort({ Date: -1 })
         .then(entries => {
           res.json({ rangeData: entries})
-          console.log(JSON.stringify(entries))
         }).catch(err => console.log(err))
     } else {
       return res.json({ rangeData: null})
@@ -54,22 +47,13 @@ module.exports = {
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
-    console.log("hitting entry Controller")
-    console.log(req.user._id)
-    console.log(req.body)
-    console.log(req.body.Date)
     entry = req.body
       db.Entry
        .findOneAndUpdate({UserID: req.user._id, Date: req.body.Date}, entry, {upsert: true}, function(){})
-      
         .then(dbEntry => {
-          console.log("hitting next step!")
-          console.log(dbEntry)
          return db.User.findOneAndUpdate({ _id: dbEntry.UserID}, { $push: { entries: dbEntry._id } });
         })
         .then((dbUser) => {
-          console.log("should have an entry!")
-          console.log(dbUser)
           res.json(dbUser);
         })
         .catch(err => res.status(422).json(err));
@@ -80,7 +64,6 @@ module.exports = {
       db.Entry
         .findOneAndUpdate({ _id: req.params.id }, req.body)
         .then(dbModel => {
-          console.log(dbModel);
           res.json(dbModel);
         })
         .catch(err => res.status(422).json(err));
