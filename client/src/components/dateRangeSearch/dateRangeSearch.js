@@ -5,13 +5,12 @@ import moment from 'moment'
 class DateRangeSearch extends React.Component{
 
     state = {
-        startMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
-        startDay: moment(this.props.currentDate, 'YYYYDDMM').format('DD'), 
-        startYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY'),
-        endMonth: moment(this.props.currentDate, 'YYYYDDMM').format('MMMM'),
-        endDay: moment(this.props.currentDate, 'YYYYDDMM').format('DD'),
-        endYear: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY'),
-        selectedDate: moment(this.props.currentDate, 'YYYYDDMM').format('YYYY')
+        startMonth: moment(this.props.currentDate, 'YYYYMMDD').format('MMMM'),
+        startDay: moment(this.props.currentDate, 'YYYYMMDD').format('DD'), 
+        startYear: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY'),
+        endMonth: moment(this.props.currentDate, 'YYYYMMDD').format('MMMM'),
+        endDay: moment(this.props.currentDate, 'YYYYMMDD').format('DD'),
+        endYear: moment(this.props.currentDate, 'YYYYMMDD').format('YYYY')
     }
     
     updateValue = async event => {
@@ -28,9 +27,8 @@ class DateRangeSearch extends React.Component{
         let endYear = moment(this.state.endYear, 'YYYY').format('YYYY')
         let endDay = moment(this.state.endDay, 'DD').format('DD')
         let endMonth = moment(this.state.endMonth, 'MMMM').format('MM')
-        let startDate = `${startYear}${startDay}${startMonth}`
-        let endDate = `${endYear}${endDay}${endMonth}`
-        this.setState({ selectedDate: endDate })
+        let startDate = `${startYear}${startMonth}${startDay}`
+        let endDate = `${endYear}${endMonth}${endDay}`
         if (endDate > this.props.currentDate) console.log('The end date can not be greater than today. Please try again.')
         else this.props.viewDateRange(startDate, endDate)
     }

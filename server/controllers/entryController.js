@@ -35,9 +35,11 @@ module.exports = {
   findByRange: function(req, res) {
     let startDate = req.query.startDate
     let endDate = req.query.endDate
+
     if (req.user) {
       db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } }).sort({ Date: -1 })
         .then(entries => {
+          console.log(entries)
           res.json({ rangeData: entries})
         }).catch(err => console.log(err))
     } else {
