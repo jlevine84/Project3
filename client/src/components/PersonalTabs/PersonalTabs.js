@@ -46,46 +46,61 @@ class PersonalTabs extends React.Component {
     }).catch(err => console.log(err))
   }
 
-  doctors = () => {
-    // API call to get Dr Info
+  getDoctors = () => {
+    // API call to get all Dr Info and use as callback
   }
 
-  medications = () => {
-    // API call to get meds
-  }
-
-  addDoctor = drInfo => {
-
-  }
-
-  addMedication = medInfo => {
-
+  getMedications = () => {
+    // API call to get all meds and use as callback
   }
 
   render() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron personaltabs">
         <ul className="nav nav-tabs">
           <li className="nav-item">
-            <button className={`nav-link ${this.state.scraperTab}`} name={"scraper"} onClick={this.toggleSwitch}>Active</button>
+            <button className={`nav-link ${this.state.scraperTab}`} name={"scraper"} onClick={this.toggleSwitch}>Articles</button>
           </li>
           <li className="nav-item">
-            <button className={`nav-link ${this.state.doctorsTab}`} name={"doctors"} onClick={this.toggleSwitch}>Link</button>
+            <button className={`nav-link ${this.state.doctorsTab}`} name={"doctors"} onClick={this.toggleSwitch}>My Doctors</button>
           </li>
           <li className="nav-item">
-            <button className={`nav-link ${this.state.medicationsTab}`} name={"medications"} onClick={this.toggleSwitch}>Link</button>
+            <button className={`nav-link ${this.state.medicationsTab}`} name={"medications"} onClick={this.toggleSwitch}>My Meds</button>
           </li>
         </ul>
         <br/>
+
         {(this.state.scraperTab === "active") ?
           <Scrape scrape={this.state.scrape}/> : ""
         }
-        {(this.state.doctorsTab === "active") ?
-          <Doctors/> : ""
-        }
-        {(this.state.medicationsTab === "active") ?
-          <Medications/> : ""
-        }
+
+        {/* {(this.state.doctorsTab === "active") && (this.state.doctors[0]) (
+          <div>
+          <h6>My Doctors</h6>
+          <Doctors userID={this.props.userID} doctors={this.state.doctors} getDoctors={this.getDoctors}/>
+        </div> 
+        )}
+        {(this.state.doctorsTab === "active") && (this.state.doctors) (
+          <div>
+            <h6>No Doctor's information.</h6>
+            <p>Enter in your Doctor's information.</p>
+            <Medications userID={this.props.userID} medications={this.state.medications} getMedications={this.getMedications}/>
+          </div>
+        )}
+
+        {(this.state.medicationsTab === "active") && (this.state.medications[0]) (
+          <div>
+            <h6>My Medications</h6>
+            <Medications userID={this.props.userID} medications={this.state.medications} getMedications={this.getMedications}/>
+          </div> 
+        )}
+        {(this.state.medicationsTav === "active") && (this.state.medications) (
+          <div>
+            <h6>No Medications stored.</h6>
+            <p>Enter in your Medication's information.</p>
+            <Medications userID={this.props.userID} medications={this.state.medications} getMedications={this.getMedications}/>
+          </div>
+        )} */}
       </div>
     )
   }

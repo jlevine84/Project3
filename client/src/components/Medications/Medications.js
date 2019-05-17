@@ -1,13 +1,45 @@
 import React from 'react'
 import './medications.css'
+import API from '../../utils/API'
 
-function Medications (props) {
+class Medications extends React.Component {
 
-  return (
-    <div>
-      <p>Mookie</p>
-    </div>
-  )
+  state = {
+    edit: false,
+    userID: this.props.userID
+  }
+
+  addMedication = medInfo => {
+
+  }
+
+  editMedication = medInfo => {
+
+  }
+
+  removeMedication = medInfo => {
+
+  }
+
+  switchToEdit = () => {
+    this.setState({ edit: true })   
+  }
+
+  switchToView = () => {
+    this.setState({ edit: false })
+  }
+
+  return(){
+    return (
+      <div>
+        <p><strong></strong></p>
+        *Name:
+        Dose:
+        Medication for:
+        <p>Mookie</p>
+      </div>
+    )
+  }
 }
 
 export default Medications

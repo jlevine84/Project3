@@ -13,8 +13,23 @@ const userSchema = new Schema({
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Book model
+      // The ObjectIds will refer to the ids in the Entry model
       ref: "Entry"
+		}],
+	doctors: [
+		{
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Doctors model
+      ref: "Doctor"
+		}
+	],
+	medicines: [
+		{
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Medicines model
+      ref: "Medicine"
     }
 	]
 });

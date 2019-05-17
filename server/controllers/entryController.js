@@ -1,5 +1,3 @@
-// ------------------DADIRRI SCRIPT-------------------------------------------------------------
-
 // Below controllers allow the user to retrieve by ID, create new, edit, or remove mood entries
 const ObjectId = require("mongoose").Types.ObjectId
 const db = require("../models")

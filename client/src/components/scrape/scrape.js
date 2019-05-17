@@ -6,7 +6,7 @@ function Scrape (props) {
   return(
     <div className="scrape">
       <h5>Mental Health News</h5>
-      <br></br>
+      <hr/>
       <div className="article">
         {props.scrape.map((article, i) => {
           return (

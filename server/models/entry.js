@@ -1,7 +1,6 @@
 // -----------New Dadirri Schema---------------------------------
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const moment = require('moment');
 
 const entrySchema = new Schema({
   Mood: { type: Number, required: true },
