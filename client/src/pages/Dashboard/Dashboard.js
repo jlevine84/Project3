@@ -7,7 +7,18 @@ import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import RangeSearch from '../../components/RangeSearch/RangeSearch'
-import Scrape from '../../components/scrape/scrape';
+import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
+
+
+  // Stuff for Jeffy to Dooz
+  // Tab index for the lower right Component
+  // Single page formatting - Charts, Calendar, Entry, Personal Data.
+  // Animations and Transitions
+  // Pie Chart rendering
+  // Conditional rendering for Charts
+  // Entry Component size and shift
+  // Mock Data for Heroku site
+  // Updates for models: User has many Doctors and Medications.
 
 class Dashboard extends React.Component {
 
@@ -43,7 +54,7 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         this.setState({dbreturn: response.data.allLogs})
-    })
+    }).catch(err => console.log(err))
   }
 
   viewByDate = async () => {
@@ -86,8 +97,6 @@ class Dashboard extends React.Component {
     this.pullAll()
   } 
 
-  // Stuff for Jeffy to Dooz
-  // If the exercise button is false or unselected; Don't render the Exercise.
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
@@ -102,7 +111,7 @@ class Dashboard extends React.Component {
       <div className="container-fluid dash-body">
         <div className="container-fluid container-top">
           <div className="row row-top">
-            <div className="col-6 charts">
+            <div className="col-7 charts">
               <BarChart
                 dbreturn={this.state.dbreturn}
               />
@@ -110,9 +119,8 @@ class Dashboard extends React.Component {
                 dbreturn={this.state.dbreturn}
               />
             </div>
-            <div className="col-6 calendar">
+            <div className="col-5 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              {/* Search Range Component */}
               <RangeSearch 
                 viewDateRange={this.viewDateRange}
                 currentDate={this.state.currentDate}
@@ -122,11 +130,9 @@ class Dashboard extends React.Component {
         </div>
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
-            {/* <div className="col"></div> */}
-            <div className="col-6">
+            <div className="col-7">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
-                
                 selectedDate={this.state.selectedDate}
                 mood={this.state.Mood}
                 anxiety={this.state.Anxiety}
@@ -144,8 +150,8 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            <div className="col-6">
-              <Scrape></Scrape>
+            <div className="col-5">
+              <PersonalTabs userID={this.props.userID}/>
             </div>
           </div>
         </div>
