@@ -7,7 +7,18 @@ import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import RangeSearch from '../../components/RangeSearch/RangeSearch'
-import Scrape from '../../components/scrape/scrape';
+import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
+
+
+  // Stuff for Jeffy to Dooz
+  // Tab index for the lower right Component
+  // Single page formatting - Charts, Calendar, Entry, Personal Data.
+  // Animations and Transitions
+  // Pie Chart rendering
+  // Conditional rendering for Charts
+  // Entry Component size and shift
+  // Mock Data for Heroku site
+  // Updates for models: User has many Doctors and Medications.
 
 class Dashboard extends React.Component {
 
@@ -86,8 +97,6 @@ class Dashboard extends React.Component {
     this.pullAll()
   } 
 
-  // Stuff for Jeffy to Dooz
-  // If the exercise button is false or unselected; Don't render the Exercise.
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
@@ -126,7 +135,6 @@ class Dashboard extends React.Component {
             <div className="col-6">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
-                
                 selectedDate={this.state.selectedDate}
                 mood={this.state.Mood}
                 anxiety={this.state.Anxiety}
@@ -145,7 +153,7 @@ class Dashboard extends React.Component {
               />}
             </div>
             <div className="col-6">
-              <Scrape></Scrape>
+              <PersonalTabs userID={this.props.userID}/>
             </div>
           </div>
         </div>
