@@ -16,6 +16,7 @@ class LogUserData extends React.Component{
         MedicineTaken: "false",
         Exercise: "false",
         SleepHours: "0",
+        Showered: "false",
         DailyLog: "",
         ExerciseAmount: "",
         logged: false,
@@ -42,6 +43,7 @@ class LogUserData extends React.Component{
                     Energy: "5",
                     MedicineTaken: false,
                     Exercise: false,
+                    Showered: false,
                     SleepHours: "0",
                     DailyLog: "",
                     ExerciseAmount: "",
@@ -54,6 +56,7 @@ class LogUserData extends React.Component{
         let name = event.target.name
         let value = event.target.value
         await this.setState({[name]: value})
+        console.log(this.state)
     }
     
     submitNewEntry = () => {
@@ -63,6 +66,7 @@ class LogUserData extends React.Component{
             Energy: this.state.Energy,
             MedicineTaken: this.state.MedicineTaken,
             Exercise: this.state.Exercise,
+            Showered: this.state.Showered,
             SleepHours: this.state.SleepHours,
             DailyLog: this.state.DailyLog,
             ExerciseAmount: this.state.ExerciseAmount,
@@ -127,6 +131,11 @@ class LogUserData extends React.Component{
                                 <BooleanInput
                                     name={"Exercise"}
                                     title={"Exercise"}
+                                    update={this.updateValue}
+                                />
+                                <BooleanInput
+                                    name={"Showered"}
+                                    title={"Showered"}
                                     update={this.updateValue}
                                 />
                                 <DropDownInput
