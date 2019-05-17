@@ -136,7 +136,7 @@ class Dashboard extends React.Component {
                 sleepHours={this.state.SleepHours}
                 dailyLog={this.state.DailyLog}
                 exerciseAmount={this.state.ExerciseAmount}
-                showered={this.state.Showered}
+                showered={this.state.Showered.toString()}
                 date={this.state.Date}
                 logged={this.state.Logged}
                 prevEntryCallBack={this.prevEntryCallBack}
