@@ -6,7 +6,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from '../../components/DateRangeSearch/dateRangeSearch'
+import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch'
 
 class Dashboard extends React.Component {
 
