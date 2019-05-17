@@ -7,6 +7,7 @@ import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
+import Scrape from '../../components/scrape/scrape';
 
 class Dashboard extends React.Component {
 
@@ -139,7 +140,7 @@ class Dashboard extends React.Component {
               />}
             </div>
             <div className="col-6">
-              
+              <Scrape></Scrape>
             </div>
           </div>
         </div>
