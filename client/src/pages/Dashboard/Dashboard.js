@@ -6,7 +6,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
+import DateRangeSearch from '../../components/DateRangeSearch/dateRangeSearch';
 import Scrape from '../../components/scrape/scrape';
 
 class Dashboard extends React.Component {
@@ -25,7 +25,6 @@ class Dashboard extends React.Component {
     Logged: null,
     dbreturn:{},
     currentDate: moment().format('YYYYMMDD')
-
   }
 
   componentDidMount() {
@@ -96,9 +95,9 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid dash-body">
         <div className="container-fluid container-top">
-          <div className="row">
+          <div className="row row-top">
             <div className="col-6 charts">
               <BarChart
                 dbreturn={this.state.dbreturn}
@@ -118,7 +117,7 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="container-fluid container-bottom">
-          <div className="row">
+          <div className="row row-bottom">
             {/* <div className="col"></div> */}
             <div className="col-6">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
