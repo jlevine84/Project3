@@ -1,18 +1,13 @@
 import React from 'react'
 import './medications.css'
 
-class Medications extends React.Component {
-  state = {
+function Medications (props) {
 
-  }
+  return (
+    <div>
 
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Medications

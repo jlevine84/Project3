@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         this.setState({dbreturn: response.data.allLogs})
-    })
+    }).catch(err => console.log(err))
   }
 
   viewByDate = async () => {

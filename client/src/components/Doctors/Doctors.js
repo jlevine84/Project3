@@ -1,18 +1,13 @@
 import React from 'react'
 import './doctors.css'
 
-class Doctors extends React.Component {
-  state = {
+function Doctors (props) {
 
-  }
+  return (
+    <div>
 
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Doctors
