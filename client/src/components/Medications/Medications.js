@@ -5,7 +5,7 @@ function Medications (props) {
 
   return (
     <div>
-
+      <p>Mookie</p>
     </div>
   )
 }

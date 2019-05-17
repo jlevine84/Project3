@@ -111,7 +111,7 @@ class Dashboard extends React.Component {
       <div className="container-fluid dash-body">
         <div className="container-fluid container-top">
           <div className="row row-top">
-            <div className="col-6 charts">
+            <div className="col-7 charts">
               <BarChart
                 dbreturn={this.state.dbreturn}
               />
@@ -119,9 +119,8 @@ class Dashboard extends React.Component {
                 dbreturn={this.state.dbreturn}
               />
             </div>
-            <div className="col-6 calendar">
+            <div className="col-5 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              {/* Search Range Component */}
               <RangeSearch 
                 viewDateRange={this.viewDateRange}
                 currentDate={this.state.currentDate}
@@ -131,8 +130,7 @@ class Dashboard extends React.Component {
         </div>
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
-            {/* <div className="col"></div> */}
-            <div className="col-6">
+            <div className="col-7">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
                 selectedDate={this.state.selectedDate}
@@ -152,7 +150,7 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            <div className="col-6">
+            <div className="col-5">
               <PersonalTabs userID={this.props.userID}/>
             </div>
           </div>

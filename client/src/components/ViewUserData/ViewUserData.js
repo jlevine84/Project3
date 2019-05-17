@@ -100,8 +100,6 @@ class ViewUserData extends React.Component {
 
     render(){
         const entryDate = moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY')
-        console.log(this.props.showered)
-        console.log(this.props.anxiety)
         return(
          <div>
              {(this.state.logged && !this.state.edit) ?

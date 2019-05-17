@@ -5,7 +5,7 @@ function Doctors (props) {
 
   return (
     <div>
-
+      <p>Stink</p>
     </div>
   )
 }

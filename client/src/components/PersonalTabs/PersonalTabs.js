@@ -11,42 +11,80 @@ class PersonalTabs extends React.Component {
     scrape: [],
     doctors: [],
     medications: [],
-    active: "active",
-    scrapeToggle: true,
-    doctorToggle: false,
-    medicationsToggle: false
-
+    scraperTab: "active",
+    doctorsTab: "",
+    medicationsTab: ""
   }
 
   componentWillMount(){
     this.scrape()
   }
 
-  toggleSwitch = component => {
-    this.setState({ })
+  toggleSwitch = event => {
+    event.preventDefault()
+    let name = event.target.name
+    switch (name) {
+      case "scraper":
+        this.setState({ scraperTab: "active", doctorsTab: "", medicationsTab: "" })
+        break
+      case "doctors":
+        this.setState({ scraperTab: "", doctorsTab: "active", medicationsTab: "" })
+        break
+      case "medications":
+        this.setState({ scraperTab: "", doctorsTab: "", medicationsTab: "active" })
+        break
+      default:
+        this.setState({ scraperTab: "active", doctorsTab: "", medicationsTab: "" })
+    }
   }
   
   scrape = () => {
-    API.scrape().then(response => {
-      console.log("scrape .then")
-      this.setState({
+    API.scrape().then(async response => {
+      await this.setState({
         scrape: response.data
       })
-      console.log(this.state.scrape)
     }).catch(err => console.log(err))
+  }
+
+  doctors = () => {
+    // API call to get Dr Info
+  }
+
+  medications = () => {
+    // API call to get meds
+  }
+
+  addDoctor = drInfo => {
+
+  }
+
+  addMedication = medInfo => {
+
   }
 
   render() {
     return (
       <div className="jumbotron">
-        {(this.state.scrapeToggle == true) ?
-          <Scrape className={`${this.state.active}`} scrape={this.state.scrape}/> : ""
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <button className={`nav-link ${this.state.scraperTab}`} name={"scraper"} onClick={this.toggleSwitch}>Active</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${this.state.doctorsTab}`} name={"doctors"} onClick={this.toggleSwitch}>Link</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${this.state.medicationsTab}`} name={"medications"} onClick={this.toggleSwitch}>Link</button>
+          </li>
+        </ul>
+        <br/>
+        {(this.state.scraperTab === "active") ?
+          <Scrape scrape={this.state.scrape}/> : ""
         }
-        {(this.state.doctorsToggle == true) ?
-        <Doctors/> : ""
+        {(this.state.doctorsTab === "active") ?
+          <Doctors/> : ""
         }
-        {(this.state.medicationsToggle == true) ?
-        <Medications/> : ""
+        {(this.state.medicationsTab === "active") ?
+          <Medications/> : ""
         }
       </div>
     )
