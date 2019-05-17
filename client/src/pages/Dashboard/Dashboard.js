@@ -6,7 +6,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch'
+import RangeSearch from '../../components/RangeSearch/RangeSearch'
 
 
 class Dashboard extends React.Component {
@@ -113,7 +113,7 @@ class Dashboard extends React.Component {
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
               {/* Search Range Component */}
-              <DateRangeSearch 
+              <RangeSearch 
                 viewDateRange={this.viewDateRange}
                 currentDate={this.state.currentDate}
               />
