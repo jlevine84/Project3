@@ -20,6 +20,7 @@ class ViewUserData extends React.Component {
         SleepHours: 0,
         DailyLog: "",
         ExerciseAmount: "",
+        Showered: "",
         Date: this.props.selectedDate,
         UserID: this.props.userID,
         logged: false
@@ -58,6 +59,7 @@ class ViewUserData extends React.Component {
                     SleepHours: "0",
                     DailyLog: "",
                     ExerciseAmount: "",
+                    Showered: false,
                     logged: false, 
                     viewDate: moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY'), 
                 })
@@ -80,6 +82,7 @@ class ViewUserData extends React.Component {
             SleepHours: this.state.SleepHours,
             DailyLog: this.state.DailyLog,
             ExerciseAmount: this.state.ExerciseAmount,
+            Showered: this.state.Showered,
             Date: this.props.selectedDate,
             UserID: this.props.userID
         }
@@ -97,6 +100,8 @@ class ViewUserData extends React.Component {
 
     render(){
         const entryDate = moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY')
+        console.log(this.props.showered)
+        console.log(this.props.anxiety)
         return(
          <div>
              {(this.state.logged && !this.state.edit) ?
@@ -108,6 +113,7 @@ class ViewUserData extends React.Component {
                  <p><strong>Energy: </strong>{this.props.energy}</p>
                  <p><strong>Hours Slept: </strong>{this.props.sleepHours}</p>
                  <p><strong>Medicine Taken: </strong>{this.props.medicineTaken}</p>
+                 <p><strong>Showered: </strong>{this.props.showered}</p>
                  {this.props.exercise === "true" ?  
                     <div>
                     <p><strong>Exercised: </strong>{this.props.exercise}</p>
@@ -168,6 +174,11 @@ class ViewUserData extends React.Component {
                         <BooleanInput
                             name={"Exercise"}
                             title={"Exercise"}
+                            update={this.updateValue}
+                        />
+                          <BooleanInput
+                            name={"Showered"}
+                            title={"Showered"}
                             update={this.updateValue}
                         />
                         <DropDownInput

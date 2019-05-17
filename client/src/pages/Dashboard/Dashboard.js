@@ -6,7 +6,7 @@ import BarChart from '../../components/Charts/BarChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import DateRangeSearch from '../../components/DateRangeSearch/DateRangeSearch';
+import DateRangeSearch from '../../components/dateRangeSearch/dateRangeSearch';
 
 class Dashboard extends React.Component {
 
@@ -20,6 +20,7 @@ class Dashboard extends React.Component {
     SleepHours: "",
     DailyLog: "",
     ExerciseAmount: "",
+    Showered: "",
     Date: "",
     Logged: null,
     dbreturn:{},
@@ -56,6 +57,7 @@ class Dashboard extends React.Component {
             MedicineTaken: response.data.todaysentry[0].MedicineTaken,
             Exercise: response.data.todaysentry[0].Exercise,
             SleepHours: response.data.todaysentry[0].SleepHours,
+            Showered: response.data.todaysentry[0].Showered,
             DailyLog: response.data.todaysentry[0].DailyLog,
             ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
             Date: moment(response.data.todaysentry[0].Date, 'YYYYMMDD').format('MMMM Do YYYY'),
@@ -68,6 +70,7 @@ class Dashboard extends React.Component {
           Energy: "",
           MedicineTaken: "",
           Exercise: "",
+          Showered: "",
           SleepHours: "",
           DailyLog: "",
           ExerciseAmount: "",
@@ -75,6 +78,7 @@ class Dashboard extends React.Component {
         })
       }
     }).catch(err => console.log(err))
+
   }
 
   prevEntryCallBack = () => {
@@ -122,6 +126,7 @@ class Dashboard extends React.Component {
             <div className="col-6">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
+                
                 selectedDate={this.state.selectedDate}
                 mood={this.state.Mood}
                 anxiety={this.state.Anxiety}
@@ -131,6 +136,7 @@ class Dashboard extends React.Component {
                 sleepHours={this.state.SleepHours}
                 dailyLog={this.state.DailyLog}
                 exerciseAmount={this.state.ExerciseAmount}
+                showered={this.state.Showered}
                 date={this.state.Date}
                 logged={this.state.Logged}
                 prevEntryCallBack={this.prevEntryCallBack}

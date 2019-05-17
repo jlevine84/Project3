@@ -12,6 +12,7 @@ const entrySchema = new Schema({
   SleepHours: Number,
   Exercise: { type: Boolean, required: true },
   ExerciseAmount: String,
+  Showered: { type: Boolean, required: true},
   Date: { type: Number, required: true },
   UserID: {type: String, required: true }
 })
