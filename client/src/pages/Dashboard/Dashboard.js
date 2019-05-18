@@ -1,25 +1,13 @@
 import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
-import ViewUserData from './../../components/ViewUserData/ViewUserData';
+import ViewUserData from '../../components/ViewUserData/ViewUserData';
 import BarChart from '../../components/Charts/BarChart.js'
-import PieChart from '../../components/Charts/PieChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
-import RangeSearch from '../../components/RangeSearch/RangeSearch'
-import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
+import DateRangeSearch from '../../components/RangeSearch/RangeSearch'
 
-
-  // Stuff for Jeffy to Dooz
-  // Tab index for the lower right Component
-  // Single page formatting - Charts, Calendar, Entry, Personal Data.
-  // Animations and Transitions
-  // Pie Chart rendering
-  // Conditional rendering for Charts
-  // Entry Component size and shift
-  // Mock Data for Heroku site
-  // Updates for models: User has many Doctors and Medications.
 
 class Dashboard extends React.Component {
 
@@ -55,11 +43,7 @@ class Dashboard extends React.Component {
     API.getAll()
     .then(response =>{
         this.setState({dbreturn: response.data.allLogs})
-    }).catch(err => console.log(err))
-  }
-
-  aggregateData = (arr, attr) => {
-    return [2]
+    })
   }
 
   viewByDate = async () => {
@@ -102,6 +86,8 @@ class Dashboard extends React.Component {
     this.pullAll()
   } 
 
+  // Stuff for Jeffy to Dooz
+  // If the exercise button is false or unselected; Don't render the Exercise.
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
@@ -116,20 +102,18 @@ class Dashboard extends React.Component {
       <div className="container-fluid dash-body">
         <div className="container-fluid container-top">
           <div className="row row-top">
-            <div className="col-7 charts">
-              <BarChart
+            <div className="col-6 charts">
+              {/* <BarChart
                 dbreturn={this.state.dbreturn}
-              />
+              /> */}
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
-              <PieChart
-                dbreturn={() => this.aggregateData()}
-              />
             </div>
-            <div className="col-5 calendar">
+            <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              <RangeSearch 
+              {/* Search Range Component */}
+              <DateRangeSearch 
                 viewDateRange={this.viewDateRange}
                 currentDate={this.state.currentDate}
               />
@@ -138,9 +122,11 @@ class Dashboard extends React.Component {
         </div>
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
-            <div className="col-7">
+            {/* <div className="col"></div> */}
+            <div className="col-6">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
+                
                 selectedDate={this.state.selectedDate}
                 mood={this.state.Mood}
                 anxiety={this.state.Anxiety}
@@ -158,8 +144,8 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            <div className="col-5">
-              <PersonalTabs userID={this.props.userID}/>
+            <div className="col-6">
+              
             </div>
           </div>
         </div>

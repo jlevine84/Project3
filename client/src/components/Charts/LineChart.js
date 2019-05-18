@@ -32,8 +32,18 @@ function LineChart (props) {
     
         let chartData = {
           labels: dates,
-          // once loop is working, replace with dates array
+        
           datasets: [
+            {
+                label: 'Sleep',
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                borderColor: 'rgba(140, 6, 224,1)',
+                hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
+                hoverBorderColor: 'rgb(93, 142, 61)',
+                borderWidth: 2,
+                data: sleep
+              
+            },
               {
                   label: 'Mood',
                   backgroundColor: 'rgba(255,99,132,0.2)',
@@ -42,7 +52,7 @@ function LineChart (props) {
                   hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
                   hoverBorderColor: 'rgb(93, 142, 61)',
                   data: mood
-                  // once loop is working, replace with mood array
+         
               },
               {
                   label: 'Anxiety',
@@ -52,7 +62,6 @@ function LineChart (props) {
                   hoverBackgroundColor: 'rgba(236, 230, 64, 0.44)',
                   hoverBorderColor: 'rgba(236, 230, 64, 0.82)',
                   data: anxiety
-                  // once loop is working, replace with anxiety array
               },
               {
                   label: 'Energy',
@@ -62,7 +71,7 @@ function LineChart (props) {
                   hoverBackgroundColor: 'rgba(241, 28, 138, 0.6)',
                   hoverBorderColor: 'rgb(241, 28, 138)',
                   data: energy
-                  // once loop is working, replace with energy array
+
               }
           ],
           options: {
@@ -86,7 +95,7 @@ function LineChart (props) {
                 height={100}
                 options={{
                     maintainAspectRatio: false,
-                    scales: { yAxes: [{ ticks: { beginAtZero: true, max: 10 } }], xAxes: [{ ticks: { beginAtZero: true } }] }
+                    scales: { yAxes: [{ ticks: { beginAtZero: true } }], xAxes: [{ ticks: { beginAtZero: true } }] }
                 }}
             />
         )
