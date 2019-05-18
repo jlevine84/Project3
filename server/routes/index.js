@@ -10,6 +10,7 @@ router.use('/auth', authRoutes);
 // API Routes
 router.use("/api", apiRoutes);
 
+// Scrape Routes
 router.use('/scrape', scrapeRoute)
 
 // If no routes are hit, send the React app

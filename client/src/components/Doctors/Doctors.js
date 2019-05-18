@@ -5,18 +5,30 @@ import API from '../../utils/API'
 class Doctors extends React.Component {
   
   state = {
-    edit: false
+    edit: false,
+    userID: this.props.userID,
+    name: "",
+    phoneNumber: "",
+    streetInfo: "",
+    cityStateZip: ""
   }
 
-  addDoctors = medInfo => {
+  updateValue = async event => {
+    let name = event.target.name
+    let value = event.target.value
+    await this.setState({[name]: value})
+  }
+
+  addDoctor = event => {
+    event.preventDefault()
 
   }
 
-  editDoctors = medInfo => {
+  editDoctor = medInfo => {
 
   }
 
-  removeDoctors = medInfo => {
+  removeDoctor = medInfo => {
 
   }
 
@@ -28,13 +40,71 @@ class Doctors extends React.Component {
     this.setState({ edit: false })
   }
 
-  return(){
+  //Inputs for name, phoneNumber, address
+  // Grab values from names
+  // Send to server
+
+  render() {
     return (
-      <div>
-        *Name:
-        *Phone Number:
-        Address
-      <p>Mookie</p>
+      <div className="doctors">
+        <div className="row">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <p>
+                <label>Doctor's Name: </label>
+                <textarea
+                  className="form-control"
+                  placeholder="Doctor's Name"
+                  name="name"
+                  onChange={this.updateValue}
+                  rows="1"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <p>
+                <label>Phone Number: </label>
+                <textarea
+                  className="form-control"
+                  placeholder="Phone Number (XXX-XXX-XXXX)"
+                  name="phoneNumber"
+                  onChange={this.updateValue}
+                  rows="1"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <p>
+                <label>Address: </label>
+                <textarea
+                  className="form-control"
+                  placeholder="Street Information"
+                  name="streetInfo"
+                  onChange={this.updateValue}
+                  rows="1"
+                />
+                <textarea
+                  className="form-control"
+                  placeholder="City, State Zip Code"
+                  name="cityStateZip"
+                  onChange={this.updateValue}
+                  rows="1"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }

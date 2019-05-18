@@ -90,7 +90,7 @@ class Dashboard extends React.Component {
 
   // Stuff for Jeffy to Dooz
   // If the exercise button is false or unselected; Don't render the Exercise.
-
+  // Default Sleep Hours
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
       .then(async response => {

@@ -6,7 +6,6 @@ const strategy = new LocalStrategy(
 		usernameField: 'email' // not necessary, DEFAULT
 	},
 	function(email, password, done) {
-		console.log("hitting passport")
 		db.User.findOne({ 'email': email }, (err, userMatch) => {
 			if (err) {
 				return done(err);

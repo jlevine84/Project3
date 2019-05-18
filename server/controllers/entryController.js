@@ -67,17 +67,6 @@ module.exports = {
           res.json(dbModel);
         })
         .catch(err => res.status(422).json(err));
-    },
-  
-  // To remove a previously created mood entry
-    remove: function(req, res) {
-      db.Entry.findOneAndUpdate({ _id: req.user._id }, { $pull: { entry: new ObjectId(req.params.id) } }, { new: true })
-        .then(() => {
-          db.Entry
-            .findOneAndDelete({ _id: req.params.id })
-            .then(dbEntry => res.json(dbBook))
-            .catch(err => res.status(422).json(err));
-        });
     }
   };
   
