@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const medicineSchema = new Schema({
   name: { type: String, required: true },
-  dose: Number,
+  dose: String,
   medicationFor: String,
-  date: { type: Date, required: true, default: Date.now}
+  Date: { type: Date, default: Date.now },
+  UserID: { type: String, required: true }
 })
 
 const Medicine = mongoose.model("Medicine", medicineSchema);

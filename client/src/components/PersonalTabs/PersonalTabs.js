@@ -18,6 +18,8 @@ class PersonalTabs extends React.Component {
 
   componentWillMount(){
     this.scrape()
+    this.getDoctors()
+    this.getMedications()
   }
 
   toggleSwitch = event => {
@@ -48,10 +50,18 @@ class PersonalTabs extends React.Component {
 
   getDoctors = () => {
     // API call to get all Dr Info and use as callback
+    API.getDoctors().then(async response => {
+      console.log(response)
+      await this.setState({ doctors: response.data.allDoctors })
+    }).catch(err => console.log(err))
   }
 
   getMedications = () => {
     // API call to get all meds and use as callback
+    API.getMedications().then(async response => {
+      console.log(response)
+      await this.setState({ medications: response.data.allMedications })
+    }).catch(err => console.log(err))
   }
 
   render() {
@@ -71,7 +81,11 @@ class PersonalTabs extends React.Component {
         <br/>
 
         {(this.state.scraperTab === "active") ?
-          <Scrape scrape={this.state.scrape}/> : ""
+          <Scrape scrape={this.state.scrape}/> : 
+          (this.state.doctorsTab === "active") ?
+          <Doctors doctors={this.state.doctors}/> : 
+          (this.state.medicationsTab === "active") ?
+          <Medications medications={this.state.medications}/> : ""
         }
 
         {/* {(this.state.doctorsTab === "active") && (this.state.doctors[0]) (

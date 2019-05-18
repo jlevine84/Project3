@@ -7,7 +7,6 @@ module.exports = {
         axios.get("https://www.sciencedaily.com/news/mind_brain/mental_health/").then(response => {
             
             const $ = cheerio.load(response.data);
-            console.log($)
             $("div.col-sm-6").each((i, element) => {
             const result = {
               title: $(element).find('h3').text(),
@@ -15,8 +14,6 @@ module.exports = {
               };
             articles.push(result)
             });
-            console.log('article results')
-            console.log(articles)
             res.json(articles)
           });
           

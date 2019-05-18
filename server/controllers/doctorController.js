@@ -3,52 +3,45 @@ const ObjectId = require("mongoose").Types.ObjectId
 const db = require("../models")
 
 module.exports = {
-  //find all entries from a certain user
+  //find all Doctor from a certain user
   findAll: function(req, res) {
+    console.log("Hitting findAll Doctors")
     if (req.user) {
       db.Doctor
-        .find({UserID: req.user._id}).sort({ Date: -1 })
+        .find({ UserID: req.user._id }).sort({ Date: -1 })
         .then(doctors => {
-          res.json({allDoctors: doctors});
+          console.log(doctors)
+          res.json({ allDoctors: doctors });
         })
         .catch(err => res.status(422).json(err));
     } else {
-      return res.json({nothing});
+      return res.json({ nothing });
     }
   },
   
-  // Add a new Doctor, Lesley HALP
+  // Add a new Doctor
   addDoctor: function(req, res) {
-  let doctor = req.body
+    console.log("Hitting addDoctor")
+    console.log(req.body)
+    let doctor = req.body
     db.Doctor
-      .findOneAndUpdate({UserID: req.user._id}, doctor, {upsert: true}, function(){})
-      .then(dbEntry => {
-        return db.User.findOneAndUpdate({ _id: dbEntry.UserID}, { $push: { entries: dbEntry._id } });
-      })
-      .then((dbUser) => {
-        res.json(dbUser);
-      })
-      .catch(err => res.status(422).json(err));
-  },
-  
-  // To edit an existing Doctor, Lesley HALP
-  update: function(req, res) {
-    db.Doctor
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => {
-        res.json(dbModel);
+      .findOneAndUpdate({ UserID: req.user._id}, doctor, { upsert: true }, function(){})
+      .then(dbDoctor => {
+        console.log(dbDoctor)
+        res.json(dbDoctor);
       })
       .catch(err => res.status(422).json(err));
   },
   
   // To remove a previous Doctor, Lesley HALP
-  remove: function(req, res) {
-    db.Doctor.findOneAndUpdate({ _id: req.user._id }, { $pull: { entry: new ObjectId(req.params.id) } }, { new: true })
-      .then(() => {
-        db.Doctor
-          .findOneAndDelete({ _id: req.params.id })
-          .then(dbEntry => res.json(dbBook))
-          .catch(err => res.status(422).json(err));
-      });
-  }
+  // Finish l8r
+  // remove: function(req, res) {
+  //   db.Doctor.findOneAndDelete({ UserID: req.user._id, name: r }, { $pull: { entry: new ObjectId(req.params.id) } }, { new: true })
+  //     .then(() => {
+  //       db.Doctor
+  //         .findOneAndDelete({ _id: req.params.id })
+  //         .then(dbEntry => res.json(dbBook))
+  //         .catch(err => res.status(422).json(err));
+  //     });
+  // }
 };
