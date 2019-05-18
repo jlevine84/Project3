@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const doctorSchema = new Schema({
   name: { type: String, required: true},
   phoneNumber: { type: Number, required: true },
-  email: String,
   address: String
 })
 

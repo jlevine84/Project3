@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export default {
   // Get all Entries
   getAll: function() {
@@ -16,5 +15,11 @@ export default {
   // Get an Entry for a specific date
   getByDate: function(date){
     return axios.get("api/entry/" + date)
+  },
+
+  //scrape function////
+  scrape: function(){
+    console.log("hitting scrape api")
+  return axios.get(`/scrape/`)
   }
 };
