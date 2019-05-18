@@ -73,20 +73,20 @@ function LineChart (props) {
                   data: energy
 
               }
-          ],
-          options: {
-              scales: {
-                  yAxes: [{
-                      display: true,
-                      ticks: {
-                          beginAtZero: true,
-                          min: 0,
-                          max: 10
-                      }
-                  }]
-              }
-          }
-        }
+          ] }
+        //   options: {
+        //       scales: {
+        //           yAxes: [{
+        //               display: true,
+        //               ticks: {
+        //                   beginAtZero: true,
+        //                   min: 0,
+        //                   max: 10
+        //               }
+        //           }]
+        //       }
+        //   }
+        // }
 
         return(
             <Line
