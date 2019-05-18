@@ -3,10 +3,12 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import ViewUserData from '../../components/ViewUserData/ViewUserData';
 import BarChart from '../../components/Charts/BarChart.js'
+// import PieChart from '../../components/Charts/PieChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
 import DateRangeSearch from '../../components/RangeSearch/RangeSearch'
+import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
 
 
 class Dashboard extends React.Component {
@@ -103,12 +105,15 @@ class Dashboard extends React.Component {
         <div className="container-fluid container-top">
           <div className="row row-top">
             <div className="col-6 charts">
-              {/* <BarChart
+            {/* <BarChart
                 dbreturn={this.state.dbreturn}
               /> */}
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
+               {/* <PieChart
+                dbreturn={this.state.dbreturn}
+              /> */}
             </div>
             <div className="col-6 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
@@ -144,12 +149,13 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            <div className="col-6">
+            <div className="col-5">
+              <PersonalTabs userID={this.props.userID}/>
+            </div>
               
             </div>
           </div>
         </div>
-      </div>
     )
   }
 }
