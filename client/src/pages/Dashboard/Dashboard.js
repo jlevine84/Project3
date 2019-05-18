@@ -3,6 +3,7 @@ import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import ViewUserData from './../../components/ViewUserData/ViewUserData';
 import BarChart from '../../components/Charts/BarChart.js'
+import PieChart from '../../components/Charts/PieChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
 import moment from 'moment'
@@ -55,6 +56,10 @@ class Dashboard extends React.Component {
     .then(response =>{
         this.setState({dbreturn: response.data.allLogs})
     }).catch(err => console.log(err))
+  }
+
+  aggregateData = (arr, attr) => {
+    return [2]
   }
 
   viewByDate = async () => {
@@ -117,6 +122,9 @@ class Dashboard extends React.Component {
               />
               <LineChart
                 dbreturn={this.state.dbreturn}
+              />
+              <PieChart
+                dbreturn={() => this.aggregateData()}
               />
             </div>
             <div className="col-5 calendar">
