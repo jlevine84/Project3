@@ -50,7 +50,7 @@ class Medications extends React.Component {
           <div className="col-sm-12">
             <div className="form-group">
               <p>
-                <label>Name: </label>
+                <label>Medication Name: </label>
                 <textarea
                   className="form-control"
                   placeholder="Medication Name"
