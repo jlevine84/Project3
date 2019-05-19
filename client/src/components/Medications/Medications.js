@@ -6,6 +6,7 @@ class Medications extends React.Component {
 
   state = {
     edit: false,
+    logged: null,
     userID: this.props.userID,
     name: "",
     dose: "",
@@ -20,7 +21,19 @@ class Medications extends React.Component {
 
   addMedication = event => {
     event.preventDefault()
-
+    let newMedication = {
+      name: this.state.name,
+      dose: this.state.dose,
+      medicationFor: this.state.medicationFor,
+      userID: this.state.userID,
+      logged: true
+    }
+    API.addMedication(newMedication).then(async response => {
+      await this.setState({
+        edit: true
+      })
+      this.props.getMedications()
+    })
   }
 
   editMedication = medInfo => {
@@ -39,13 +52,11 @@ class Medications extends React.Component {
     this.setState({ edit: false })
   }
 
-  // Inputs for name, dose, medicationFor
-  // Grab values from names
-  // Send to server
-
   render() {
     return (
       <div className="medications">
+
+        {/* Input for a new Medication */}
         <div className="row">
           <div className="col-sm-12">
             <div className="form-group">
@@ -94,6 +105,13 @@ class Medications extends React.Component {
                 />
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-12">
+            <button className="btn btn-primary" onClick={this.addMedication}>Submit</button>
+            <button className="btn btn-secondary">Edit</button>
           </div>
         </div>
 

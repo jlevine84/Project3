@@ -13,7 +13,8 @@ class PersonalTabs extends React.Component {
     medications: [],
     scraperTab: "active",
     doctorsTab: "",
-    medicationsTab: ""
+    medicationsTab: "",
+    userID: this.props.userID
   }
 
   componentWillMount(){
@@ -53,6 +54,7 @@ class PersonalTabs extends React.Component {
     API.getDoctors().then(async response => {
       console.log(response)
       await this.setState({ doctors: response.data.allDoctors })
+      console.log(this.state.doctors)
     }).catch(err => console.log(err))
   }
 
@@ -61,6 +63,7 @@ class PersonalTabs extends React.Component {
     API.getMedications().then(async response => {
       console.log(response)
       await this.setState({ medications: response.data.allMedications })
+      console.log(this.state.medications)
     }).catch(err => console.log(err))
   }
 
@@ -83,9 +86,9 @@ class PersonalTabs extends React.Component {
         {(this.state.scraperTab === "active") ?
           <Scrape scrape={this.state.scrape}/> : 
           (this.state.doctorsTab === "active") ?
-          <Doctors doctors={this.state.doctors}/> : 
+          <Doctors userID={this.props.userID} getDoctors={this.getDoctors} doctors={this.state.doctors}/> : 
           (this.state.medicationsTab === "active") ?
-          <Medications medications={this.state.medications}/> : ""
+          <Medications userID={this.props.userID} getMedications={this.getMedications} medications={this.state.medications}/> : ""
         }
 
         {/* {(this.state.doctorsTab === "active") && (this.state.doctors[0]) (

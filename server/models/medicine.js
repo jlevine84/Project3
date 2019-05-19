@@ -5,6 +5,7 @@ const medicineSchema = new Schema({
   name: { type: String, required: true },
   dose: String,
   medicationFor: String,
+  logged: { type: Boolean, required: true },
   Date: { type: Date, default: Date.now },
   UserID: { type: String, required: true }
 })
