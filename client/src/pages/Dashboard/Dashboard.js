@@ -94,6 +94,8 @@ class Dashboard extends React.Component {
   // Chart data toggles.
   // Page Transitions.
   // Linting
+  // Logic for new user chart area,
+  // Logic for only one entry
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
