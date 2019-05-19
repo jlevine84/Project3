@@ -7,6 +7,7 @@ const doctorSchema = new Schema({
   phoneNumber: { type: String, required: true },
   streetInfo: String,
   cityStateZip: String,
+  logged: { type: Boolean, required: true },
   Date: { type: Date, default: Date.now },
   UserID: {type: String, required: true }
 })

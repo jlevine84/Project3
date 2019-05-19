@@ -7,7 +7,6 @@ function PieChart(props) {
 
 
    function getData(data) {
-       console.log(data)
 
        let meds = []
        let medsLabels = []
@@ -24,14 +23,12 @@ function PieChart(props) {
         //    meds.push(1)
         //    medsLabels.push("True")
            medtrues = medtrues+1
-           console.log(medtrues)
         //    console.log(medsLabels)
        } else if
            (!data[i]["MedicineTaken"]) {
             // meds.push(1)
             // medsLabels.push("False")
            medfalses = medfalses+1
-        console.log(medfalses)
         // console.log(medsLabels) 
        }
     }

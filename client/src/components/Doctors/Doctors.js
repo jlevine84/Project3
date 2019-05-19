@@ -6,6 +6,7 @@ class Doctors extends React.Component {
   
   state = {
     edit: false,
+    logged: null,
     userID: this.props.userID,
     name: "",
     phoneNumber: "",
@@ -21,7 +22,20 @@ class Doctors extends React.Component {
 
   addDoctor = event => {
     event.preventDefault()
-
+    let newDoctor = {
+      name: this.state.name,
+      phoneNumber: this.state.phoneNumber,
+      streetInfo: this.state.streetInfo,
+      cityStateZip: this.state.cityStateZip,
+      userID: this.state.userID,
+      logged: true
+    }
+    API.addDoctor(newDoctor).then(async response => {
+      await this.setState({
+        edit: true
+      })
+      this.props.getDoctors()
+    })
   }
 
   editDoctor = medInfo => {
@@ -40,13 +54,11 @@ class Doctors extends React.Component {
     this.setState({ edit: false })
   }
 
-  //Inputs for name, phoneNumber, address
-  // Grab values from names
-  // Send to server
-
   render() {
     return (
       <div className="doctors">
+
+        {/* Input for a new Doctor */}
         <div className="row">
           <div className="col-sm-12">
             <div className="form-group">
@@ -102,6 +114,13 @@ class Doctors extends React.Component {
                 />
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-12">
+            <button className="btn btn-primary" onClick={this.addDoctor}>Submit</button>
+            <button className="btn btn-secondary">Edit</button>
           </div>
         </div>
 
