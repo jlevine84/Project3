@@ -7,6 +7,7 @@ function PieChart(props) {
 
 
    function getData(data) {
+       console.log(data)
 
        let meds = []
        let medsLabels = []
@@ -20,45 +21,101 @@ function PieChart(props) {
 
     for (var i = data.length - 1; i > -1; i--) {
        if (data[i]["MedicineTaken"]) {
-        //    meds.push(1)
-        //    medsLabels.push("True")
            medtrues = medtrues+1
-        //    console.log(medsLabels)
+           console.log(medtrues)
        } else if
            (!data[i]["MedicineTaken"]) {
-            // meds.push(1)
-            // medsLabels.push("False")
            medfalses = medfalses+1
-        // console.log(medsLabels) 
+        console.log(medfalses) 
        }
     }
    
 
    const medicineData = {
  
-       labels: ['True','False'],
+       labels: ['Took Medicine',"Didn't Take Medicine"],
        datasets: [
            {
                data: [medtrues, medfalses],
-               backgroundColor: ['rgba(255,99,132,0.2)'],
-               hoverBackgroundColor: ['rgba(255,99,132,1)']
+               backgroundColor: ['rgba(149, 88, 206,0.2)'],
+               hoverBackgroundColor: ['rgba(149, 88, 206,1)']
            }
        ]
    }
 
 
 
+   for (var i = data.length - 1; i > -1; i--) {
+    if (data[i]["Exercise"]) {
+        exertrues = exertrues+1
+        console.log(exertrues)
+    } else if
+        (!data[i]["Exercise"]) {
+        exerfalses = exerfalses+1
+     console.log(exerfalses) 
+    }
+ }
+
+
+const exerciseData = {
+
+    labels: ['Exercised',"Didn't Exercise"],
+    datasets: [
+        {
+            data: [exertrues, exerfalses],
+            backgroundColor: ['rgba(142, 204, 159,0.4)'],
+            hoverBackgroundColor: ['rgba(142, 204, 159,1)']
+        }
+    ]
+}
+
+for (var i = data.length - 1; i > -1; i--) {
+    if (data[i]["Showered"]) {
+        showertrues = showertrues+1
+        console.log(showertrues)
+    } else if
+        (!data[i]["Showered"]) {
+        showerfalses = showerfalses+1
+     console.log(showerfalses) 
+    }
+ }
+
+
+const showerData = {
+
+    labels: ['Showered',"Didn't Showered"],
+    datasets: [
+        {
+            data: [showertrues, showerfalses],
+            backgroundColor: ['rgba(142, 195, 204,0.4)'],
+            hoverBackgroundColor: ['rgba(142, 195, 204,1)']
+        }
+    ]
+}
+
 
    return(
-       
-       <div style={{height: '180px', width: '180px'}}>
-    <Pie
-        data={medicineData}
-        width={10}
-        height={10}
-    />
+    <div class="row">
+    <div class="col-sm-4">       
+    <div style={{height: '180px', width: '180px'}}>
+        <Pie data={medicineData} width={10} height={10}/>      
     </div>
-)}
+    </div>
+    <div class="col-sm-4">       
+    <div style={{height: '180px', width: '180px'}}>
+    <Pie data={exerciseData} width={10} height={10}/>
+    </div>
+    </div>
+
+    <div class="col-sm-4">       
+    <div style={{height: '180px', width: '180px'}}>
+    <Pie data={showerData} width={10} height={10}/>
+    </div>
+    </div>
+       
+ </div>
+
+   )}
 
 return (
     <div className="pieChart">

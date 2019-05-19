@@ -117,6 +117,7 @@ class Dashboard extends React.Component {
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
+              
                <PieChart
                 dbreturn={this.state.dbreturn}
               />
