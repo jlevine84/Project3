@@ -87,8 +87,15 @@ class Dashboard extends React.Component {
   } 
 
   // Stuff for Jeffy to Dooz
-  // If the exercise button is false or unselected; Don't render the Exercise.
-  // Default Sleep Hours
+  // Catch Dr & Med Data -> send to DB -> retrieve from db
+  // Page formatting: Charts, Calendar, Ptabs, viewInfo
+  // Validate Chart info.
+  // Chart data toggles.
+  // Page Transitions.
+  // Linting
+  // Logic for new user chart area,
+  // Logic for only one entry
+
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
       .then(async response => {
@@ -99,12 +106,10 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container-fluid dash-body">
+
         <div className="container-fluid container-top">
           <div className="row row-top">
             <div className="col-7 charts">
-            {/* <BarChart
-                dbreturn={this.state.dbreturn}
-              /> */}
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
@@ -124,7 +129,6 @@ class Dashboard extends React.Component {
 
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
-            {/* <div className="col"></div> */}
             <div className="col-7">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  

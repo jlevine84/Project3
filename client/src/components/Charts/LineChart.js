@@ -73,28 +73,14 @@ function LineChart (props) {
                 data: energy
 
             }
-            ] 
+          ] 
         }
-        //   options: {
-        //       scales: {
-        //           yAxes: [{
-        //               display: true,
-        //               ticks: {
-        //                   beginAtZero: true,
-        //                   min: 0,
-        //                   max: 10
-        //               }
-        //           }]
-        //       }
-        //   }
-        // }
 
         return(
-            
             <Line
                 data={chartData}
                 width={500}
-                height={100}
+                height={200}
                 options={{
                     maintainAspectRatio: false,
                     scales: { yAxes: [{ ticks: { beginAtZero: true } }], xAxes: [{ ticks: { beginAtZero: true } }] }

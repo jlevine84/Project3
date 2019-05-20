@@ -1,5 +1,5 @@
 .input-range{
-  margin-left:75px;
+  margin-left:25px;
   font-weight: bold;
 }
 .drop-down1{
@@ -39,10 +39,11 @@
 }
 .btn-range{
   float:left;
-  margin-top:37px;
-  margin-left:20px;
+  margin-top:5px;
+  margin-left:0px;
 
 }
 h6{
-  text-align:center;
+  margin-left: 25px;
+  margin-top: 15px;
 }
