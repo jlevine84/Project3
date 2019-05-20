@@ -10,7 +10,6 @@ import moment from 'moment'
 import DateRangeSearch from '../../components/RangeSearch/RangeSearch'
 import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
 
-
 class Dashboard extends React.Component {
 
   state = {
@@ -80,7 +79,6 @@ class Dashboard extends React.Component {
         })
       }
     }).catch(err => console.log(err))
-
   }
 
   prevEntryCallBack = () => {
@@ -96,7 +94,6 @@ class Dashboard extends React.Component {
       .then(async response => {
         await this.setState({ dbreturn: response.data.rangeData})
       }).catch(err => console.log(err))
-
   }
 
   render() {
@@ -104,7 +101,7 @@ class Dashboard extends React.Component {
       <div className="container-fluid dash-body">
         <div className="container-fluid container-top">
           <div className="row row-top">
-            <div className="col-6 charts">
+            <div className="col-7 charts">
             {/* <BarChart
                 dbreturn={this.state.dbreturn}
               /> */}
@@ -115,9 +112,8 @@ class Dashboard extends React.Component {
                 dbreturn={this.state.dbreturn}
               />
             </div>
-            <div className="col-6 calendar">
+            <div className="col-5 calendar">
               <Calendar grabCalendarDate={this.grabCalendarDate}/>
-              {/* Search Range Component */}
               <DateRangeSearch 
                 viewDateRange={this.viewDateRange}
                 currentDate={this.state.currentDate}
@@ -125,13 +121,13 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
+
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
             {/* <div className="col"></div> */}
-            <div className="col-6">
+            <div className="col-7">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
-                
                 selectedDate={this.state.selectedDate}
                 mood={this.state.Mood}
                 anxiety={this.state.Anxiety}
@@ -151,11 +147,10 @@ class Dashboard extends React.Component {
             </div>
             <div className="col-5">
               <PersonalTabs userID={this.props.userID}/>
-            </div>
-              
-            </div>
+            </div>  
           </div>
         </div>
+      </div>
     )
   }
 }
