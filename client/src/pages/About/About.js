@@ -4,12 +4,11 @@ import { Redirect, Link } from 'react-router-dom';
 function About() {
   return (
     <div className="body">
-       <h4><Link to="/" className="link">Home</Link></h4>
-          <h1>About Dadirri</h1>
-          <br></br>
-          <img src='./../../images/icon.png' className='icon  mx-auto d-block'></img>
-          <br></br>
-      
+      <h4><Link to="/" className="link">Home</Link></h4>
+      <h1>About Dadirri</h1>
+      <br></br>
+      <img src='./../../images/icon.png' className='icon  mx-auto d-block'></img>
+      <br></br>
       <div className="row no-gutters">
         <div className="container about-info">
           <p>

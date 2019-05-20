@@ -9,7 +9,6 @@ class SignupForm extends Component {
 
 	constructor() {
     super();
-    
 		this.state = {
       email: '',
       name: '',
@@ -43,10 +42,7 @@ class SignupForm extends Component {
       this.setState({
         divErrorClass2: 'block'
       })
-
-    }
-   
-	  
+    } 
   }
   
 	render() {
@@ -55,53 +51,46 @@ class SignupForm extends Component {
     }
     
 		return (
-
       <Container>
         <Row>
-          
           <Col size="md-12">
-            
-              <form style={{marginTop: 10}}>
-               
-                <label htmlFor="email">Email Address: </label>
-                <Input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="name">First Name: </label>
-                <Input
-                  type="text"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="password">Password: </label>
-                <Input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="confirmPassword">Confirm Password: </label>
-                <Input
-                  type="password"
-                  name="confirmPassword"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleChange}
-                />
-                <div style={{color: 'red',display:`${this.state.divErrorClass2}`}}>Please enter all fields</div>
-                <div style={{color: 'red',display:`${this.state.divErrorClass}`}}>Passwords do not match</div>
-                <button type="button" className="btn btn-info" onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Already signed up? Go to Login</button>
-                <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
-              </form>
-            
+            <form style={{marginTop: 10}}>
+              <label htmlFor="email">Email Address: </label>
+              <Input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="name">First Name: </label>
+              <Input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="password">Password: </label>
+              <Input
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="confirmPassword">Confirm Password: </label>
+              <Input
+                type="password"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+              />
+              <div style={{color: 'red',display:`${this.state.divErrorClass2}`}}>Please enter all fields</div>
+              <div style={{color: 'red',display:`${this.state.divErrorClass}`}}>Passwords do not match</div>
+              <button type="button" className="btn btn-info" onClick={(event) => {this.props.toggle1(); this.props.toggle2();}} >Already signed up? Go to Login</button>
+              <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
+            </form>
           </Col>
-          
         </Row>
       </Container>
-
 		)
 	}
 }
