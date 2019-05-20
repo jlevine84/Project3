@@ -5,10 +5,7 @@ import moment from 'moment'
 
 function PieChart(props) {
 
-
    function getData(data) {
-       console.log(data)
-
        let meds = []
        let medsLabels = []
        let medtrues = 0
@@ -39,8 +36,8 @@ function PieChart(props) {
 
    const medicineData = {
  
-       labels: ['True','False'],
-       datasets: [
+        labels: ['True','False'],
+        datasets: [
            {
                data: [medtrues, medfalses],
                backgroundColor: ['rgba(255,99,132,0.2)'],
@@ -55,11 +52,11 @@ function PieChart(props) {
    return(
        
        <div style={{height: '180px', width: '180px'}}>
-    <Pie
-        data={medicineData}
-        width={10}
-        height={10}
-    />
+            <Pie
+                data={medicineData}
+                width={10}
+                height={10}
+            />
     </div>
 )}
 
