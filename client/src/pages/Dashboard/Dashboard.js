@@ -149,9 +149,9 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            <div className="col-5">
+            {/* <div className="col-5">
               <PersonalTabs userID={this.props.userID}/>
-            </div>  
+            </div>   */}
           </div>
         </div>
       </div>
