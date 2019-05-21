@@ -3,6 +3,7 @@ import './LandingPage.css'
 import LoginForm from '../Auth/LoginForm';
 import SignupForm from '../Auth/SignupForm';
 import { Redirect, Link } from 'react-router-dom';
+import iconPath from '../../images/icon.png'
 class LandingPage extends React.Component{
 
   dismissModal = ()=>{
@@ -23,7 +24,7 @@ class LandingPage extends React.Component{
           <br></br>
           <br></br>
           <br></br>
-          <img src="images/icon.png" alt="Nautilus" className="img-glow mx-auto d-block"/>
+          <img src={iconPath} alt="Nautilus" className="img-glow mx-auto d-block"/>
           <h1 className="titlex">Dadirri</h1>
           <div className="buttonDiv">
             <button type="button" className="btn btn-light signUp" onClick={this.props.toggle1}>Sign In/Sign Up</button>
