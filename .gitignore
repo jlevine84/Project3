@@ -4,7 +4,7 @@
 /dist
 /tmp
 /build
-/client/build
+# /client/build
 
 # dependencies
 **/node_modules
