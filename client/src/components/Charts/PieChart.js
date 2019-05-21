@@ -17,7 +17,6 @@ function PieChart(props) {
         let exerfalses = 0
         let showertrues = 0
         let showerfalses = 0
-        let counter = 0
 
         for (var i = data.length - 1; i > -1; i--) {
             if (data[i]["MedicineTaken"]) {
@@ -39,10 +38,10 @@ function PieChart(props) {
 
         const medicineData = {
 
-            labels: ['Took Medicine', "Didn't Take Medicine"],
+            labels: ['Took Meds % of time', "No Meds % of time"],
             datasets: [
                 {
-                    data: [medtrues, medfalses],
+                    data: [parseInt(medTruPer), parseInt(medFalPer)],
                     backgroundColor: ['rgba(149, 88, 206,0.2)'],
                     hoverBackgroundColor: ['rgba(149, 88, 206,1)']
                 }
@@ -69,10 +68,10 @@ function PieChart(props) {
 
         const exerciseData = {
 
-            labels: ['Exercised', "Didn't Exercise"],
+            labels: ['Exercised % of time', "Didn't Exercise % of time"],
             datasets: [
                 {
-                    data: [exertrues, exerfalses],
+                    data: [parseInt(exerTruPer), parseInt(exerFalPer)],
                     backgroundColor: ['rgba(142, 204, 159,0.4)'],
                     hoverBackgroundColor: ['rgba(142, 204, 159,1)']
                 }
@@ -97,10 +96,10 @@ function PieChart(props) {
 
         const showerData = {
 
-            labels: ['Showered', "Didn't Showered"],
+            labels: ['Showered % of time', "Didn't Shower % of time"],
             datasets: [
                 {
-                    data: [showertrues, showerfalses],
+                    data: [parseInt(showerTruPer), parseInt(showerFalPer)],
                     backgroundColor: ['rgba(142, 195, 204,0.4)'],
                     hoverBackgroundColor: ['rgba(142, 195, 204,1)']
                 }
