@@ -2,7 +2,6 @@ import React from 'react';
 import { defaults } from 'react-chartjs-2';
 import { Bar, Line } from 'react-chartjs-2';
 import './BarChart.css'
-// import Dashboard from '../../pages/Dashboard/Dashboard'
 
 let dates = []
 let energy = []
@@ -77,11 +76,6 @@ const data = {
 }
 
 class BarChart extends React.Component {
-
-
-    // componentWillMount() {
-    //     getData(this.props.dbreturn);
-    // }
 
     render() {
         getData(this.props.dbreturn);

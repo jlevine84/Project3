@@ -11,7 +11,7 @@ function Input(props) {
         placeholder={props.placeholder}
         name={props.name}
         onChange={props.update}
-        rows="3"></textarea>
+        rows="3"/>
     </div>
   )
 }

@@ -5,7 +5,6 @@ import moment from 'moment'
 
 function PieChart(props) {
 
-
     function getData(data) {
         console.log(data)
 
@@ -27,6 +26,7 @@ function PieChart(props) {
             }
 
         }
+
         let medTotal = parseInt(medtrues) + parseInt(medfalses)
         let medTruPer = parseInt(medtrues)/parseInt(medTotal) * 100 + '%'
         console.log("medtotal:" + medTotal)
@@ -58,6 +58,7 @@ function PieChart(props) {
                 exerfalses = exerfalses + 1
             }
         }
+
         let exerTotal = parseInt(exertrues) + parseInt(exerfalses)
         let exerTruPer = parseInt(exertrues) / parseInt(exerTotal) * 100 + '%'
         console.log("exertotal:" + exerTotal)
@@ -125,9 +126,7 @@ function PieChart(props) {
                         <Pie data={showerData} width={10} height={10} />
                     </div>
                 </div>
-
             </div>
-
         )
     }
 

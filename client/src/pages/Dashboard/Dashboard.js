@@ -10,7 +10,6 @@ import moment from 'moment'
 import DateRangeSearch from '../../components/RangeSearch/RangeSearch'
 import PersonalTabs from '../../components/PersonalTabs/PersonalTabs'
 
-
 class Dashboard extends React.Component {
 
   state = {
@@ -111,13 +110,9 @@ class Dashboard extends React.Component {
         <div className="container-fluid container-top">
           <div className="row row-top">
             <div className="col-7 charts">
-            {/* <BarChart
-                dbreturn={this.state.dbreturn}
-              /> */}
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
-              
                <PieChart
                 dbreturn={this.state.dbreturn}
               />
@@ -154,12 +149,11 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            {/* <div className="col-5">
+            <div className="col-5">
               <PersonalTabs userID={this.props.userID}/>
-            </div>  */}
+            </div>  
           </div>
         </div>
-
       </div>
     )
   }

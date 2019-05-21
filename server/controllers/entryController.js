@@ -37,7 +37,6 @@ module.exports = {
     if (req.user) {
       db.Entry.find({UserID: req.user._id, Date: { $gte: startDate, $lte: endDate } }).sort({ Date: -1 })
         .then(entries => {
-          console.log(entries)
           res.json({ rangeData: entries})
         }).catch(err => console.log(err))
     } else {
@@ -47,7 +46,7 @@ module.exports = {
   
   // To create a new mood entry using the entry schema
   createEntry: function(req, res) {
-    entry = req.body
+    let entry = req.body
       db.Entry
        .findOneAndUpdate({UserID: req.user._id, Date: req.body.Date}, entry, {upsert: true}, function(){})
         .then(dbEntry => {

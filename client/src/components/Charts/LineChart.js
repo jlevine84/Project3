@@ -31,9 +31,9 @@ function LineChart (props) {
     
     
         let chartData = {
-          labels: dates,
+            labels: dates,
         
-          datasets: [
+            datasets: [
             {
                 label: 'Sleep',
                 backgroundColor: 'rgba(255,255,255,0.2)',
@@ -42,32 +42,38 @@ function LineChart (props) {
                   hoverBorderColor: 'rgba(140, 6, 224,1)',
                 borderWidth: 2,
                 data: sleep
-              
+                
             },
               {
-                  label: 'Mood',
-                  backgroundColor: 'rgba(255,99,132,0.2)',
-                  borderColor: 'rgba(255,99,132,1)',
-                  borderWidth: 1,
-                  data: mood
-         
-              },
-              {
-                  label: 'Anxiety',
-                  backgroundColor: 'rgba(63, 191, 191, 0.2)',
-                  borderColor: 'rgba(41, 182, 182, 0.77)',
-                  borderWidth: 1,
-                  data: anxiety
-              },
-              {
-                  label: 'Energy',
-                  backgroundColor: 'rgba(63, 127, 191, 0.2)',
-                  borderColor: 'rgba(41, 142, 182, 0.8)',
-                  borderWidth: 1,
-                  data: energy
-
-              }
-          ] }
+                label: 'Mood',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
+                hoverBorderColor: 'rgb(93, 142, 61)',
+                data: mood
+        
+            },
+            {
+                label: 'Anxiety',
+                backgroundColor: 'rgba(83, 181, 181, 0.4)',
+                borderColor: 'rgba(41, 182, 182, 0.77)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(236, 230, 64, 0.44)',
+                hoverBorderColor: 'rgba(236, 230, 64, 0.82)',
+                data: anxiety
+            },
+            {
+                label: 'Energy',
+                backgroundColor: 'rgba(41, 142, 182, 0.29)',
+                borderColor: 'rgba(41, 142, 182, 0.8)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(241, 28, 138, 0.6)',
+                hoverBorderColor: 'rgb(241, 28, 138)',
+                data: energy
+            }
+          ] 
+        }
 
         return(
             <Line
