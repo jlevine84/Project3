@@ -20,7 +20,8 @@
   max-height: 20%;
 }
 
-.activity-container {
-  height: 200px;
-  max-width: 800px;
+.charts, .calendar, .user-data, .scrape {
+  border: solid 1px rgb(196, 196, 196);
+  box-shadow: 3px 2px 2px rgb(66, 66, 66);
+  border-radius: 5px;
 }

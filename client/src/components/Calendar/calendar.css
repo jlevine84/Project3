@@ -21,7 +21,9 @@
   position: relative;
   width: 25%;
   background: #78E2D7;
-  color: white;
+  color: #4d4d4d;
+  font-weight: bold;
+  -webkit-text-stroke: .25px rgb(160, 160, 160);
   border: solid 1px rgb(196, 196, 196);
   box-shadow: 3px 2px 2px black;
 }

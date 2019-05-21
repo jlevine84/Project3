@@ -2,7 +2,6 @@ import React from 'react'
 import './dashboard.css'
 import Calendar from '../../components/Calendar/Calendar'
 import ViewUserData from '../../components/ViewUserData/ViewUserData';
-import BarChart from '../../components/Charts/BarChart.js'
 import PieChart from '../../components/Charts/PieChart.js'
 import LineChart from '../../components/Charts/LineChart.js'
 import API from '../../utils/API';
@@ -106,14 +105,13 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container-fluid dash-body">
-
         <div className="container-fluid container-top">
           <div className="row row-top">
             <div className="col-7 charts">
               <LineChart
                 dbreturn={this.state.dbreturn}
               />
-               <PieChart
+              <PieChart
                 dbreturn={this.state.dbreturn}
               />
             </div>
@@ -129,7 +127,7 @@ class Dashboard extends React.Component {
 
         <div className="container-fluid container-bottom">
           <div className="row row-bottom">
-            <div className="col-7">
+            <div className="col-7 user-data">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  
                 selectedDate={this.state.selectedDate}
@@ -149,9 +147,9 @@ class Dashboard extends React.Component {
                 userID={this.props.userID}
               />}
             </div>
-            {/* <div className="col-5">
+            <div className="col-5 scrape">
               <PersonalTabs userID={this.props.userID}/>
-            </div>   */}
+            </div>  
           </div>
         </div>
       </div>
