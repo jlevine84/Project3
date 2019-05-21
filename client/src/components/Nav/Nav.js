@@ -7,7 +7,7 @@ class Nav extends React.Component {
   render () {
     return (
       <nav class="navbar">
-      <Link to="/"> <img src='/images/icon.png' className="littleicon"></img></Link>
+      <Link to="/"> <img src='../../images/icon.png' className="littleicon"></img></Link>
         <h5>Welcome, {this.props.user}!</h5>
         <Link to="/about" className = "navbarlink">About Dadirri</Link>
         <Link to="/dashboard" className="navbarlink">Dashboard</Link>
