@@ -38,8 +38,8 @@ function LineChart (props) {
                 label: 'Sleep',
                 backgroundColor: 'rgba(255,255,255,0.2)',
                 borderColor: 'rgba(140, 6, 224,1)',
-                hoverBackgroundColor: 'rgba(114, 191, 63, 0.52)',
-                hoverBorderColor: 'rgb(93, 142, 61)',
+                  hoverBackgroundColor: 'rgba(140, 6, 224,1)',
+                  hoverBorderColor: 'rgba(140, 6, 224,1)',
                 borderWidth: 2,
                 data: sleep
                 
@@ -71,7 +71,6 @@ function LineChart (props) {
                 hoverBackgroundColor: 'rgba(241, 28, 138, 0.6)',
                 hoverBorderColor: 'rgb(241, 28, 138)',
                 data: energy
-
             }
           ] 
         }
