@@ -51,17 +51,17 @@ class Dashboard extends React.Component {
     .then( async response => {
       if (response.data.todaysentry[0]) {
         await this.setState({
-            Mood: response.data.todaysentry[0].Mood,
-            Anxiety: response.data.todaysentry[0].Anxiety,
-            Energy: response.data.todaysentry[0].Energy,
-            MedicineTaken: response.data.todaysentry[0].MedicineTaken,
-            Exercise: response.data.todaysentry[0].Exercise,
-            SleepHours: response.data.todaysentry[0].SleepHours,
-            Showered: response.data.todaysentry[0].Showered,
-            DailyLog: response.data.todaysentry[0].DailyLog,
-            ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
-            Date: moment(response.data.todaysentry[0].Date, 'YYYYMMDD').format('MMMM Do YYYY'),
-            Logged: true
+          Mood: response.data.todaysentry[0].Mood,
+          Anxiety: response.data.todaysentry[0].Anxiety,
+          Energy: response.data.todaysentry[0].Energy,
+          MedicineTaken: response.data.todaysentry[0].MedicineTaken,
+          Exercise: response.data.todaysentry[0].Exercise,
+          SleepHours: response.data.todaysentry[0].SleepHours,
+          Showered: response.data.todaysentry[0].Showered,
+          DailyLog: response.data.todaysentry[0].DailyLog,
+          ExerciseAmount: response.data.todaysentry[0].ExerciseAmount,
+          Date: moment(response.data.todaysentry[0].Date, 'YYYYMMDD').format('MMMM Do YYYY'),
+          Logged: true
         })
       } else {
         await this.setState({ 
@@ -83,30 +83,20 @@ class Dashboard extends React.Component {
   prevEntryCallBack = () => {
     this.viewByDate()
     this.pullAll()
-  } 
-
-  // Stuff for Jeffy to Dooz
-  // Catch Dr & Med Data -> send to DB -> retrieve from db
-  // Page formatting: Charts, Calendar, Ptabs, viewInfo
-  // Validate Chart info.
-  // Chart data toggles.
-  // Page Transitions.
-  // Linting
-  // Logic for new user chart area,
-  // Logic for only one entry
+  }
 
   viewDateRange = (startDate, endDate) => {
     API.getRange(startDate, endDate)
       .then(async response => {
-        await this.setState({ dbreturn: response.data.rangeData})
+        await this.setState({ dbreturn: response.data.rangeData })
       }).catch(err => console.log(err))
   }
 
   render() {
     return (
-      <div className="container-fluid dash-body">
+      <div className="dash-body">
         <div className="container-fluid container-top">
-          <div className="row row-top">
+          <div className="row no-gutters row-top">
             <div className="col-7 charts">
               <LineChart
                 dbreturn={this.state.dbreturn}
@@ -126,7 +116,7 @@ class Dashboard extends React.Component {
         </div>
 
         <div className="container-fluid container-bottom">
-          <div className="row row-bottom">
+          <div className="row no-gutters row-bottom">
             <div className="col-7 user-data">
               {(this.state.selectedDate > this.state.currentDate) ? <h5>You can not enter an Entry for a future date</h5> :
               <ViewUserData  

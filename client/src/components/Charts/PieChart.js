@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import './PieChart.css'
-import moment from 'moment'
 
 function PieChart(props) {
 
@@ -25,12 +24,12 @@ function PieChart(props) {
         }
 
         let medTotal = parseInt(medtrues) + parseInt(medfalses)
-        let medTruPer = parseInt(medtrues)/parseInt(medTotal) * 100 + '%'
-        let medFalPer = parseInt(medfalses) / parseInt(medTotal) * 100 + '%'
+        let medTruPer = parseInt(medtrues)/parseInt(medTotal) * 100
+        let medFalPer = parseInt(medfalses) / parseInt(medTotal) * 100
 
         const medicineData = {
 
-            labels: [`Took Meds: ${medTruPer}`, `Didn't Take Meds: ${medFalPer}`],
+            labels: [`Took Meds: ${medTruPer.toFixed(2)}%`, `Didn't Take Meds: ${medFalPer.toFixed(2)}%`],
             datasets: [
                 {
                     data: [parseInt(medtrues), parseInt(medfalses)],
@@ -50,11 +49,11 @@ function PieChart(props) {
         }
 
         let exerTotal = parseInt(exertrues) + parseInt(exerfalses)
-        let exerTruPer = parseInt(exertrues) / parseInt(exerTotal) * 100 + '%'
-        let exerFalPer = parseInt(exerfalses) / parseInt(exerTotal) * 100 + '%'
+        let exerTruPer = parseInt(exertrues) / parseInt(exerTotal) * 100
+        let exerFalPer = parseInt(exerfalses) / parseInt(exerTotal) * 100
 
         const exerciseData = {
-            labels: [`Exercised: ${exerTruPer}`, `Didn't Exercise: ${exerFalPer}`],
+            labels: [`Exercised: ${exerTruPer.toFixed(2)}%`, `Didn't Exercise: ${exerFalPer.toFixed(2)}%`],
             datasets: [
                 {
                     data: [parseInt(exertrues), parseInt(exerfalses)],
@@ -73,11 +72,11 @@ function PieChart(props) {
             }
         }
         let showerTotal = parseInt(showertrues) + parseInt(showerfalses)
-        let showerTruPer = parseInt(showertrues) / parseInt(showerTotal) * 100 + '%'
-        let showerFalPer = parseInt(showerfalses) / parseInt(showerTotal) * 100 + '%'
+        let showerTruPer = parseInt(showertrues) / parseInt(showerTotal) * 100
+        let showerFalPer = parseInt(showerfalses) / parseInt(showerTotal) * 100
 
         const showerData = {
-            labels: [`Showered: ${showerTruPer}`, `Didn't Shower: ${showerFalPer}`],
+            labels: [`Showered: ${(showerTruPer.toFixed(2))}%`, `Didn't Shower: ${showerFalPer.toFixed(2)}%`],
             datasets: [
                 {
                     data: [parseInt(showertrues), parseInt(showerfalses)],
