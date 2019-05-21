@@ -1,15 +1,11 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import './PieChart.css'
-import moment from 'moment'
 
 function PieChart(props) {
 
     function getData(data) {
-        console.log(data)
-
-        let meds = []
-        let medsLabels = []
+        
         let medtrues = 0
         let medfalses = 0
         let exertrues = 0
@@ -28,27 +24,20 @@ function PieChart(props) {
         }
 
         let medTotal = parseInt(medtrues) + parseInt(medfalses)
-        let medTruPer = parseInt(medtrues)/parseInt(medTotal) * 100 + '%'
-        console.log("medtotal:" + medTotal)
-        console.log("medTruPer:" + medTruPer)
-        let medFalPer = parseInt(medfalses) / parseInt(medTotal) * 100 + '%'
-        console.log("medtotal:" + medTotal)
-        console.log("medFalPer:" + medFalPer)
-
+        let medTruPer = parseInt(medtrues)/parseInt(medTotal) * 100
+        let medFalPer = parseInt(medfalses) / parseInt(medTotal) * 100
 
         const medicineData = {
 
-            labels: ['Took Meds % of time', "No Meds % of time"],
+            labels: [`Took Meds: ${medTruPer.toFixed(2)}%`, `Didn't Take Meds: ${medFalPer.toFixed(2)}%`],
             datasets: [
                 {
-                    data: [parseInt(medTruPer), parseInt(medFalPer)],
-                    backgroundColor: ['rgba(149, 88, 206,0.2)'],
-                    hoverBackgroundColor: ['rgba(149, 88, 206,1)']
+                    data: [parseInt(medtrues), parseInt(medfalses)],
+                    backgroundColor: ['rgba(149, 88, 206, .5)'],
+                    hoverBackgroundColor: ['rgba(149, 88, 206, 1)']
                 }
             ]
         }
-
-
 
         for (var i = data.length - 1; i > -1; i--) {
             if (data[i]["Exercise"]) {
@@ -60,21 +49,16 @@ function PieChart(props) {
         }
 
         let exerTotal = parseInt(exertrues) + parseInt(exerfalses)
-        let exerTruPer = parseInt(exertrues) / parseInt(exerTotal) * 100 + '%'
-        console.log("exertotal:" + exerTotal)
-        console.log("exerTruPer:" + exerTruPer)
-        let exerFalPer = parseInt(exerfalses) / parseInt(exerTotal) * 100 + '%'
-        console.log("exertotal:" + exerTotal)
-        console.log("exerFalPer:" + exerFalPer)
+        let exerTruPer = parseInt(exertrues) / parseInt(exerTotal) * 100
+        let exerFalPer = parseInt(exerfalses) / parseInt(exerTotal) * 100
 
         const exerciseData = {
-
-            labels: ['Exercised % of time', "Didn't Exercise % of time"],
+            labels: [`Exercised: ${exerTruPer.toFixed(2)}%`, `Didn't Exercise: ${exerFalPer.toFixed(2)}%`],
             datasets: [
                 {
-                    data: [parseInt(exerTruPer), parseInt(exerFalPer)],
-                    backgroundColor: ['rgba(142, 204, 159,0.4)'],
-                    hoverBackgroundColor: ['rgba(142, 204, 159,1)']
+                    data: [parseInt(exertrues), parseInt(exerfalses)],
+                    backgroundColor: ['rgba(142, 204, 159, 5)'],
+                    hoverBackgroundColor: ['rgba(142, 204, 159, 1)']
                 }
             ]
         }
@@ -88,25 +72,19 @@ function PieChart(props) {
             }
         }
         let showerTotal = parseInt(showertrues) + parseInt(showerfalses)
-        let showerTruPer = parseInt(showertrues) / parseInt(showerTotal) * 100 + '%'
-        console.log("showertotal:" + showerTotal)
-        console.log("showerTruPer:" + showerTruPer)
-        let showerFalPer = parseInt(showerfalses) / parseInt(showerTotal) * 100 + '%'
-        console.log("exertotal:" + showerTotal)
-        console.log("exerFalPer:" + showerFalPer)
+        let showerTruPer = parseInt(showertrues) / parseInt(showerTotal) * 100
+        let showerFalPer = parseInt(showerfalses) / parseInt(showerTotal) * 100
 
         const showerData = {
-
-            labels: ['Showered % of time', "Didn't Shower % of time"],
+            labels: [`Showered: ${(showerTruPer.toFixed(2))}%`, `Didn't Shower: ${showerFalPer.toFixed(2)}%`],
             datasets: [
                 {
-                    data: [parseInt(showerTruPer), parseInt(showerFalPer)],
-                    backgroundColor: ['rgba(142, 195, 204,0.4)'],
-                    hoverBackgroundColor: ['rgba(142, 195, 204,1)']
+                    data: [parseInt(showertrues), parseInt(showerfalses)],
+                    backgroundColor: ['rgba(41, 152, 216, 0.5)'],
+                    hoverBackgroundColor: ['rgba(41, 152, 216, 1)']
                 }
             ]
         }
-
 
         return (
             <div class="row">

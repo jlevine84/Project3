@@ -24,7 +24,7 @@ class PersonalTabs extends React.Component {
   render() {
     return (
       <div className="jumbotron personaltabs">
-        <Scrape scrape={this.state.scrape}/> /
+        <Scrape scrape={this.state.scrape}/>
       </div>
     )
   }

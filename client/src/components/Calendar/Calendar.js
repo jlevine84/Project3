@@ -210,11 +210,11 @@ export default class Calendar extends React.Component {
               }}
               className="month-label"
             >
-              Month: {this.month()}
+              <b>Month: {this.month()}</b>
             </div>
           ) : (<div className="month-label">{this.month()}</div>)}
           <div className="year-label">
-            Year: {this.year()}
+            <b>Year: {this.year()}</b>
           </div>
            <button
           onClick={e => {

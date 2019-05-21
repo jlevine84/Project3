@@ -36,34 +36,40 @@ function LineChart (props) {
             datasets: [
             {
                 label: 'Sleep',
-                backgroundColor: 'rgba(255,255,255,0.2)',
-                borderColor: 'rgba(140, 6, 224,1)',
-                hoverBackgroundColor: 'rgba(140, 6, 224,1)',
-                hoverBorderColor: 'rgba(140, 6, 224,1)',
-                borderWidth: 2,
+                backgroundColor: 'rgba(140, 6, 224, .06)',
+                borderColor: 'rgba(140, 6, 224, 1)',
+                hoverBackgroundColor: 'rgba(140, 6, 224, 1)',
+                hoverBorderColor: 'rgba(140, 6, 224, 1)',
+                borderWidth: 1.5,
                 data: sleep
                 
             },
               {
                 label: 'Mood',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1,
+                backgroundColor: 'rgba(184, 184, 32, 0.15)',
+                hoverBackgroundColor: 'rgba(206, 250, 46, .5)',
+                borderColor: 'rgba(199, 199, 81, 1)',
+                hoverBorderColor:'rgba(199, 199, 81, 1)',
+                borderWidth: 2,
                 data: mood
         
             },
             {
                 label: 'Anxiety',
-                backgroundColor: 'rgba(83, 181, 181, 0.4)',
-                borderColor: 'rgba(41, 182, 182, 0.77)',
-                borderWidth: 1,
+                backgroundColor: 'rgba(163, 84, 97, 0.15)',
+                borderColor: 'rgba(163, 84, 97, 1)',
+                hoverBackgroundColor: '163, 84, 97, 1)',
+                hoverBorderColor: '163, 84, 97, 1)',
+                borderWidth: 1.5,
                 data: anxiety
             },
             {
                 label: 'Energy',
-                backgroundColor: 'rgba(41, 142, 182, 0.29)',
-                borderColor: 'rgba(41, 142, 182, 0.8)',
-                borderWidth: 1,
+                backgroundColor: 'rgba(41, 142, 182, 0.15)',
+                borderColor: 'rgba(41, 142, 182, 1)',
+                hoverBackgroundColor: 'rgba(41, 142, 182, 1)',
+                hoverBorderColor: 'rgba(41, 142, 182, 1)',
+                borderWidth: 1.5,
                 data: energy
             }
           ] 
