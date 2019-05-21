@@ -108,7 +108,7 @@ class RangeSearch extends React.Component {
                                     <option value="2019">2019</option>
                                     <option value="2020">2020</option>
                                 </select>
-                            </div> Jeff Linted Below Lesley Linted
+                            </div>
                     {/*END DATE INPUT*/}
                     <div className="dropdown">
                         <br></br>
