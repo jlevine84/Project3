@@ -11,8 +11,6 @@ class PersonalTabs extends React.Component {
 
   componentWillMount(){
     this.scrape()
-    this.getDoctors()
-    this.getMedications()
   }
 
   scrape = () => {
