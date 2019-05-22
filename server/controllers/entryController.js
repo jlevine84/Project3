@@ -57,8 +57,8 @@ module.exports = {
         })
         .catch(err => {
           console.log(err)
-          res.status(422).json(err))
-        }
+          res.status(422).json(err)
+        })
     },
   
   // To edit an existing mood entry
