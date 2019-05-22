@@ -9,13 +9,7 @@ const userSchema = new Schema({
   email: { type: String, unique: true, required: true },
 	password: { type: String, required: true },
 	name: {type: String},
-  entries: [
-    {
-      // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Entry model
-      ref: "Entry"
-		}]
+  
 });
 
 // Define schema methods
