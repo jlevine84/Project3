@@ -11,8 +11,8 @@ function Scrape (props) {
         {props.scrape.map((article, i) => {
           return (
             <div key={i}>
-            <h6>{article.title}</h6>
-            <p className="center"><a href={`https://www.sciencedaily.com${article.link}`} target="_blank">Read More</a></p>
+            {/* <h6>{article.title}</h6> */}
+            <p className="center"><a href={`https://www.sciencedaily.com${article.link}`} target="_blank">{article.title}</a></p><br/>
           </div>
           )
         })}

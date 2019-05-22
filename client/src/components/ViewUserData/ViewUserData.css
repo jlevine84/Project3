@@ -13,3 +13,15 @@
     margin:0px;
     float:right;
 }
+
+.jumbotron{
+    /* height: 300px; */
+}
+
+.slider{
+    height: 5px;
+}
+
+.input-row{
+    height: 200px;
+}
