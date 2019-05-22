@@ -49,9 +49,6 @@ module.exports = {
     let entry = req.body
       db.Entry
        .findOneAndUpdate({UserID: req.user._id, Date: req.body.Date}, entry, {upsert: true}, function(){})
-        .then(dbEntry => {
-         return db.User.findOneAndUpdate({ _id: dbEntry.UserID}, { $push: { entries: dbEntry._id } });
-        })
         .then((dbUser) => {
           res.json(dbUser);
         })
