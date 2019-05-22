@@ -92,15 +92,17 @@ class Dashboard extends React.Component {
       }).catch(err => console.log(err))
   }
 
+ 
+
   render() {
     return (
       <div className="dash-body">
         <div className="container-fluid container-top">
           <div className="row no-gutters row-top">
             <div className="col-7 charts">
-              <LineChart
+              <LineChart 
                 dbreturn={this.state.dbreturn}
-              />
+                />
               <PieChart
                 dbreturn={this.state.dbreturn}
               />

@@ -104,9 +104,9 @@ class ViewUserData extends React.Component {
     render(){
         const entryDate = moment(this.props.selectedDate, 'YYYYMMDD').format('MMMM Do YYYY')
         return(
-            <div>
+            <div id="container">
                 {(this.state.logged && !this.state.edit) ?
-                    <div className ="jumbotron">
+                    <div className ="jumbotron viewData">
                         <div>
                             <h5>Data for {entryDate}</h5>
                             <p><strong>Mood: </strong>{this.props.mood}</p>
@@ -121,11 +121,13 @@ class ViewUserData extends React.Component {
                                     <p><strong>Exercise Details: </strong>
                                     <br></br>
                                     {this.props.exerciseAmount}</p>
+                                    <br></br>
                                 </div>
                             :   ""  }
                             <p><strong>Daily Log: </strong>
                             <br></br>
                             {this.props.dailyLog}</p>
+                            <br></br>
                             <button type="button" className="btn btn-success float2" onClick={this.switchToEdit}>Edit this entry</button>
                         </div>
                     </div>
@@ -188,7 +190,7 @@ class ViewUserData extends React.Component {
                                 />
                             </div>
                         </div> 
-                        <div className="row">
+                        <div className="input-row">
                             <div className="col-sm-12">
                             {this.state.Exercise === "true" ?
                                 <Input
