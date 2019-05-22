@@ -55,7 +55,10 @@ module.exports = {
         .then((dbUser) => {
           res.json(dbUser);
         })
-        .catch(err => res.status(422).json(err));
+        .catch(err => {
+          console.log(err)
+          res.status(422).json(err))
+        }
     },
   
   // To edit an existing mood entry
