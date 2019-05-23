@@ -4,6 +4,9 @@
   width:100%;
 }
 
+.row.no-gutters2{
+  height: 600px;
+}
 
 .about-title {
   height: 40vh;
@@ -15,7 +18,7 @@
 
 .about-info {
   padding:50px;
-  height: 90vh;
+  height:600px;
   border-radius: 5px;
   background-color: rgb(211, 228, 228);
   overflow:hidden;
@@ -37,4 +40,8 @@ a:hover{
 }
 .centered{
   text-align:center;
+}
+
+.p{
+  height: 50px;
 }
